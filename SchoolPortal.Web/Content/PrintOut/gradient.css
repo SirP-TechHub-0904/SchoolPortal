@@ -1,0 +1,70 @@
+/* CSS Document */
+
+.linear {
+  /* fallback */
+  background-color: #1a82f7;
+  background: url(images/linear_bg_2.png);
+  background-repeat: repeat-x;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6093C6), to(#29527A));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #6093C6, #29527A);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #6093C6, #29527A);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #6093C6, #29527A);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #6093C6, #29527A);
+}
+
+.linear2 {
+  /* fallback */
+  background-color: #1f1f1f;
+  background: url(images/linear_bg_2.png);
+  background-repeat: repeat-x;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2F2727), to(#0b0b0b));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #2F2727, #0b0b0b);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #2F2727, #0b0b0b);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #1f1f1f, #1a82f7);
+
+  /* Opera 11.10+ */
+  background: -webkit-linear-gradient(top, #0b0b0b, #272727);
+}
+
+
+.white-pink {
+  /* fallback */
+   background:url(../images/white-pink.jpg);
+   
+  background-color: #FF99CC;
+ 
+  background-repeat: repeat-x;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFCACA), to(#FF53A9));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #FFCACA, #FF53A9);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #FFCACA, #FF53A9);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #FFCACA, #FF53A9);
+
+  /* Opera 11.10+ */
+  background: -webkit-linear-gradient(top, #FFCACA, #FF53A9);
+}

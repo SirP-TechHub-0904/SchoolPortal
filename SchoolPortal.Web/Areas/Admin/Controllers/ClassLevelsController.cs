@@ -234,6 +234,20 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         }
 
+        public async Task<ActionResult> PromotStudent()
+        {
+            var csession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
+            ViewBag.sessionc = csession.SessionYear;
+
+            var classlevel = await _classLevelService.ClassLevelList();
+            ViewBag.ClassLevelId = new SelectList(classlevel.ToList(), "Id", "ClassLevelName");
+
+            var studentlist = await _classLevelService.StudentsList();
+            ViewBag.StudentId = new SelectList(studentlist.ToList(), "Id", "ClassLevelName");
+
+            return View();
+        }
+
 
         //sessIdclassId
         public async Task<ActionResult> Promotion()

@@ -85,12 +85,14 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task UpdateEnrollmentStatus(int? classId)
         {
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+
             var sub = db.EnrolledSubjects.FirstOrDefault();
             var setting = await db.Settings.FirstOrDefaultAsync();
             //var enrolment = await db.Enrollments.Include(x => x.ClassLevel).Where(c => c.ClassLevelId == classId).ToListAsync();
 
             IQueryable<Enrollment> enrolment = from s in db.Enrollments
-                                          .Include(x => x.ClassLevel).Where(c => c.ClassLevelId == classId)
+                                          .Include(x => x.ClassLevel).Where(c => c.ClassLevelId == classId && c.SessionId == currentSession.Id)
                                                select s;
 
             foreach (var student in enrolment)

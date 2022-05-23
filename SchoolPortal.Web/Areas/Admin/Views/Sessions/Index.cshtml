@@ -104,9 +104,10 @@
 
                                 </td>
                                 <td>
+                                    @Html.ActionLink("Update Principal Name", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
                                     @if (User.IsInRole("SuperAdmin") || User.IsInRole("Edittor"))
                                     {
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+
                                         @Html.ActionLink("Super Edit", "SuperEdit", new { id = item.Id }, new { @class = "btn btn-primary" })
                                     }
                                 </td>

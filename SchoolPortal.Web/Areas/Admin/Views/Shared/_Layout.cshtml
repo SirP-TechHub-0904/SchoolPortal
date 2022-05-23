@@ -281,7 +281,7 @@
                 </div>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                        @using (Html.BeginForm("LogOff", "XYZ", new { area = "Account" }, FormMethod.Post, new { id = "logoutForm" }))
                         {
                             @*@Html.AntiForgeryToken()*@
                             <li class="dropdown user user-menu">
@@ -438,6 +438,16 @@
                         <a href="https://www.youtube.com/channel/UCfRRuNhVsN_9huTAGSR5V-g/" target="_blank">
                             <span class="btn btn-primary">Help Videos </span>
                         </a>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+
+                            <a href="@Url.Action("ClearCatch", "XYZ", new { area="Account" })">
+                                @{
+                                    var ccheck = GeneralService.CheckCatch();
+                                }
+                                <span class="btn btn-danger">Clear Catch (@ccheck record) </span>
+                            </a>
+                        }
                         <a href="javascript: history.back()">
                             <span class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back</span>
                         </a>
@@ -554,7 +564,6 @@
     <!-- sweetalert -->
     <script src="~/Content/sweetalert/js/sweetalert2.min.js"></script>
     <!-- sweetalert -->
-
     <!-- AdminLTE App -->
     <!-- bootstrap color picker -->
     <script src="http://exwhyzee.ng/libraries/admin/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>

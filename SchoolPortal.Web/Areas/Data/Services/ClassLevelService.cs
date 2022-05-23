@@ -268,6 +268,39 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         }
 
+        public async Task<List<PromotionStudentsDto>> StudentsList()
+        {
+            IQueryable<StudentProfile> allStudents = from s in db.StudentProfiles
+                                       .Include(x => x.user).Where(c => c.Graduate == false)
+                                               select s;
+
+            
+            var output = allStudents.Select(x => new PromotionStudentsDto
+            {
+                UserName = x.user.UserName,
+                ProfileId = x.Id,
+                StudentRegNumber = x.StudentRegNumber,
+                FullName = x.user.Surname + " " + x.user.FirstName + " " + x.user.OtherName,
+                PhoneNumber = x.user.Phone,
+                EmailAddress = x.user.Email,
+                UserId = x.user.Id,
+                ClassName = ClassEnrolled(x.Id)
+
+            });
+            return await output.ToListAsync();
+        }
+        public string ClassEnrolled(int studentId)
+        {
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+            string result = "";
+            var item = db.Enrollments.Include(x=>x.ClassLevel).FirstOrDefault(x => x.StudentProfileId == studentId && x.SessionId == currentSession.Id);
+            if(item != null)
+            {
+                result = item.ClassLevel.ClassName;
+            }
+            return result;
+        }
+
         public async Task<List<ClassStudentsDto>> Students(int? id)
         {
 

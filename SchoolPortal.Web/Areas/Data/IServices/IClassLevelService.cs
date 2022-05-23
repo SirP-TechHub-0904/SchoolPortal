@@ -27,5 +27,6 @@ namespace SchoolPortal.Web.Areas.Data.IServices
         Task GradingOption(int? id);
         Task<string> MoveStudents(int? id, int? sessionid, int classid);
 
+        Task<List<PromotionStudentsDto>> StudentsList();
     }
 }

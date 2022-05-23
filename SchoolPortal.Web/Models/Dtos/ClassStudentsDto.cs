@@ -17,4 +17,18 @@ namespace SchoolPortal.Web.Models.Dtos
         public int EnrollmentId { get; set; }
         public string UserId { get; set; }
     }
+
+    public class PromotionStudentsDto
+    {
+        public int ProfileId { get; set; }
+        public int? ClassId { get; set; }
+        public string UserName { get; set; }
+        public string ClassName { get; set; }
+        public string FullName { get; set; }
+        public string StudentRegNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string EmailAddress { get; set; }
+        public int EnrollmentId { get; set; }
+        public string UserId { get; set; }
+    }
 }

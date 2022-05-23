@@ -349,7 +349,9 @@
 
 @if (User.IsInRole("SuperAdmin"))
 {
-    @Html.ActionLink("show", "EnrolledSubjectLoop", new { id = ViewBag.ClassId }, new { @class = "btn btn-primary" })
+    <h5 class="text-danger">What ever you do cant be undone... Read Well..</h5>
+    @Html.ActionLink("Remove All Student subject... Admin Only", "EnrolledSubjectLoop", new { id = ViewBag.ClassId }, new { @class = "btn btn-primary" })
+   <br /> @Html.ActionLink("Unenroll all student and enrolled subject... Admin Only", "EnrollmentEnrolledSubjectLoop", new { id = ViewBag.ClassId }, new { @class = "btn btn-danger" })
 
 }
 <div class="modal modal-primary fade" id="RemarkModal">

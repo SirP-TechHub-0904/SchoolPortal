@@ -122,11 +122,11 @@ namespace SchoolPortal.Web.Controllers
                     else
                     {
 
-                        return RedirectToAction("Login", "Account", new { area = "" });
+                        return RedirectToAction("Login", "XYZ", new { area = "Account" });
                     }
                 }
             }
-            return RedirectToAction("Login", "Account", new { area = "" });
+            return RedirectToAction("Login", "XYZ", new { area = "Account" });
         }
 
     }

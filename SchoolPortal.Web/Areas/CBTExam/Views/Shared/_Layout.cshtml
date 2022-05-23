@@ -261,7 +261,7 @@
                 </div>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                        @using (Html.BeginForm("LogOff", "XYZ", new { area = "Account" }, FormMethod.Post, new { id = "logoutForm" }))
                         {
                             @*@Html.AntiForgeryToken()*@
                             <li class="dropdown user user-menu">

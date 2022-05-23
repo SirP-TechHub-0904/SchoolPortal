@@ -203,9 +203,9 @@ namespace SchoolPortal.Web.Controllers
                     mail.From = new MailAddress("learnonline@iskools.com"); //IMPORTANT: This must be same as your smtp authentication address.
                     mail.To.Add("espErrorMail@exwhyzee.ng");
                     mail.To.Add("iskoolsportal@gmail.com");
-                    mail.To.Add("vicinyang70@gmail.com");
+                    
                     mail.To.Add("onwukaemeka41@gmail.com");
-                    mail.To.Add("bernardamaeme@gmail.com");
+                    
 
                     //set the content 
 
@@ -278,40 +278,7 @@ namespace SchoolPortal.Web.Controllers
 
         public ActionResult Login(string returnUrl)
         {
-
-            string message = "";
-            bool status = false;
-
-            var sch = db.Settings.FirstOrDefault();
-            if (sch != null)
-            {
-                ViewBag.sch = sch.SchoolName;
-            }
-
-            var img = db.ImageModel.FirstOrDefault(x => x.Id == sch.ImageId);
-            var bg = db.ImageSlider.Where(x => x.CurrentSlider == true).FirstOrDefault();
-            try
-            {
-                ViewBag.schimage = img.ImageContent;
-            }
-            catch (Exception c)
-            {
-                ViewBag.schimage = new byte[0];
-            }
-            try
-            {
-                ViewBag.bg = bg.Content;
-            }
-            catch (Exception c)
-            {
-                ViewBag.bg = new byte[0];
-            }
-
-            ViewBag.ReturnUrl = returnUrl;
-
-            //ViewBag.MAC = GetMACAddress();
-            ViewBag.macId = GetMAC();
-            return View();
+            return RedirectToAction("Login", "XYZ", new { area = "XYZ" });
         }
 
 
@@ -371,7 +338,7 @@ namespace SchoolPortal.Web.Controllers
                         else
                         {
                             TempData["error"] = "Try Again or Contact Your Administration";
-                            return RedirectToAction("Login", "Account", new { area = "" });
+                            return RedirectToAction("Login", "XYZ", new { area = "" });
                         }
                     }
                 }
@@ -396,7 +363,7 @@ namespace SchoolPortal.Web.Controllers
                 //{
 
                 //    TempData["error"] = "Access Denied";
-                //    return RedirectToAction("Login", "Account", new { area = "" });
+                //    return RedirectToAction("Login", "XYZ", new { area = "" });
                 //}
                 //else
                 //{
@@ -452,7 +419,7 @@ namespace SchoolPortal.Web.Controllers
                                 //else
                                 //{
                                 //    TempData["error"] = "Try Again";
-                                //    return RedirectToAction("Login", "Account", new { area = "" });
+                                //    return RedirectToAction("Login", "XYZ", new { area = "" });
                                 //}
 
                                 if (await SignInManager.UserManager.IsInRoleAsync(user.Id, "Admin") || await SignInManager.UserManager.IsInRoleAsync(user.Id, "Read Only"))
@@ -470,7 +437,7 @@ namespace SchoolPortal.Web.Controllers
                                 else
                                 {
                                     TempData["error"] = "Try Again or Contact Your Administration";
-                                    return RedirectToAction("Login", "Account", new { area = "" });
+                                    return RedirectToAction("Login", "XYZ", new { area = "" });
                                 }
                             }
                         }
@@ -521,7 +488,7 @@ namespace SchoolPortal.Web.Controllers
                 TempData["err"] = "Erro! try again";
             }
 
-            return RedirectToAction("Access", "Account");
+            return RedirectToAction("Access", "XYZ");
         }
 
         [AllowAnonymous]
@@ -673,7 +640,7 @@ namespace SchoolPortal.Web.Controllers
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "XYZ", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
@@ -794,9 +761,9 @@ namespace SchoolPortal.Web.Controllers
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "XYZ", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                // return RedirectToAction("ForgotPasswordConfirmation", "XYZ");
             }
 
             // If we got this far, something failed, redisplay form
@@ -834,12 +801,12 @@ namespace SchoolPortal.Web.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("ResetPasswordConfirmation", "XYZ");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("ResetPasswordConfirmation", "XYZ");
             }
             AddErrors(result);
             return View();
@@ -861,7 +828,7 @@ namespace SchoolPortal.Web.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "XYZ", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -974,7 +941,7 @@ namespace SchoolPortal.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login", "XYZ");
         }
 
         //

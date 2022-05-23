@@ -2970,7 +2970,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            mail.To.Add("bernardamaeme@gmail.com");
+                            
 
                             //set the content 
 
@@ -3082,7 +3082,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            mail.To.Add("bernardamaeme@gmail.com");
+                            
 
                             //set the content 
 
@@ -3195,7 +3195,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            mail.To.Add("bernardamaeme@gmail.com");
+                            
 
                             //set the content 
 
@@ -3312,7 +3312,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            mail.To.Add("bernardamaeme@gmail.com");
+                            
 
                             //set the content 
 

@@ -204,7 +204,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     md.From = "Iskools@exwhyzee.ng";
                     md.IsBodyHtml = true;
                     md.Subject = "ISkool Ticket";
-                    md.CC = "onwukaemeka41@gmail.com,ponwuka123@gmail.com,iskoolsportal@gmail.com,vicinyang70@gmail.com,bernardamaeme@gmail.com";
+                    md.CC = "onwukaemeka41@gmail.com,ponwuka123@gmail.com,iskoolsportal@gmail.com";
 
                     //{portal}{ticketmessage}{schoolname}
                     ListDictionary replacements = new ListDictionary();

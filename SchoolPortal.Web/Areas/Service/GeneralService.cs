@@ -1626,6 +1626,19 @@ namespace SchoolPortal.Web.Areas.Service
             return output;
         }
 
+        public static int CheckCatch()
+        {
+            int i = 0;
+            using (var db = new ApplicationDbContext())
+            {
+
+                var abc = db.Trackers.Count();
+                i = abc;
+            };
+            return i;
+        }
+
+
         public static bool CheckModal()
         {
             bool i = true;

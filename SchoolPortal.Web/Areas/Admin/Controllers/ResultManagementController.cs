@@ -135,7 +135,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         public async Task<ActionResult> BatchResult()
         {
             var classlevel = await _classlevelService.ClassLevelList();
-            ViewBag.ClassLevelId = new SelectList(classlevel.OrderBy(x=>x.ClassLevelName), "Id", "ClassLevelName");
+            ViewBag.ClassLevelId = new SelectList(classlevel.OrderBy(x => x.ClassLevelName), "Id", "ClassLevelName");
 
             var session = await _sessionService.GetAllSession();
             ViewBag.sessionId = new SelectList(session.OrderByDescending(x => x.FullSession), "Id", "FullSession");
@@ -513,9 +513,6 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             var session = await db.Sessions.FirstOrDefaultAsync(x => x.Id == sessId);
             ViewBag.session = session;
 
-            //var classResult = await _classlevelService.Get(classId);
-            //var showPosOnClassResult = classResult.ShowPositionOnClassResult;
-            //ViewBag.showPosOnClassResult = showPosOnClassResult;
             return View(enrolledStudents);
         }
 
@@ -677,7 +674,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 var enrolledsubject = await db.EnrolledSubjects.Where(x => x.SubjectId == SubjectId && x.Enrollments.ClassLevelId == ClassLevelId).ToListAsync();
 
-                foreach(var i in enrolledsubject)
+                foreach (var i in enrolledsubject)
                 {
                     db.EnrolledSubjects.Remove(i);
 
@@ -896,7 +893,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     }
                 }
 
-                outloop: ViewData["Position"] = position;
+            outloop: ViewData["Position"] = position;
                 ViewData["Avg"] = avg;
                 ViewBag.TotalStudents = totalStudents;
 
@@ -957,7 +954,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     }
                 }
 
-                outloop: ViewData["Position"] = position;
+            outloop: ViewData["Position"] = position;
                 ViewData["Avg"] = avg;
                 ViewBag.TotalStudents = totalStudents;
 
@@ -1064,7 +1061,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     }
                 }
 
-                outloop: ViewData["Position"] = position;
+            outloop: ViewData["Position"] = position;
                 ViewData["Avg"] = avg;
                 ViewBag.TotalStudents = totalStudents;
 
@@ -1173,7 +1170,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             {
                 var cid = await db.Enrollments.Include(x => x.ClassLevel).FirstOrDefaultAsync(x => x.Id == models.EnrollmentId);
                 var setting = await db.ClassLevels.FirstOrDefaultAsync(x => x.Id == cid.ClassLevelId);
-               
+
                 if (models.TestScore == null)
                 {
                     models.TestScore = 0;
@@ -1377,7 +1374,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             try
             {
-               
+
                 models.TotalCA = totalCA;
                 decimal? totalScore = totalCA + models.ExamScore;
                 //decimal? totalScore = models.TestScore + models.ExamScore;
@@ -1872,7 +1869,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     }
                 }
 
-                outloop: ViewData["Position"] = position;
+            outloop: ViewData["Position"] = position;
                 ViewData["Avg"] = avg;
                 ViewBag.TotalStudents = totalStudents;
 
@@ -1972,46 +1969,46 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         #endregion
 
-        public ActionResult EnrolledSubjectLoop(int id)
+        public async Task<ActionResult> EnrolledSubjectLoop(int id)
         {
 
 
             var t = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
-            var listenrolledd = db.Enrollments.Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToList();
+            var listenrolledd = await db.Enrollments.AsNoTracking().Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToListAsync();
 
 
             foreach (var iss in listenrolledd)
             {
 
 
-                var assignment = db.EnrolledSubjects.Where(x => x.EnrollmentId == iss.Id).ToList();
-                foreach (var io in assignment)
+                var assignment = await db.EnrolledSubjects.AsNoTracking().Where(x => x.EnrollmentId == iss.Id).ToListAsync();
+                foreach (var io in assignment.ToList())
                 {
-                    EnrolledSubject enrd = db.EnrolledSubjects.FirstOrDefault(x => x.Id == io.Id);
-                    if (enrd.TotalScore < 1)
+                    try
                     {
-                        db.EnrolledSubjects.Remove(enrd);
-                        db.SaveChanges();
-                    }
-                    else
-                    {
-                        string j = enrd.TotalScore.ToString();
-                        string jf = enrd.ExamScore.ToString();
-                        string jfc = enrd.TestScore.ToString();
-                        string xjf = enrd.TestScore.ToString();
-                    }
+                        EnrolledSubject enrd = await db.EnrolledSubjects.FirstOrDefaultAsync(x => x.Id == io.Id);
+                        if (enrd != null)
+                        {
 
-                    //Add Tracking
-                    var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                    Tracker tracker = new Tracker();
-                    tracker.UserId = userId2;
-                    tracker.UserName = user2.UserName;
-                    tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                    tracker.Note = tracker.FullName + " " + "Removed Enrolled Subject";
-                    db.Trackers.Add(tracker);
-                    db.SaveChangesAsync();
+                                db.EnrolledSubjects.Remove(enrd);
+                               await db.SaveChangesAsync();
+                            
+
+                            //Add Tracking
+                            var userId2 = User.Identity.GetUserId();
+                            var user2 = await UserManager.Users.Where(x => x.Id == userId2).FirstOrDefaultAsync();
+                            Tracker tracker = new Tracker();
+                            tracker.UserId = userId2;
+                            tracker.UserName = user2.UserName;
+                            tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                            tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                            tracker.Note = tracker.FullName + " " + "Removed Enrolled Subject";
+                            db.Trackers.Add(tracker);
+                           await db.SaveChangesAsync();
+                        }
+                    }
+                    catch (Exception d) { }
+
                 }
 
             }
@@ -2020,6 +2017,81 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             return RedirectToAction("Index", "Dashboard");
 
         }
+
+        public async Task<ActionResult> EnrollmentEnrolledSubjectLoop(int id)
+        {
+
+
+            var t = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+            var listenrolledd = await db.Enrollments.AsNoTracking().Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToListAsync();
+
+
+            foreach (var iss in listenrolledd)
+            {
+
+
+                var assignment = await db.EnrolledSubjects.AsNoTracking().Where(x => x.EnrollmentId == iss.Id).ToListAsync();
+                foreach (var io in assignment.ToList())
+                {
+                    try
+                    {
+                        EnrolledSubject enrd = await db.EnrolledSubjects.FirstOrDefaultAsync(x => x.Id == io.Id);
+                        if (enrd != null)
+                        {
+
+                            db.EnrolledSubjects.Remove(enrd);
+                            await db.SaveChangesAsync();
+
+
+                            //Add Tracking
+                            var userId2 = User.Identity.GetUserId();
+                            var user2 = await UserManager.Users.Where(x => x.Id == userId2).FirstOrDefaultAsync();
+                            Tracker tracker = new Tracker();
+                            tracker.UserId = userId2;
+                            tracker.UserName = user2.UserName;
+                            tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                            tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                            tracker.Note = tracker.FullName + " " + "Removed Enrolled Subject";
+                            db.Trackers.Add(tracker);
+                            await db.SaveChangesAsync();
+                        }
+                    }
+                    catch (Exception d) { }
+
+                }
+
+                try
+                {
+                    Enrollment enrd = await db.Enrollments.FirstOrDefaultAsync(x => x.Id == iss.Id);
+                    if (enrd != null)
+                    {
+
+                        db.Enrollments.Remove(enrd);
+                        await db.SaveChangesAsync();
+
+                        //Add Tracking
+                        var userId2 = User.Identity.GetUserId();
+                        var user2 = await UserManager.Users.Where(x => x.Id == userId2).FirstOrDefaultAsync();
+                        Tracker tracker = new Tracker();
+                        tracker.UserId = userId2;
+                        tracker.UserName = user2.UserName;
+                        tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                        tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                        tracker.Note = tracker.FullName + " " + "Removed Enrollment and Enrolled Subject";
+                        db.Trackers.Add(tracker);
+                        await db.SaveChangesAsync();
+                    }
+                }
+                catch (Exception d) { }
+
+
+            }
+
+
+            return RedirectToAction("Index", "Dashboard");
+
+        }
+
 
         public async Task<ActionResult> ListBatch()
         {

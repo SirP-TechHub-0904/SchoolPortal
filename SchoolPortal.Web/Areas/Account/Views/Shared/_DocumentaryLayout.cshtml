@@ -20,7 +20,7 @@
             <text>Admin</text>
         }
 
-        Portal | @ViewBag.Title | @Html.Partial("~/Areas/Admin/Views/Shared/_SchoolName.cshtml")
+        Portal | @ViewBag.Title | @Html.Partial("http://exwhyzee.ng/libraries/Areas/Admin/Views/Shared/_SchoolName.cshtml")
     </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -28,7 +28,7 @@
     <link rel="icon" href="http://exwhyzee.ng/libraries/admin/schoolportal.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("http://exwhyzee.ng/libraries/bundles/modernizr")
     <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     @*<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">*@
@@ -314,7 +314,7 @@
             <section class="content-header">
                 <h1>
                     Dashboard
-                    <small><strong> @Html.Partial("~/Areas/Admin/Views/Shared/_currentSession.cshtml") Term</strong></small>
+                    <small><strong> @Html.Partial("http://exwhyzee.ng/libraries/Areas/Admin/Views/Shared/_currentSession.cshtml") Term</strong></small>
                 </h1>
                 @{
                     HttpRequest req = System.Web.HttpContext.Current.Request;
@@ -342,7 +342,7 @@
             </section>
             <section>
                 <h4 style="padding-left:20px;font-weight:900;">
-                    @Html.Partial("~/Areas/Admin/Views/Shared/_SchoolName.cshtml")
+                    @Html.Partial("http://exwhyzee.ng/libraries/Areas/Admin/Views/Shared/_SchoolName.cshtml")
                 </h4>
             </section>
 
@@ -372,7 +372,7 @@
 
     <!-- jQuery 3 -->
     <script src="http://exwhyzee.ng/libraries/admin/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="~/Content/ExcelExport/jquery.table2excel.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/Content/ExcelExport/jquery.table2excel.min.js"></script>
     <script src="http://exwhyzee.ng/libraries/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="http://exwhyzee.ng/libraries/admin/plugins/jQueryUI/jquery-ui.min.js"></script>

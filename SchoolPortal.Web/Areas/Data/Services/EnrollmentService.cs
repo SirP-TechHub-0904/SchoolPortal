@@ -61,25 +61,28 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task Create(Enrollment model)
         {
-            db.Enrollments.Add(model);
-            await db.SaveChangesAsync();
-
-
-            //Add Tracking
-            var userId = HttpContext.Current.User.Identity.GetUserId();
-            if (userId != null)
+            bool check = CheckNewEnrollment(model.StudentProfileId, model.SessionId);
+            if (check == false)
             {
-                var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
-                Tracker tracker = new Tracker();
-                tracker.UserId = userId;
-                tracker.UserName = user.UserName;
-                tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
-                tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                tracker.Note = tracker.FullName + " " + "Added an enrollment";
-                db.Trackers.Add(tracker);
+                db.Enrollments.Add(model);
                 await db.SaveChangesAsync();
-            }
 
+
+                //Add Tracking
+                var userId = HttpContext.Current.User.Identity.GetUserId();
+                if (userId != null)
+                {
+                    var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                    Tracker tracker = new Tracker();
+                    tracker.UserId = userId;
+                    tracker.UserName = user.UserName;
+                    tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
+                    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                    tracker.Note = tracker.FullName + " " + "Added an enrollment";
+                    db.Trackers.Add(tracker);
+                    await db.SaveChangesAsync();
+                }
+            }
         }
 
 

@@ -28,11 +28,12 @@
     <ul class="treeview-menu">
         <li><a href="@Url.Action("Index", "Sessions", new { area="Admin"})"><i class="fa fa-circle-o"></i> Session Management</a></li>
         <li><a href="@Url.Action("Index", "ClassLevels", new { area="Admin"})"><i class="fa fa-circle-o"></i> Class Management</a></li>
+        <li><a href="@Url.Action("StartPromote", "ClassLevels", new { area = "Admin" })"><i class="fa fa-circle-o"></i> Promotion Management</a></li>
 
         @if (User.IsInRole("SuperAdmin"))
         {
             <li><a href="@Url.Action("Promotion", "ClassLevels", new { area = "Admin" })"><i class="fa fa-circle-o"></i> Promotion Management</a></li>
-            <li><a href="@Url.Action("NewEnrolment", "ResultManagement", new { area = "Admin" })"><i class="fa fa-circle-o"></i> New Enrollement</a></li>
+            <li><a href="@Url.Action("NewEnrolment", "ResultManagement", new { area = "Admin" })"><i class="fa fa-circle-o"></i> New Enrollement***</a></li>
         }
     </ul>
 </li>

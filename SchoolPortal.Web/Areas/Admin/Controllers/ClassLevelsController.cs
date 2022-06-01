@@ -197,6 +197,42 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         #region Promotion service
 
+        public async Task<ActionResult> StartPromote()
+        {
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+
+            IQueryable<StudentProfile> allStudents = from s in db.StudentProfiles
+                                       .Include(x => x.user)
+                                                     select s;
+            var graduate = await allStudents.Where(x => x.Graduate == true).CountAsync();
+            var activeStudent = await allStudents.Where(x => x.Graduate == false).CountAsync();
+            var Suspended = await allStudents.Where(x => x.user.Status == EntityStatus.Suspeneded).CountAsync();
+
+            var output = allStudents.Where(x => x.Graduate == false).Select(x => new PromotionDto
+            {
+                UserName = x.user.UserName,
+                ProfileId = x.Id,
+                StudentRegNumber = x.StudentRegNumber,
+                FullName = x.user.Surname + " " + x.user.FirstName + " " + x.user.OtherName,
+                
+                ClassName = ClassEnrolled(x.Id)
+
+            });
+            return View();
+        }
+
+        public string ClassEnrolled(int studentId)
+        {
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+            string result = "";
+            var item = db.Enrollments.Include(x => x.ClassLevel).FirstOrDefault(x => x.StudentProfileId == studentId && x.SessionId == currentSession.Id);
+            if (item != null)
+            {
+                result = item.ClassLevel.ClassName;
+            }
+            return result;
+        }
+
         public ActionResult EnablePromoteAll()
         {
             var setting = db.Settings.FirstOrDefault();

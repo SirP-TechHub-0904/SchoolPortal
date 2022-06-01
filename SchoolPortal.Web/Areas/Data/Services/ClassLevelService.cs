@@ -348,7 +348,6 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     try
                     {
                         bool check = CheckNewEnrollment(i.StudentProfileId, term.Id);
-                        //var check = db.Enrollments.Include(e => e.StudentProfile).Include(x => x.Session).FirstOrDefault(s => s.ClassLevelId == id && s.SessionId == term.Id && s.StudentProfileId == i.StudentProfileId);
                         if (check == false)
                         {
 

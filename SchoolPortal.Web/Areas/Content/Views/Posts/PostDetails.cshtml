@@ -52,10 +52,25 @@
                                         <div class="col-md-3">
                                             <img src="data:image/jpg;base64,@(Convert.ToBase64String(img.ImageContent))" class="img-responsive" />
                                         </div>
-                                       
+
 
                                     }
                                 }
+                            </div>
+                            @foreach (var img in Model.PostImages.OrderByDescending(x => x.Id).ToList())
+                            {
+                                if (img.FileName != null)
+                                {
+                                    <div class="col-md-12">
+                                        <input class="form-control" value="@img.ImageByte" />
+                                    </div>
+
+
+                                }
+                            }
+                            <div class="col-md-12">
+                                <h5>Link</h5>
+                                <input class="form-control" value="@Model.Link" />
                             </div>
                             <div class="clearfix"></div>
                         </div>

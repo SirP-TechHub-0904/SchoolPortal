@@ -10,6 +10,7 @@ namespace SchoolPortal.Web.Models.Entities
         public int Id { get; set; }
         public string FileName { get; set; }
         public string ContentType { get; set; }
+        public string ImageByte { get; set; }
         public byte[] ImageContent { get; set; }
 
         public int PostId { get; set; }

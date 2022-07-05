@@ -42,7 +42,8 @@ namespace SchoolPortal.Web.Models.Entities
 
         [Display(Name = "Sort Order")]
         public int? SortOrder { get; set; }
-        
+        public string Link { get; set; }
+
         public ICollection<PostImage> PostImages { get; set; }
 
         public ICollection<Comment> Comments { get; set; }

@@ -7,6 +7,7 @@ using SchoolPortal.Web.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 using System;
 using SchoolPortal.Web.Models.ResultArchive;
+using SchoolPortal.Web.Models.UI;
 
 namespace SchoolPortal.Web.Models
 {
@@ -164,6 +165,28 @@ namespace SchoolPortal.Web.Models
         public DbSet<Tracker> Trackers { get; set; }
         public DbSet<FinanceInitializer> FinanceInitializers { get; set; }
         public DbSet<PaymentData> PaymentDatas { get; set; }
+
+
+        public DbSet<SiteOverrideCSS> SiteOverrideCSSs { get; set; }
+        public DbSet<SiteBreadCrumb> SiteBreadCrumbs { get; set; }
+        public DbSet<SiteContact> SiteContacts { get; set; }
+        public DbSet<SiteFooter> SiteFooters { get; set; }
+        public DbSet<SiteFooterJS> SiteFooterJSs { get; set; }
+        public DbSet<SiteGallery> SiteGalleries { get; set; }
+        public DbSet<SiteGalleryList> SiteGalleryLists { get; set; }
+        public DbSet<SiteHeader> SiteHeaders { get; set; }
+        public DbSet<SiteHomeBody> SiteHomeBodys { get; set; }
+        public DbSet<SitePageCategory> SitePageCategories { get; set; }
+        public DbSet<SitePage> SitePages { get; set; }
+        public DbSet<SiteSetting> SiteSettings { get; set; }
+        public DbSet<SiteSlider> SiteSliders { get; set; }
+        public DbSet<SiteNavHeader> SiteNavHeaders { get; set; }
+        public DbSet<SiteNewsPost> SiteNewsPosts { get; set; }
+        public DbSet<SiteNewsPostList> SiteNewsPostList { get; set; }
+        public DbSet<SiteHomeBodyAfterNew> SiteHomeBodyAfterNews { get; set; }
+        public DbSet<SiteSinglePost> SiteSinglePosts { get; set; }
+
+        
 
 
 

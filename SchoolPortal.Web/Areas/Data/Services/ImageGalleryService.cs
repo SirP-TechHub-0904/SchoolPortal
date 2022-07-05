@@ -70,6 +70,8 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 upload.InputStream.Read(bytImg, 0, ContentLength);
 
                 models.Content = bytImg;
+                string b4 = Convert.ToBase64String(models.Content);
+                models.ImageByte = "data:image/jpg;base64," + b4;
                 models.ContentType = upload.ContentType;
                 models.FileName = upload.FileName;
 

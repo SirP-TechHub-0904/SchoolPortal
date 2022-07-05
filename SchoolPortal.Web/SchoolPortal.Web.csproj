@@ -517,6 +517,25 @@
     <Compile Include="Areas\WebsiteManager\Controllers\ContentImagesController.cs" />
     <Compile Include="Areas\WebsiteManager\Controllers\PageController.cs" />
     <Compile Include="Areas\WebsiteManager\WebsiteManagerAreaRegistration.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteBreadCrumbsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteContactsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteFooterJSController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteFootersController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteGalleriesController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteGalleryListsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteHeadersController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteSinglePostsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteHomeBodyAfterNewsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteHomeBodiesController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteNavHeadersController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteNewsPostListsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteNewsPostsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteOverrideCSSesController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SitePageCategoriesController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SitePagesController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteSettingsController.cs" />
+    <Compile Include="Areas\WebsiteUI\Controllers\SiteSlidersController.cs" />
+    <Compile Include="Areas\WebsiteUI\WebsiteUIAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CBTQuestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1064,6 +1083,42 @@
     <Compile Include="Migrations\202110251456174_graduate.Designer.cs">
       <DependentUpon>202110251456174_graduate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207041827007_78iu.cs" />
+    <Compile Include="Migrations\202207041827007_78iu.Designer.cs">
+      <DependentUpon>202207041827007_78iu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207050851247_78iui.cs" />
+    <Compile Include="Migrations\202207050851247_78iui.Designer.cs">
+      <DependentUpon>202207050851247_78iui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051050100_78iuii.cs" />
+    <Compile Include="Migrations\202207051050100_78iuii.Designer.cs">
+      <DependentUpon>202207051050100_78iuii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051258118_78iuiie.cs" />
+    <Compile Include="Migrations\202207051258118_78iuiie.Designer.cs">
+      <DependentUpon>202207051258118_78iuiie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051313491_78iuiiey.cs" />
+    <Compile Include="Migrations\202207051313491_78iuiiey.Designer.cs">
+      <DependentUpon>202207051313491_78iuiiey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051351034_78iuiieyk.cs" />
+    <Compile Include="Migrations\202207051351034_78iuiieyk.Designer.cs">
+      <DependentUpon>202207051351034_78iuiieyk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051436088_78iuiieykr.cs" />
+    <Compile Include="Migrations\202207051436088_78iuiieykr.Designer.cs">
+      <DependentUpon>202207051436088_78iuiieykr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051521429_updategallery.cs" />
+    <Compile Include="Migrations\202207051521429_updategallery.Designer.cs">
+      <DependentUpon>202207051521429_updategallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207051600439_updategallery6.cs" />
+    <Compile Include="Migrations\202207051600439_updategallery6.Designer.cs">
+      <DependentUpon>202207051600439_updategallery6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dtos\AdminPostDetalsDto.cs" />
@@ -1101,6 +1156,7 @@
     <Compile Include="Models\Dtos\LoginAccessDto.cs" />
     <Compile Include="Models\Dtos\NotificationDto.cs" />
     <Compile Include="Models\Dtos\OnlineCourseUploadDto.cs" />
+    <Compile Include="Models\Dtos\PageDto.cs" />
     <Compile Include="Models\Dtos\PaymentListByClassDto.cs" />
     <Compile Include="Models\Dtos\Paystack\AppConstants.cs" />
     <Compile Include="Models\Dtos\Paystack\Data\AuthorizationRequest.cs" />
@@ -1236,6 +1292,24 @@
     <Compile Include="Models\ResultArchive\RecognitiveDomainArchive.cs" />
     <Compile Include="Models\ResultArchive\SchoolFeesArchive.cs" />
     <Compile Include="Models\Schools.cs" />
+    <Compile Include="Models\UI\SiteSinglePost.cs" />
+    <Compile Include="Models\UI\SiteHomeBodyAfterNew.cs" />
+    <Compile Include="Models\UI\SiteNavHeader.cs" />
+    <Compile Include="Models\UI\SiteNewsPost.cs" />
+    <Compile Include="Models\UI\SiteNewsPostList.cs" />
+    <Compile Include="Models\UI\SiteOverrideCSS.cs" />
+    <Compile Include="Models\UI\SiteBreadCrumb.cs" />
+    <Compile Include="Models\UI\SiteContact.cs" />
+    <Compile Include="Models\UI\SiteFooterJS.cs" />
+    <Compile Include="Models\UI\SiteHeader.cs" />
+    <Compile Include="Models\UI\SiteHomeBody.cs" />
+    <Compile Include="Models\UI\SiteFooter.cs" />
+    <Compile Include="Models\UI\SiteGallery.cs" />
+    <Compile Include="Models\UI\SiteGalleryList.cs" />
+    <Compile Include="Models\UI\SitePageCategory.cs" />
+    <Compile Include="Models\UI\SitePage.cs" />
+    <Compile Include="Models\UI\SiteSetting.cs" />
+    <Compile Include="Models\UI\SiteSlider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1250,6 +1324,7 @@
     <Content Include="Areas\Financial\Views\Payment\HtmlPage1.html" />
     <Content Include="Areas\Financial\Views\Payment\MakeCashPayment.cshtml" />
     <Content Include="Areas\Student\Views\Shared\print.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -1924,6 +1999,100 @@
     <Content Include="Areas\Account\Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Areas\Account\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\ClassLevels\StartPromote.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\web.config" />
+    <Content Include="Areas\WebsiteUI\Views\SiteBreadCrumbs\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteBreadCrumbs\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteBreadCrumbs\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteBreadCrumbs\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteBreadCrumbs\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteContacts\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteContacts\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteContacts\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteContacts\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteContacts\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooters\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooters\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooters\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooters\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooters\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooterJS\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooterJS\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooterJS\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooterJS\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteFooterJS\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleries\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleries\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleries\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleries\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleries\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleryLists\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleryLists\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleryLists\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleryLists\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteGalleryLists\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHeaders\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHeaders\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHeaders\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHeaders\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHeaders\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodies\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodies\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodies\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodies\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodies\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteOverrideCSSes\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteOverrideCSSes\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteOverrideCSSes\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteOverrideCSSes\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteOverrideCSSes\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePages\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePages\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePages\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePages\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePages\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePageCategories\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePageCategories\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePageCategories\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePageCategories\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePageCategories\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSettings\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSettings\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSettings\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSettings\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSettings\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSliders\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSliders\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSliders\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSliders\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSliders\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNavHeaders\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNavHeaders\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNavHeaders\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNavHeaders\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNavHeaders\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SitePages\DetailsMain.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPosts\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPosts\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPosts\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPosts\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPosts\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPostLists\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPostLists\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPostLists\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPostLists\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteNewsPostLists\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodyAfterNews\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodyAfterNews\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodyAfterNews\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodyAfterNews\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteHomeBodyAfterNews\Index.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Create.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Delete.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Details.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Edit.cshtml" />
+    <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Index.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
@@ -2149,6 +2318,7 @@
     <Folder Include="Areas\SuperUser\Models\" />
     <Folder Include="Areas\SuperUser\Views\DataMigration\" />
     <Folder Include="Areas\WebsiteManager\Models\" />
+    <Folder Include="Areas\WebsiteUI\Data\" />
     <Folder Include="ExcelUpload\" />
     <Folder Include="OnlineCourseUpload\" />
     <Folder Include="Views\Account\" />
@@ -2555,6 +2725,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110251456174_graduate.resx">
       <DependentUpon>202110251456174_graduate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207041827007_78iu.resx">
+      <DependentUpon>202207041827007_78iu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207050851247_78iui.resx">
+      <DependentUpon>202207050851247_78iui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051050100_78iuii.resx">
+      <DependentUpon>202207051050100_78iuii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051258118_78iuiie.resx">
+      <DependentUpon>202207051258118_78iuiie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051313491_78iuiiey.resx">
+      <DependentUpon>202207051313491_78iuiiey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051351034_78iuiieyk.resx">
+      <DependentUpon>202207051351034_78iuiieyk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051436088_78iuiieykr.resx">
+      <DependentUpon>202207051436088_78iuiieykr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051521429_updategallery.resx">
+      <DependentUpon>202207051521429_updategallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207051600439_updategallery6.resx">
+      <DependentUpon>202207051600439_updategallery6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

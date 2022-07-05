@@ -68,10 +68,24 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task<int> Create(Post model)
         {
-            
+          
+
             db.Posts.Add(model);
             await db.SaveChangesAsync();
 
+            string link = "";
+            var site = await db.Settings.FirstOrDefaultAsync();
+            if (site != null)
+            {
+                link = site.WebsiteLink;
+
+
+            }
+            var getpage = await db.Posts.FirstOrDefaultAsync(x => x.Id == model.Id);
+            getpage.Link = link + "/UI/Post/" + getpage.Id + "?title=" + getpage.Title.Replace(" ", "-");
+            db.Entry(getpage).State = EntityState.Modified;
+
+            await db.SaveChangesAsync();
             //Add Tracking
             var userId = HttpContext.Current.User.Identity.GetUserId();
             if(userId != null)

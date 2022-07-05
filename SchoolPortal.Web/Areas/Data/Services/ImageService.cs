@@ -206,9 +206,12 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     image.InputStream.Read(bytImg, 0, ContentLength);
 
                     model.ImageContent = bytImg;
+                    string b4 = Convert.ToBase64String(model.ImageContent);
+                    model.ImageByte = "data:image/jpg;base64," + b4;
                     model.ContentType = image.ContentType;
                     model.FileName = image.FileName;
                     model.PostId = PostId;
+
                     db.PostImages.Add(model);
                     await db.SaveChangesAsync();
 

@@ -49,14 +49,15 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
             }
             //
             var newslist = await db.SiteNewsPostList.FirstOrDefaultAsync();
-            
 
-            var post = await db.Posts.Include(x => x.PostImages).ToListAsync();
+
+            var post = await db.Posts.Include(x => x.PostImages).Where(x => x.PostImages.FirstOrDefault() != null).OrderByDescending(x => x.DatePosted).Take(3).ToListAsync();
+
 
             var output = post.Select(x => new PageDto
             {
                 Id = x.Id,
-                Content = newslist.Content.Replace("{/TITLE/}", x.Title).Replace("{/IMAGE/}", x.PostImages.FirstOrDefault().ImageByte ?? "").Replace("{/LINK/}", x.Link).Replace("{/PREVIEWTEXT/}", x.PreviewContent)
+                Content = newslist.Content.Replace("{/TITLE/}", x.Title).Replace("{/IMAGE/}", x.PostImages.FirstOrDefault().ImageByte ?? "").Replace("{/LINK/}", x.Link).Replace("{/PREVIEWTEXT/}", x.PreviewContent).Replace("{/DATE/}", x.DatePosted.ToString("MMM dd, yyyy"))
 
             });
 

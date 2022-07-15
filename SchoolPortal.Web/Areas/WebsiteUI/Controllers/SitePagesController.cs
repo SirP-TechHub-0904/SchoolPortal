@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -106,7 +107,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
 
 
                 var getpage = await db.SitePages.FirstOrDefaultAsync(x => x.Id == sitePage.Id);
-                getpage.PageLink = link + "/UI/Pages/" + getpage.Id + "?title=" + getpage.TitleLink;
+                getpage.PageLink = "https://" + link + "/UI/Pages/" + getpage.Id + "?title=" + getpage.TitleLink;
                 db.Entry(getpage).State = EntityState.Modified;
 
 
@@ -154,7 +155,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
                 }
                 sitePage.TitleLink = sitePage.Title.Replace(" ", "-");
 
-                sitePage.PageLink = link + "/UI/Pages/" + sitePage.Id + "?title=" + sitePage.TitleLink;
+                sitePage.PageLink = "https://" + link + "/UI/Pages/" + sitePage.Id + "?title=" + sitePage.TitleLink;
                 db.Entry(sitePage).State = EntityState.Modified;
                 await db.SaveChangesAsync();
 

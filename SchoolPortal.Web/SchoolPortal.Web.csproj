@@ -1345,8 +1345,6 @@
     <Content Include="Areas\Admin\Views\UserManagers\EditRole.cshtml" />
     <Content Include="Areas\Admin\Views\UserManagers\Roles.cshtml" />
     <Content Include="Areas\Admin\Views\StudentProfiles\StudentProfile.cshtml" />
-    <Content Include="out\app.js" />
-    <Content Include="out\comps.js" />
     <Content Include="Areas\Admin\Views\ClassLevels\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ClassLevels\NewClass.cshtml" />
     <Content Include="Areas\Admin\Views\ClassLevels\EditClass.cshtml" />
@@ -2092,6 +2090,8 @@
     <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Details.cshtml" />
     <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Edit.cshtml" />
     <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Enrollments\EnrolByClass.cshtml" />
+    <Content Include="Areas\Admin\Views\Enrollments\EnrollmentListForClass.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />

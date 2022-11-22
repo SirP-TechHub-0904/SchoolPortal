@@ -192,23 +192,27 @@ namespace SchoolPortal.Web.Areas.Service
             bool data = false;
             using (var db = new ApplicationDbContext())
             {
-                var pinUsage = db.PinCodeModels.FirstOrDefault(x => x.StudentPin == stPin && x.PinNumber == pin);
-                if (pinUsage.EnrollmentId == null || pinUsage.Usage <= 0)
+                try
                 {
-                    data = true;
+                    var pinUsage = db.PinCodeModels.FirstOrDefault(x => x.StudentPin == stPin && x.PinNumber == pin);
+                    if (pinUsage.EnrollmentId == null || pinUsage.Usage <= 0)
+                    {
+                        data = true;
+                    }
+                    else if (pinUsage.EnrollmentId != null || pinUsage.Usage <= 0)
+                    {
+                        data = db.Enrollments.Include(x => x.StudentProfile).FirstOrDefault(x => x.Id == pinUsage.EnrollmentId).Printed;
+                    }
+                    else if (pinUsage.Usage <= 0)
+                    {
+                        data = true;
+                    }
+                    else
+                    {
+                        data = false;
+                    }
                 }
-                else if (pinUsage.EnrollmentId != null || pinUsage.Usage <= 0)
-                {
-                    data = db.Enrollments.Include(x => x.StudentProfile).FirstOrDefault(x => x.Id == pinUsage.EnrollmentId).Printed;
-                }
-                else if (pinUsage.Usage <= 0)
-                {
-                    data = true;
-                }
-                else
-                {
-                    data = false;
-                }
+                catch (Exception) { data = false; }
             }
             return data;
 

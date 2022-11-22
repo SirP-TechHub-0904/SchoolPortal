@@ -139,6 +139,34 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             return View(items.OrderBy(x => x.Surname));
         }
 
+        public async Task<ActionResult> EnrolByClass()
+        {
+            var classlevel = await _classlevelService.ClassLevelList();
+            ViewBag.ClassLevelId = new SelectList(classlevel.OrderBy(x => x.ClassLevelName), "Id", "ClassLevelName");
+
+            var session = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
+            ViewBag.sessionId = session.Id;
+            ViewBag.session = session.SessionYear + " - " + session.Term + " Term";
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> EnrollmentListForClass(int classId = 0)
+        {
+           
+            var items = await _enrollmentService.Enrollment(null, null, 1);
+            var classname = await db.ClassLevels.FindAsync(classId);
+            if(classname == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.cid = classname.Id;
+            ViewBag.cname = classname.ClassName;
+            int pageSize = 50000;
+            int pageNumber = (1);
+            ViewBag.Total = await _enrollmentService.TotalUnEnrolledStudentByTerm();
+            return View(items.OrderBy(x => x.Surname).ToPagedList(pageNumber, pageSize));
+        }
+
         public async Task<ActionResult> Index(string searchString, string currentFilter, int? page)
         {
             if (searchString != null)
@@ -377,6 +405,23 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> EnrollStudent(int ClassLevelId = 0, int id = 0)
+        {
+            try
+            {
+                await _enrollmentService.EnrollStudent(ClassLevelId, id);
+
+            }
+            catch (Exception e)
+            {
+                TempData["error"] = "Enrollment was not successfull. Please try again.";
+                return RedirectToAction("Index");
+            }
+            var student = await _studentService.Get(id);
+            var classLevel = await _classlevelService.Get(ClassLevelId);
+            TempData["success"] = student.Fullname + " has successfully been enrolled into " + classLevel.ClassName;
+            return RedirectToAction("Index");
+        }
+        public async Task<ActionResult> EnrollStudentToClassDirect(int ClassLevelId = 0, int id = 0)
         {
             try
             {

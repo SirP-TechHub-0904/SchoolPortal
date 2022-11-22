@@ -1,8 +1,1 @@
 ﻿
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/5/2022 4:02:28 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/5/2022 4:09:06 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/5/2022 4:21:49 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/5/2022 4:24:28 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/15/2022 3:38:19 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/15/2022 3:42:47 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>
-**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 7/15/2022 4:19:21 PM ****device name**  ****pc name*** DESKTOP-VSQI65D<br/>

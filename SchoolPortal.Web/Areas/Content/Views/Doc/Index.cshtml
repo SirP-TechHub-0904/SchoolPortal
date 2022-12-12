@@ -101,12 +101,13 @@
                                                             @Html.ActionLink("Unenroll " + GeneralService.StudentorPupil(), "Removefromsession", "Doc", new { id = students.StudentProfileId }, new { @class = "noprint" })
 
                                                         </li>
+                                                        <li>
+                                                            @Html.ActionLink("Move " + GeneralService.StudentorPupil(), "MoveEnrol", "Doc", new { id = students.Id, Ocid = item.Id }, new { @class = "noprint" })
+
+                                                        </li>
                                                         @if (User.IsInRole("SuperAdmin"))
                                                         {
-                                                            <li>
-                                                                @Html.ActionLink("Move " + GeneralService.StudentorPupil(), "MoveEnrol", "Doc", new { id = students.Id, Ocid = item.Id }, new { @class = "noprint" })
 
-                                                            </li>
                                                         }
 
                                                     </ul>

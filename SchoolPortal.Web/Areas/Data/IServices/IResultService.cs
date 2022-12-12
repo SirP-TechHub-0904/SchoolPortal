@@ -10,7 +10,7 @@ namespace SchoolPortal.Web.Areas.Data.IServices
 {
     interface IResultService
     {
-        Task<List<EnrolledStudentsByClassDto>> StudentsBySessIdAndByClassId(int sessId, int classId);
+        Task<IEnumerable<EnrolledStudentsByClassDto>> StudentsBySessIdAndByClassId(int sessId, int classId);
 
         Task<decimal?> SumEnrolledSubjectTotalScore(int enrollmentId);
         Task<List<EnrolledSubject>> EnrolledSubjectForEnrollment(int enrollmentId);

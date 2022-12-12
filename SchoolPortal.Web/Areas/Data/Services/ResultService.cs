@@ -436,7 +436,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
         }
 
 
-        public async Task<List<EnrolledStudentsByClassDto>> StudentsBySessIdAndByClassId(int sessId, int classId)
+        public async Task<IEnumerable<EnrolledStudentsByClassDto>> StudentsBySessIdAndByClassId(int sessId, int classId)
         {
 
             //var enrolledStudents = db.Enrollments.Include(x=>x.Session).OrderBy(x=>x.StudentProfile.user.Surname).Include(x=>x.EnrolledSubjects).Include(x => x.StudentProfile).Where(s => s.ClassLevelId == classId && s.SessionId == sessId && s.EnrolledSubjects.Count() > 0);
@@ -464,7 +464,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
 
             });
-            return await output.ToListAsync();
+            return output.AsEnumerable();
 
         }
 

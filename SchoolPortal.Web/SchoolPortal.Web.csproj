@@ -2092,6 +2092,8 @@
     <Content Include="Areas\WebsiteUI\Views\SiteSinglePosts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Enrollments\EnrolByClass.cshtml" />
     <Content Include="Areas\Admin\Views\Enrollments\EnrollmentListForClass.cshtml" />
+    <Content Include="Areas\Content\Views\Doc\IndexForList.cshtml" />
+    <Content Include="Areas\Content\Views\Doc\StudentsList.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />

@@ -13,6 +13,7 @@ using System.Net;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity.Validation;
 using SchoolPortal.Web.Areas.Service;
+using SchoolPortal.Web.Models.Entities;
 
 namespace SchoolPortal.Web.Areas.Content.Controllers
 {
@@ -76,6 +77,30 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
             return View(output.OrderBy(x => x.ClassLevelName).ToList());
         }
 
+        public ActionResult StudentsList()
+        {
+            var item = db.ClassLevels.Include(x => x.User).Where(x=>x.ClassName.Contains("JSS")).ToList();
+            var output = item.Select(x => new ClassLevelListDto
+            {
+                ClassLevelName = x.ClassName,
+                Id = x.Id,
+                userId = x.UserId,
+                FormTeacher = x.User.Surname + " " + x.User.FirstName + " " + x.User.OtherName
+            });
+
+
+            return View(output.OrderBy(x => x.ClassLevelName).ToList());
+        }
+        public async Task<ActionResult> IndexForList()
+        {
+            //var classlevel = await _classlevelService.ClassLevelList();
+            //ViewBag.ClassLevelId = new SelectList(classlevel.OrderBy(x => x.ClassLevelName), "Id", "ClassLevelName");
+
+            //var session = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
+            //ViewBag.sessionId = session.Id;
+            //ViewBag.session = session.SessionYear + " - " + session.Term + " Term";
+            return View();
+        }
         [HttpPost]
         public async Task<ActionResult> EnrolFromSession(int sessionId)
         {

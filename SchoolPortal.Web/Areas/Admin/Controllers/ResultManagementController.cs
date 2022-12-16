@@ -285,16 +285,16 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
 
                     //Add Tracking
-                    var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                    Tracker tracker = new Tracker();
-                    tracker.UserId = userId2;
-                    tracker.UserName = user2.UserName;
-                    tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                    tracker.Note = tracker.FullName + " " + "Updated Batch Results";
-                    db.Trackers.Add(tracker);
-                    await db.SaveChangesAsync();
+                    //var userId2 = User.Identity.GetUserId();
+                    //var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    //Tracker tracker = new Tracker();
+                    //tracker.UserId = userId2;
+                    //tracker.UserName = user2.UserName;
+                    //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                    //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                    //tracker.Note = tracker.FullName + " " + "Updated Batch Results";
+                    //db.Trackers.Add(tracker);
+                    //await db.SaveChangesAsync();
                 }
             }
 
@@ -381,16 +381,16 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     await db.SaveChangesAsync();
 
                     //Add Tracking
-                    var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                    Tracker tracker = new Tracker();
-                    tracker.UserId = userId2;
-                    tracker.UserName = user2.UserName;
-                    tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                    tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain";
-                    db.Trackers.Add(tracker);
-                    await db.SaveChangesAsync();
+                    //var userId2 = User.Identity.GetUserId();
+                    //var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    //Tracker tracker = new Tracker();
+                    //tracker.UserId = userId2;
+                    //tracker.UserName = user2.UserName;
+                    //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                    //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                    //tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain";
+                    //db.Trackers.Add(tracker);
+                    //await db.SaveChangesAsync();
                 }
 
 
@@ -410,16 +410,16 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
 
                     //Add Tracking
-                    var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                    Tracker tracker = new Tracker();
-                    tracker.UserId = userId2;
-                    tracker.UserName = user2.UserName;
-                    tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                    tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domain";
-                    db.Trackers.Add(tracker);
-                    await db.SaveChangesAsync();
+                    //var userId2 = User.Identity.GetUserId();
+                    //var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    //Tracker tracker = new Tracker();
+                    //tracker.UserId = userId2;
+                    //tracker.UserName = user2.UserName;
+                    //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                    //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                    //tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domain";
+                    //db.Trackers.Add(tracker);
+                    //await db.SaveChangesAsync();
                 }
 
 
@@ -457,16 +457,16 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
 
                     //Add Tracking
-                    var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                    Tracker tracker = new Tracker();
-                    tracker.UserId = userId2;
-                    tracker.UserName = user2.UserName;
-                    tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                    tracker.Note = tracker.FullName + " " + "Updated Affective Domain";
-                    db.Trackers.Add(tracker);
-                    await db.SaveChangesAsync();
+                    //var userId2 = User.Identity.GetUserId();
+                    //var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    //Tracker tracker = new Tracker();
+                    //tracker.UserId = userId2;
+                    //tracker.UserName = user2.UserName;
+                    //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                    //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                    //tracker.Note = tracker.FullName + " " + "Updated Affective Domain";
+                    //db.Trackers.Add(tracker);
+                    //await db.SaveChangesAsync();
                 }
 
 
@@ -574,17 +574,17 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 db.SaveChanges();
 
 
-                //Add Tracking
-                var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                Tracker tracker = new Tracker();
-                tracker.UserId = userId2;
-                tracker.UserName = user2.UserName;
-                tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain";
-                db.Trackers.Add(tracker);
-                db.SaveChangesAsync();
+                ////Add Tracking
+                //var userId2 = User.Identity.GetUserId();
+                //var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                //Tracker tracker = new Tracker();
+                //tracker.UserId = userId2;
+                //tracker.UserName = user2.UserName;
+                //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                //tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain";
+                //db.Trackers.Add(tracker);
+                //db.SaveChangesAsync();
                 TempData["success"] = "Successful.";
                 return RedirectToAction("Students", new { classId = classId, sessId = sessionId });
             }
@@ -631,17 +631,17 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 db.Entry(psychomotor).State = EntityState.Modified;
                 db.SaveChanges();
 
-                //Add Tracking
-                var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
-                Tracker tracker = new Tracker();
-                tracker.UserId = userId2;
-                tracker.UserName = user2.UserName;
-                tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domain";
-                db.Trackers.Add(tracker);
-                db.SaveChangesAsync();
+                ////Add Tracking
+                //var userId2 = User.Identity.GetUserId();
+                //var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                //Tracker tracker = new Tracker();
+                //tracker.UserId = userId2;
+                //tracker.UserName = user2.UserName;
+                //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                //tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domain";
+                //db.Trackers.Add(tracker);
+                //db.SaveChangesAsync();
 
                 TempData["success"] = "Successful.";
                 return RedirectToAction("Students", new { classId = classId, sessId = sessionId });

@@ -75,11 +75,11 @@
                                     </div>
                                     <div class="col-md-3" id="over" style="">
                                         @*@if (res.studentImage != null)
-                                            {
-                                                <img class="img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(res.studentImage))" alt="" style="height:150px;margin:0 auto;">
-                                            }
-                                            else
-                                            {*@
+                                {
+                                    <img class="img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(res.studentImage))" alt="" style="height:150px;margin:0 auto;">
+                                }
+                                else
+                                {*@
                                         @*<img class="img-circle" src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.png" style="height:150px; width:100px;margin:0 auto;" alt="">*@
 
                                     </div>
@@ -285,7 +285,7 @@
                                             <th>EXAM</th>
                                         }
                                         @*<th>C.A</th>
-                                            <th>EXAM</th>*@
+                                <th>EXAM</th>*@
                                         <th>TOTAL SCORE</th>
                                         <th>GRADE</th>
                                         <th>REMARK</th>
@@ -387,11 +387,11 @@
                                     </div>
                                     <div class="col-md-3" id="over" style="">
                                         @*@if (res.studentImage != null)
-                                            {
-                                                <img class="img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(res.studentImage))" alt="" style="height:150px;margin:0 auto;">
-                                            }
-                                            else
-                                            {*@
+                                {
+                                    <img class="img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(res.studentImage))" alt="" style="height:150px;margin:0 auto;">
+                                }
+                                else
+                                {*@
                                         @*<img class="img-circle" src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.png" style="height:150px; width:100px;margin:0 auto;" alt="">*@
 
                                     </div>
@@ -664,11 +664,11 @@
                                     </div>
                                     <div class="col-md-3" id="over" style="">
                                         @*@if (res.studentImage != null)
-                                            {
-                                                <img class="img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(res.studentImage))" alt="" style="height:150px;margin:0 auto;">
-                                            }
-                                            else
-                                            {*@
+                                {
+                                    <img class="img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(res.studentImage))" alt="" style="height:150px;margin:0 auto;">
+                                }
+                                else
+                                {*@
                                         @*<img class="img-circle" src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.png" style="height:150px; width:100px;margin:0 auto;" alt="">*@
 
                                     </div>
@@ -834,7 +834,7 @@
                                             SUBJECT
                                         </th>
                                         @*<th>C.A</th>
-                                            <th>EXAM</th>*@
+                                <th>EXAM</th>*@
                                         @if (GeneralService.EnabledProjectScore() == true)
                                         {
                                             <th>PROJECT</th>
@@ -889,7 +889,7 @@
                                         <tr>
                                             <td style="padding:3px;">@item.Subject.SubjectName</td>
                                             @*<td style="padding:3px;">@Math.Round(item.TestScore ?? 0)</td>
-                                                <td style="padding:3px;">@Math.Round(item.ExamScore ?? 0)</td>*@
+                                    <td style="padding:3px;">@Math.Round(item.ExamScore ?? 0)</td>*@
                                             @if (GeneralService.EnabledProjectScore() == true)
                                             {
                                                 <td style="padding:3px;">@item.Project</td>
@@ -947,6 +947,7 @@
 
                             </div>
                         </div>
+                        <br clear="all" style="page-break-before:always" />
 
                         <div class="clearfix"></div>
                         <hr style="border:5px solid #007acc;" />

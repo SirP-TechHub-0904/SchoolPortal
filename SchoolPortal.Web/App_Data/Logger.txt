@@ -1,1 +1,6 @@
 ﻿
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 12/16/2022 10:55:30 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 12/16/2022 11:12:09 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 12/16/2022 11:13:55 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 12/16/2022 11:14:37 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 12/16/2022 11:16:46 AM ****device name**  ****pc name*** XYZ<br/>

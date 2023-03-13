@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Re-Allocate Student";
-     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="row">
     <!-- left column -->
@@ -86,33 +86,33 @@
 
 }
 @section Scripts {
-    @*    @*    @*@Scripts.Render("~/bundles/jqueryval")*@*@*@
-    <script type="text/jscript">
-        $(function () {
-            $('#Hostel').change(function () {
-                $.getJSON('/Accomodation/Allotment/RoomList/' + $('#Hostel').val(), function (data) {
-                    var items = '<option>Select a Room</option>';
-                    $.each(data, function (i, local) {
-                        items += "<option value='" + local.Value + "'>" + local.Text + "</option>";
+    
+            <script type="text/jscript">
+                $(function () {
+                    $('#Hostel').change(function () {
+                        $.getJSON('/Accomodation/Allotment/RoomList/' + $('#Hostel').val(), function (data) {
+                            var items = '<option>Select a Room</option>';
+                            $.each(data, function (i, local) {
+                                items += "<option value='" + local.Value + "'>" + local.Text + "</option>";
+                            });
+                            $('#Room').html(items);
+                        });
                     });
-                    $('#Room').html(items);
                 });
-            });
-        });
 
-         $(function () {
-            $('#Room').change(function () {
-                $.getJSON('/Accomodation/Allotment/BedList/' + $('#Room').val(), function (data) {
-                    var items = '<option>Select a Bed</option>';
-                    $.each(data, function (i, local) {
-                        items += "<option value='" + local.Value + "'>" + local.Text + "</option>";
+                 $(function () {
+                    $('#Room').change(function () {
+                        $.getJSON('/Accomodation/Allotment/BedList/' + $('#Room').val(), function (data) {
+                            var items = '<option>Select a Bed</option>';
+                            $.each(data, function (i, local) {
+                                items += "<option value='" + local.Value + "'>" + local.Text + "</option>";
+                            });
+                            $('#Bed').html(items);
+                        });
                     });
-                    $('#Bed').html(items);
                 });
-            });
-        });
-    </script>
+            </script>
 
-    <script src="http://exwhyzee.ng/libraries/admin/main.js"></script>
-}
+            <script src="http://exwhyzee.ng/libraries/admin/main.js"></script>
+        }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SchoolPortal.Web.Areas.Data.IServices
 {
-    interface IStaffService
+    public interface IStaffService
     {
         Task<StaffInfoDto> Get(int? id);
         Task UpdateImageId(int id, int imgId);

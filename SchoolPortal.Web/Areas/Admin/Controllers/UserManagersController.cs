@@ -38,13 +38,14 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         private IStudentProfileService _studentService = new StudentProfileService();
         private ISessionService _sessionService = new SessionService();
         private ApplicationSignInManager _signInManager;
+        private IStaffService _staffProfileService = new StaffService();
 
 
         public UserManagersController()
         {
 
         }
-        public UserManagersController(UserManagerService userService, ApplicationSignInManager signInManager, ApplicationUserManager userManager, ApplicationRoleManager roleManager, ClassLevelService classLevelService, EnrollmentService enrollmentService, ImageService imageService, StudentProfileService studentProfile, SessionService sessionService)
+        public UserManagersController(UserManagerService userService, ApplicationSignInManager signInManager, ApplicationUserManager userManager, ApplicationRoleManager roleManager, ClassLevelService classLevelService, EnrollmentService enrollmentService, ImageService imageService, StudentProfileService studentProfile, SessionService sessionService, IStaffService staffProfileService)
         {
             _userService = userService;
             UserManager = userManager;
@@ -55,6 +56,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             _sessionService = sessionService;
             _enrollmentService = enrollmentService;
             SignInManager = signInManager;
+            _staffProfileService = staffProfileService;
         }
         public ApplicationSignInManager SignInManager
         {
@@ -270,6 +272,42 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             return View(items.ToPagedList(pageNumber, pageSize));
 
+        }
+
+        public async Task<ActionResult> EditStaff(int? id)
+        {
+            ViewBag.StateName = new SelectList(db.States.OrderBy(x => x.StateName), "StateName", "StateName");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await _staffProfileService.Get(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditStaff(StaffInfoDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _staffProfileService.Edit(model);
+                    TempData["success"] = "Update Successful.";
+                    return RedirectToAction("Staff");
+                }
+                catch (Exception e)
+                {
+                    TempData["error"] = "Update Unsuccessful, (" + e.ToString() + ")";
+                }
+
+            }
+            return View(model);
         }
 
         public async Task<ActionResult> Staff(string searchString, string currentFilter, int? page)

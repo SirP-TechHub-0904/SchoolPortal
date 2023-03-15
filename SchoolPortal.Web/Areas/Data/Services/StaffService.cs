@@ -178,7 +178,14 @@ namespace SchoolPortal.Web.Areas.Data.Services
             {
 
 
-                if (HttpContext.Current.User.IsInRole("Admin, SuperAdmin"))
+                if (HttpContext.Current.User.IsInRole("Admin"))
+                {
+                    user.Email = model.Email;
+                    user.FirstName = model.Firstname;
+                    user.Surname = model.Surname;
+                    user.OtherName = model.Othername;
+                }
+                if (HttpContext.Current.User.IsInRole("SuperAdmin"))
                 {
                     user.Email = model.Email;
                     user.FirstName = model.Firstname;
@@ -200,18 +207,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
             //Add Tracking
             var userId = HttpContext.Current.User.Identity.GetUserId();
-            if(userId != null)
-            {
-                var user2 = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
-                Tracker tracker = new Tracker();
-                tracker.UserId = userId;
-                tracker.UserName = user2.UserName;
-                tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                tracker.Note = tracker.FullName + " " + "Updated Staff Profile";
-                db.Trackers.Add(tracker);
-                await db.SaveChangesAsync();
-            }
+             
            
         }
 

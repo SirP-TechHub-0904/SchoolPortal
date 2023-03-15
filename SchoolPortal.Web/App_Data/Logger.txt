@@ -16,3 +16,15 @@
 **username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/13/2023 3:47:40 PM ****device name**  ****pc name*** XYZ<br/>
 **username**Admin *****path** http://localhost:61390/Admin/ClassLevels/AddSubject/1 *****date** 3/13/2023 3:49:10 PM ****device name**  ****pc name*** XYZ<br/>
 **username**Admin *****path** http://localhost:61390/Admin/ClassLevels/Details/1 *****date** 3/13/2023 3:50:09 PM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 7:57:53 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 8:14:29 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 9:39:16 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 9:51:42 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 12:01:32 PM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 1:36:31 PM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/14/2023 1:39:35 PM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/15/2023 7:17:08 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/15/2023 7:30:03 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/15/2023 8:01:32 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/15/2023 8:04:02 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 3/15/2023 8:15:44 AM ****device name**  ****pc name*** XYZ<br/>

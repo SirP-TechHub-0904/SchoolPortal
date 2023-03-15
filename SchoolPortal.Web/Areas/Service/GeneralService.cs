@@ -334,7 +334,7 @@ namespace SchoolPortal.Web.Areas.Service
             IEnumerable<EnrolledSubject> subname = new List<EnrolledSubject>();
             using (var db = new ApplicationDbContext())
             {
-                subname = db.EnrolledSubjects.Include(x => x.Subject).Include(x => x.Enrollments).Where(x => x.EnrollmentId == enrId && x.Subject.ShowSubject == true).OrderBy(x => x.Subject.SubjectName).AsEnumerable();
+                subname = db.EnrolledSubjects.Include(x => x.Subject).Include(x => x.Enrollments).AsNoTracking().Where(x => x.EnrollmentId == enrId && x.Subject.ShowSubject == true).OrderBy(x => x.Subject.SubjectName).AsEnumerable();
 
             }
             return subname;

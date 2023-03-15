@@ -1,6 +1,7 @@
 ﻿using SchoolPortal.Web.Areas.Data.IServices;
 using SchoolPortal.Web.Areas.Data.Services;
 using SchoolPortal.Web.Models;
+using SchoolPortal.Web.Models.Dtos;
 using SchoolPortal.Web.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Web.Mvc;
 
 namespace SchoolPortal.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Staff")]
+    [Authorize(Roles = "Staff,Admin")]
     public class StaffProfileController : Controller
     {
 
@@ -48,6 +49,53 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             }
 
             return View(item);
+        }
+        [AllowAnonymous]
+        public JsonResult LgaList(string Id)
+        {
+            var stateId = db.States.FirstOrDefault(x => x.StateName == Id).Id;
+            var local = from s in db.LocalGovs
+                        where s.StatesId == stateId
+                        select s;
+
+            return Json(new SelectList(local.ToArray(), "LGAName", "LGAName"), JsonRequestBehavior.AllowGet);
+        }
+
+
+        public async Task<ActionResult> EditUser(int? id)
+        {
+            ViewBag.StateName = new SelectList(db.States.OrderBy(x => x.StateName), "StateName", "StateName");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await _staffProfileService.Get(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditUser(StaffInfoDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _staffProfileService.Edit(model);
+                    TempData["success"] = "Update Successful.";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    TempData["error"] = "Update Unsuccessful, (" + e.ToString() + ")";
+                }
+
+            }
+            return View(model);
         }
 
         public async Task<ActionResult> MyQualification(int id)

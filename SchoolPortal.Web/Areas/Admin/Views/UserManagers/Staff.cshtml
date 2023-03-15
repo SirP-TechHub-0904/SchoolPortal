@@ -14,7 +14,9 @@
 
             <div class="box-header">
                 <h3 class="box-title"><i class="fa fa-fw fa-user-plus"></i> Staff Management (@Model.Count() / @ViewBag.countStaff)</h3>
-
+                <span class=" pull-right">
+                    @Html.ActionLink("Reset User Password", "ResetUserPassword", "XYZ", new { area = "Account" }, new { @class = "btn btn-danger", style = "border-radius:0px !important;" })
+                </span>
             </div>
             @if (TempData["success"] != null)
             {
@@ -128,11 +130,22 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Details", "Details", "StaffProfile", new { id = item.Id }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Change Status", "ChangeStatus", new { id = item.UserId }, new { @class = "btn btn-warning" })
+                               
+                                
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Action
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
 
+                                        <li> @Html.ActionLink("Edit", "EditStaff", "UserManagers", new { id = item.Id }, new { @class = " " })</li>
+                                        <li> @Html.ActionLink("Details", "Details", "StaffProfile", new { id = item.Id }, new { @class = " " })</li>
+                                        <li>@Html.ActionLink("Change Status", "ChangeStatus", new { id = item.UserId }, new { @class = " " })</li>
+                                    </ul>
+                                            </div>
 
-                            </td>
+                                </td>
                         </tr>
                     }
                 </table>

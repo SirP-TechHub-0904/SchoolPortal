@@ -173,93 +173,95 @@
 
 
                                 </td>
-                                @foreach (var subn in GeneralService.SubjectScores(item.EnrollmentId))
-                                {
-                                    if (GeneralService.IsPrintOutThree() == true && (GeneralService.TotalStudentCAScore(item.EnrollmentId) == null || GeneralService.TotalStudentCAScore(item.EnrollmentId) == 0))
+                                @Html.Action("MasterSubjects", new { enrId = item.EnrollmentId })
+
+                                @*@foreach (var subn in GeneralService.SubjectScores(item.EnrollmentId))
                                     {
-                                        <td>
-                                            @if (subn.TotalCA == 0)
-                                            {
-                                                 
-                                                if (subn.TestScore == 0)
+                                        if (GeneralService.IsPrintOutThree() == true && (GeneralService.TotalStudentCAScore(item.EnrollmentId) == null || GeneralService.TotalStudentCAScore(item.EnrollmentId) == 0))
+                                        {
+                                            <td>
+                                                @if (subn.TotalCA == 0)
                                                 {
-                                                    <text>-</text>
+
+                                                    if (subn.TestScore == 0)
+                                                    {
+                                                        <text>-</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Math.Round(subn.TestScore ?? 0)
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @Math.Round(subn.TotalCA ?? 0)
+
+                                                }
+                                            </td>
+                                        }
+                                        else if (GeneralService.TotalStudentCAScore(item.EnrollmentId) != null || GeneralService.TotalStudentCAScore(item.EnrollmentId) != 0)
+                                        {
+                                            <td>
+                                                @if (subn.TotalCA == 0)
+                                                {
+                                                    if (subn.TestScore == 0)
+                                                    {
+                                                        <text>-</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Math.Round(subn.TestScore ?? 0)
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @Math.Round(subn.TotalCA ?? 0)
+
+                                                }
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                @if (subn.TestScore == 0)
+                                                {
+                                                    <text> -</text>
                                                 }
                                                 else
                                                 {
                                                     @Math.Round(subn.TestScore ?? 0)
 
                                                 }
-                                            }
-                                            else
-                                            {
-                                                @Math.Round(subn.TotalCA ?? 0)
+                                            </td>
+                                        }
 
-                                            }
-                                        </td>
-                                    }
-                                    else if (GeneralService.TotalStudentCAScore(item.EnrollmentId) != null || GeneralService.TotalStudentCAScore(item.EnrollmentId) != 0)
-                                    {
                                         <td>
-                                            @if (subn.TotalCA == 0)
+                                            @if (subn.ExamScore == 0)
                                             {
-                                                if (subn.TestScore == 0)
-                                                {
-                                                    <text>-</text>
-                                                }
-                                                else
-                                                {
-                                                    @Math.Round(subn.TestScore ?? 0)
-
-                                                }
+                                                <text>-</text>
                                             }
                                             else
                                             {
-                                                @Math.Round(subn.TotalCA ?? 0)
+                                                @Math.Round(subn.ExamScore ?? 0)
 
                                             }
+
                                         </td>
-                                    }
-                                    else
-                                    {
                                         <td>
-                                            @if (subn.TestScore == 0)
+                                            @if (subn.TotalScore == 0)
                                             {
-                                                <text> -</text>
+                                                <text>-</text>
                                             }
                                             else
                                             {
-                                                @Math.Round(subn.TestScore ?? 0)
+                                                @Math.Round(subn.TotalScore ?? 0)
 
                                             }
+
                                         </td>
-                                    }
-
-                                    <td>
-                                        @if (subn.ExamScore == 0)
-                                        {
-                                            <text>-</text>
-                                        }
-                                        else
-                                        {
-                                            @Math.Round(subn.ExamScore ?? 0)
-
-                                        }
-
-                                    </td>
-                                    <td>
-                                        @if (subn.TotalScore == 0)
-                                        {
-                                            <text>-</text>
-                                        }
-                                        else
-                                        {
-                                            @Math.Round(subn.TotalScore ?? 0)
-
-                                        }
-
-                                    </td>
-                                }
+                                    }*@
                                 <td>
 
                                     @Math.Round(GeneralService.TotalScore(item.EnrollmentId) ?? 0)
@@ -268,82 +270,50 @@
                         }
                         else
                         {
-                            <tr style="border:1px solid #808080;background-color:#dbc6c6;">
-                                <td>
-                                    @{ sno++; }
-                                    @sno
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StudentName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StudentRegNumber)
-                                </td>
+                <tr style="border:1px solid #808080;background-color:#dbc6c6;">
+                    <td>
+                        @{ sno++; }
+                        @sno
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentRegNumber)
+                    </td>
 
-                                <td>
+                    <td>
 
-                                    @item.AverageScore
-                                </td>
-                                <td>
+                        @item.AverageScore
+                    </td>
+                    <td>
 
-                                    @GeneralService.MasterListRemark2(item.EnrollmentId)
-                                </td>
+                        @GeneralService.MasterListRemark2(item.EnrollmentId)
+                    </td>
 
-                                @if (ViewBag.showPosOnClassResult == true)
-                                {
-                                    <td>
+                    @if (ViewBag.showPosOnClassResult == true)
+                    {
+                        <td>
 
-                                        @PrintService.MasterListPosition(item.EnrollmentId)
-                                    </td>
-                                }
-                                else
-                                {
+                            @PrintService.MasterListPosition(item.EnrollmentId)
+                        </td>
+                    }
+                    else
+                    {
 
-                                }
+                    }
 
-                                <td>
-                                    @GeneralService.SubjectCountPerStudent(item.EnrollmentId)
+                    <td>
+                        @GeneralService.SubjectCountPerStudent(item.EnrollmentId)
 
 
-                                </td>
-                                @foreach (var subn in GeneralService.SubjectScores(item.EnrollmentId))
-                                {
-                                    if (GeneralService.IsPrintOutThree() == true && (GeneralService.TotalStudentCAScore(item.EnrollmentId) == null || GeneralService.TotalStudentCAScore(item.EnrollmentId) == 0))
-                                    {
-                                        <td>
+                    </td>
+                    @Html.Action("MasterSubjects", new { enrId = item.EnrollmentId })
+                    <td>
 
-                                            @Math.Round(subn.TotalCA ?? 0)
-                                        </td>
-                                    }
-                                    else if (GeneralService.TotalStudentCAScore(item.EnrollmentId) != null || GeneralService.TotalStudentCAScore(item.EnrollmentId) != 0)
-                                    {
-                                        <td>
-
-                                            @Math.Round(subn.TotalCA ?? 0)
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td>
-
-                                            @Math.Round(subn.TestScore ?? 0)
-                                        </td>
-                                    }
-
-                                    <td>
-                                        @Math.Round(subn.ExamScore ?? 0)
-
-                                    </td>
-                                    <td>
-
-                                        @Math.Round(subn.TotalScore ?? 0)
-                                    </td>
-                                }
-                                <td>
-
-                                    @Math.Round(GeneralService.TotalScore(item.EnrollmentId) ?? 0)
-                                </td>
-                            </tr>
+                        @Math.Round(GeneralService.TotalScore(item.EnrollmentId) ?? 0)
+                    </td>
+                </tr>
                         }
 
                     }
@@ -379,7 +349,7 @@
 
 
 @section Scripts2 {
-        @*@Scripts.Render("~/bundles/jqueryval")*@
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 
     <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
     <script src="http://exwhyzee.ng/libraries/Content/FileSaver.js-master/FileSaver.js-master/dist/FileSaver.min.js"></script>
@@ -402,22 +372,22 @@
 
     <script type="text/javascript">
 
-                                                                //function printSelection(node) {
+                                                                    //function printSelection(node) {
 
-                                                                //    var content = node.innerHTML
-                                                                //    var pwin = window.open('', 'print_content', 'width=800,height=500');
+                                                                    //    var content = node.innerHTML
+                                                                    //    var pwin = window.open('', 'print_content', 'width=800,height=500');
 
-                                                                //    pwin.document.open();
-                                                                //    pwin.document.write('<html><body onload="window.print()">' + content + '</body></html>');
-                                                                //    pwin.document.close();
+                                                                    //    pwin.document.open();
+                                                                    //    pwin.document.write('<html><body onload="window.print()">' + content + '</body></html>');
+                                                                    //    pwin.document.close();
 
-                                                                //    setTimeout(function () { pwin.close(); }, 1000);
+                                                                    //    setTimeout(function () { pwin.close(); }, 1000);
 
-                                                                //}
+                                                                    //}
 
-                                                                            //function myFunction() {
-                                                                            //    window.print();
-                                                                            //}
+                                                                                //function myFunction() {
+                                                                                //    window.print();
+                                                                                //}
 
     </script>
 

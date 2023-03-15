@@ -2208,7 +2208,15 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         #endregion
 
-
+        public async Task<PartialViewResult> MasterSubjects(int enrId)
+        {
+            IEnumerable<EnrolledSubject> subname = new List<EnrolledSubject>();
+            
+                subname = db.EnrolledSubjects.Include(x => x.Subject).Include(x => x.Enrollments).AsNoTracking().Where(x => x.EnrollmentId == enrId && x.Subject.ShowSubject == true).OrderBy(x => x.Subject.SubjectName).AsEnumerable();
+            ViewBag.listx = subname;
+            ViewBag.idc = enrId;
+            return PartialView();
+        }
 
         #region Reconcile Enrollsubjects Main ICS where by enrol subject contain subject from two classes
         public async Task<ActionResult> ReconcileEnrollSubjects(int? classid)

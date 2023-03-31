@@ -56,7 +56,18 @@ namespace SchoolPortal.Web.Areas.Service
             return subname;
 
         }
+        public static List<Enrollment> StudentlistByTerm(int cId, int sid)
+        {
+            List<Enrollment> students = new List<Enrollment>();
+            using (var db = new ApplicationDbContext())
+            {
+                int session = db.Sessions.FirstOrDefault(x => x.Id == sid).Id;
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
 
+            }
+            return students;
+
+        }//
         public static List<Enrollment> Studentlist(int cId)
         {
             List<Enrollment> students = new List<Enrollment>();
@@ -98,7 +109,7 @@ namespace SchoolPortal.Web.Areas.Service
 
 
         //student by sessio term
-        public static List<Enrollment> StudentlistByTerm(int cId, int sessionId)
+        public static List<Enrollment> StudentlistByTermCount(int cId, int sessionId)
         {
             List<Enrollment> students = new List<Enrollment>();
             using (var db = new ApplicationDbContext())

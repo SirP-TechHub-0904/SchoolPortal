@@ -138,7 +138,8 @@
             </div>
             @if (User.IsInRole("SuperAdmin"))
             {
-                <a href="@Url.Action("RemoveAllFromCurrentLatest","Doc",new { area ="Content" })" class="btn btn-medium btn-info remove">Remove all In Term</a>
+                <a href="@Url.Action("RemoveAllFromCurrentLatest","Doc",new { area ="Content" })" class="btn btn-medium btn-danger remove">Remove all In Term</a>
+                @*<a href="@Url.Action("EnrollFromAnotherTermInSession","Doc",new { area ="Content" })" class="btn btn-medium btn-success remove">Enroll From Another Term In Session</a>*@
 
             }
 

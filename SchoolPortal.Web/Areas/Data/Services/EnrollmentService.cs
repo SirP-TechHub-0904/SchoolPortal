@@ -1700,6 +1700,84 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         }
 
+
+        public async Task JustEnrolToClass(int? ClassLevelId = 0, int id = 0, int termid = 0)
+        {
+            var sssGradingOption = GradingOption.SSS;
+            var jssGradingOption = GradingOption.JSS;
+            var priGradingOption = GradingOption.PRI;
+            var nurGradingOption = GradingOption.NUR;
+            var preGradingOption = GradingOption.PRE;
+            var pgGradingOption = GradingOption.PG;
+            var setting = db.Settings.FirstOrDefault();
+            bool checkenro1 = CheckNewEnrollment(id, termid);
+                if (checkenro1 == false)
+                {
+                    Enrollment enrollment = db.Enrollments.Create();
+
+                    //other data for enrollment table
+                    enrollment.StudentProfileId = id;
+                    enrollment.SessionId = termid;
+                    enrollment.ClassLevelId = ClassLevelId;
+                    enrollment.EnrollmentRemark = setting.DefaultEnrollmentRemark;
+                    db.Enrollments.Add(enrollment);
+                    await db.SaveChangesAsync();
+
+                    //Get all subjects for the class level selected
+                    var subjects = db.Subjects.Where(s => s.ClassLevelId == enrollment.ClassLevelId);
+                    var currentlevel = db.ClassLevels.FirstOrDefault(x => x.Id == ClassLevelId).ClassName;
+
+                    //Add Subjects to the student
+                    foreach (var item in subjects.ToList())
+                    {
+                        EnrolledSubject enrolledSubject = db.EnrolledSubjects.Create();
+                        enrolledSubject.SubjectId = item.Id;
+                        enrolledSubject.EnrollmentId = enrollment.Id;
+                        enrolledSubject.TotalScore = 0;
+                        enrolledSubject.ExamScore = 0;
+                        enrolledSubject.TestScore = 0;
+                        enrolledSubject.TestScore2 = 0;
+                        enrolledSubject.Project = 0;
+                        enrolledSubject.ClassExercise = 0;
+                        enrolledSubject.Assessment = 0;
+                        enrolledSubject.TotalCA = 0;
+
+                        enrolledSubject.IsOffered = false;
+
+                        if (currentlevel.Contains("SSS"))
+                        {
+                            enrolledSubject.GradingOption = sssGradingOption;
+                        }
+                        else if (currentlevel.Contains("JSS"))
+                        {
+                            enrolledSubject.GradingOption = jssGradingOption;
+                        }
+                        else if (currentlevel.Contains("PRE"))
+                        {
+                            enrolledSubject.GradingOption = preGradingOption;
+                        }
+                        else if (currentlevel.Contains("PRI"))
+                        {
+                            enrolledSubject.GradingOption = priGradingOption;
+                        }
+                        else if (currentlevel.Contains("NUR"))
+                        {
+                            enrolledSubject.GradingOption = nurGradingOption;
+                        }
+                        else if (currentlevel.Contains("PG"))
+                        {
+                            enrolledSubject.GradingOption = pgGradingOption;
+                        }
+                        db.EnrolledSubjects.Add(enrolledSubject);
+                        await db.SaveChangesAsync();
+                    }
+                }
+          
+
+        }
+
+
+
         public async Task EnrollStudentList(int ClassLevelId = 0, int id = 0, int SessionId = 0)
         {
             //Get current session

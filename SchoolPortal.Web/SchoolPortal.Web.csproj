@@ -2097,6 +2097,7 @@
     <Content Include="Areas\Admin\Views\StaffProfile\EditUser.cshtml" />
     <Content Include="Areas\Admin\Views\UserManagers\EditStaff.cshtml" />
     <Content Include="Areas\Admin\Views\ResultManagement\MasterSubjects.cshtml" />
+    <Content Include="Areas\Content\Views\Doc\EnrollFromAnotherTermInSession.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />

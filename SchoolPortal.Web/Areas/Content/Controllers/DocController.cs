@@ -308,6 +308,37 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
             return View(enrolledStudent);
         }
 
+        public async Task<ActionResult> EnrollFromAnotherTermInSession()
+        {
+            var session = await db.Sessions.FirstOrDefaultAsync(x => x.Status == Models.Entities.SessionStatus.Current);
+            var allterminsession = await db.Sessions.Where(x => x.SessionYear == session.SessionYear).Where(x=>x.Term != session.Term).ToListAsync();
+
+            var output = allterminsession.Select(x => new SchoolSessionDto
+            {
+                FullSession = x.SessionYear + " - " + x.Term + " Term",
+                Id = x.Id,
+                SessionStatus = x.Status
+            });
+            ViewBag.sessionId = new SelectList(output.OrderBy(x => x.FullSession), "Id", "FullSession");
+
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> EnrollFromAnotherTermInSession(int sessId = 0)
+        {
+            var session = await db.Sessions.FindAsync(sessId);
+            var enrollment = await db.Enrollments.Include(x => x.Session).Where(x => x.SessionId == sessId).ToListAsync();
+            var currentsession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == Models.Entities.SessionStatus.Current);
+
+            foreach (var item in enrollment)
+            {
+                await _enrollmentService.JustEnrolToClass(item.ClassLevelId, item.StudentProfileId, currentsession.Id);
+            }
+                //int ClassLevelId = 0, int id = 0, int termid = 0)
+                return View();
+        }
+
+        
 
         public async Task<ActionResult> RemoveAllFromCurrentLatest()
         {

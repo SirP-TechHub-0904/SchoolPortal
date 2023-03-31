@@ -23,6 +23,7 @@ namespace SchoolPortal.Web.Areas.Data.IServices
         Task<string> PromotionEnrol(string sess, int classid = 0, int oldclassid = 0, int oldsessionid = 0);
         Task<List<EnrollStudentsDto>> Enrollment(string searchString, string currentFilter, int? page);
         Task<List<EnrolledStudentsDto>> EnrolledStudents(string searchString, string currentFilter, int? page);
+        Task JustEnrolToClass(int? ClassLevelId = 0, int id = 0, int termid = 0);
 
         Task EnrollStudentFromSession(int ClassLevelId = 0, int id = 0, int sid=0);
         Task EnrollStudent(int ClassLevelId = 0, int id = 0);

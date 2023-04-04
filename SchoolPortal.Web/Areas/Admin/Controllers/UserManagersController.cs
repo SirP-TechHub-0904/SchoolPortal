@@ -113,7 +113,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Updated User Surname";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             await db.SaveChangesAsync();
             return new EmptyResult();
 
@@ -564,7 +564,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Created a role";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
 
                     return View();
@@ -613,7 +613,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated a role";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
 
                 return RedirectToAction("Roles");
@@ -668,7 +668,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Deleted a role";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                 else
@@ -684,7 +684,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Deleted a role";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                 if (!result.Succeeded)
@@ -806,7 +806,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated Student Status";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
 
                 TempData["success"] = "Status changed Successfully";
@@ -1032,7 +1032,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated User Status";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
 
                 TempData["success"] = "Status changed Successfully";
@@ -1093,7 +1093,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Updated Student Profile";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
 
                         TempData["success"] = "User Updated Successfully";
@@ -1215,7 +1215,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Unlocked User Profile";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             else
@@ -1233,7 +1233,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Locked User Profile";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             return RedirectToAction("Index");
@@ -1441,7 +1441,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Upload Batch Result Excel Registration";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                     TempData["msg"] = "Uploaded successfully.";
                     TempData["batcherror"] = nameswitheerror;
@@ -1780,7 +1780,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Removed Student from erollment";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                     TempData["a8"] = "Removed from enrollment";
                 }
@@ -1805,7 +1805,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Remove Staff Profile";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -1826,7 +1826,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Remove student profile";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -1876,7 +1876,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Removed Staff from assigned subject";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                     TempData["a1"] = "Removed from asigned Subjects";
                 }
@@ -1899,7 +1899,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Removed staff from assigned class";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                     TempData["a2"] = "Removed from asigned classes";
                 }
@@ -1980,7 +1980,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Removed student from enrollment";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
                 TempData["success"] = name + " has successfully been removed from " + classs + " Class";
 
@@ -2039,7 +2039,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Registered as a staff";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
 
                         return RedirectToAction("Index", "Panel", new { area = "Staff" });

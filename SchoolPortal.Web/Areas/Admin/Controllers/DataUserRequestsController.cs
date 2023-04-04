@@ -148,7 +148,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Requested password reset";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     db.SaveChangesAsync();
 
                     return RedirectToAction("Details", new { id = id });

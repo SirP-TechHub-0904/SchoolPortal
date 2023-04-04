@@ -90,7 +90,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Added Hall Of Fame";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
            
@@ -117,7 +117,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Deleted Hall Of Fame";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                
@@ -159,7 +159,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Edited Hall Of Fame";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
            

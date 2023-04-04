@@ -223,7 +223,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Updated school logo";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             await db.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -284,7 +284,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Updated School Stamp";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             await db.SaveChangesAsync();
 
             return RedirectToAction("SchoolStam");
@@ -334,7 +334,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Added School Stamp";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             await db.SaveChangesAsync();
 
             return RedirectToAction("SchoolStam");
@@ -452,7 +452,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Deleted Settings";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             await db.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -483,7 +483,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Emptied Excel Sheet";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
                 ViewBag.mssg = "Success";

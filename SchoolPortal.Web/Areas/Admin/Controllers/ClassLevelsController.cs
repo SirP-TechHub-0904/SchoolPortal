@@ -259,7 +259,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Enabled Promote All";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -376,7 +376,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             //    tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
             //    tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             //    tracker.Note = tracker.FullName + " " + "E";
-            //    db.Trackers.Add(tracker);
+            //    //db.Trackers.Add(tracker);
             //    await db.SaveChangesAsync();
             //}
 
@@ -590,7 +590,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Enabled Promote All";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
                     }
                     return RedirectToAction("Index");
@@ -653,7 +653,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Enabled Promote All";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                 return RedirectToAction("Details", new { id = timeTable.ClassLevelId });
@@ -742,7 +742,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Enabled Promote All";
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
 
@@ -1398,7 +1398,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Enabled Promote All";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             return Content("<script language='javascript' type='text/javascript'>alert('Saved Successful');</script>");

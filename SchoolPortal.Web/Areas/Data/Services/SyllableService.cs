@@ -70,7 +70,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Added a Syllable";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
           
@@ -96,7 +96,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Deleted a Syllable";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                
@@ -120,7 +120,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Edited a Syllable";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
           

@@ -136,7 +136,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Added a class level";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -173,7 +173,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "deleted a class level";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
 
             }
@@ -197,7 +197,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "edited a class level";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -258,7 +258,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Grading Options";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -407,7 +407,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Moved a student to another class";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                

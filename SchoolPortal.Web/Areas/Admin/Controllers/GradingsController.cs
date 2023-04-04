@@ -102,7 +102,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Added Grading";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
 
 

@@ -519,7 +519,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
                             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Added a new student";
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
                         var session = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
@@ -580,7 +580,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
                                 tracker.FullName = iuser.Surname + " " + iuser.FirstName + " " + iuser.OtherName;
                                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                                 tracker.Note = tracker.FullName + " " + "Created Finance Payment for " + enroment.StudentProfile.StudentRegNumber;
-                                db.Trackers.Add(tracker);
+                                //db.Trackers.Add(tracker);
                                 await db.SaveChangesAsync();
                             }
                             TempData["success"] = "Payment Successfull";
@@ -678,7 +678,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Created Finance Payment for " + enroment.StudentProfile.StudentRegNumber;
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
                         TempData["success"] = "Payment Successfull";
@@ -776,7 +776,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Created Finance Payment for " + enroment.StudentProfile.StudentRegNumber;
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
                         TempData["success"] = "Payment Successfull";

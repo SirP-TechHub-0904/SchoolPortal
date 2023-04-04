@@ -98,7 +98,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Published students results";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             
@@ -176,7 +176,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                         tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Cumulative Result Reconciliation";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
                     }
                     
@@ -526,7 +526,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Unpublish student results";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
            
@@ -653,7 +653,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated student results";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                 
@@ -719,7 +719,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Update a result";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             

@@ -79,7 +79,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Added an enrollment";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
             }
@@ -122,7 +122,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Updated Enrollment Status";
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
 
@@ -158,7 +158,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Deleted An Enrollment";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -182,7 +182,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Edited An Enrollment";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -472,7 +472,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Promoted Students";
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
 
@@ -586,7 +586,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Promoted others and push student that was not promoted to previous class";
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
 
@@ -713,7 +713,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                         tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Promoted student with pass mark";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
                     }
 
@@ -824,7 +824,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                             tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                             tracker.Note = tracker.FullName + " " + "Demoted student";
-                            db.Trackers.Add(tracker);
+                            //db.Trackers.Add(tracker);
                             await db.SaveChangesAsync();
                         }
 
@@ -945,7 +945,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                         tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Promoted all students/pupils";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
                     }
 
@@ -1225,7 +1225,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Moved student to another class";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -1463,7 +1463,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Moved student to another class";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -1581,7 +1581,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                     tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Enrolled a student";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
             }
@@ -1693,7 +1693,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Enrolled a student";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -1884,7 +1884,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Enrolled students";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -1965,7 +1965,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = users.Surname + " " + users.FirstName + " " + users.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Unenrolled student";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -2024,7 +2024,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Unenrolled a student";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 
@@ -2078,7 +2078,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 tracker.FullName = users.Surname + " " + users.FirstName + " " + users.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Unenrolled a student";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
 

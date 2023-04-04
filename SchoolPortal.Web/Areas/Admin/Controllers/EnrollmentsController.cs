@@ -369,7 +369,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Deleted student from the system";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -623,7 +623,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Deleted enrolled subject";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             db.SaveChangesAsync();
 
             return RedirectToAction("IndexEnrol");
@@ -703,7 +703,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Edited enrollment";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

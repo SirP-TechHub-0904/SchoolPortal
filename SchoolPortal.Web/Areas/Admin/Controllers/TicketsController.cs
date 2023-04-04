@@ -107,7 +107,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Closed A Ticket";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
            
@@ -176,7 +176,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Created A Ticket";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -281,7 +281,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Edited a Ticket";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                
@@ -326,7 +326,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Deleted a ticket";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             
@@ -370,7 +370,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Added a response to a ticket";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                 
@@ -419,7 +419,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Edited Ticket Response";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                
@@ -466,7 +466,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Deleted Ticket Response";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             

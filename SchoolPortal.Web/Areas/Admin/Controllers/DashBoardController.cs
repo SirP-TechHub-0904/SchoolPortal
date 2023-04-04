@@ -136,7 +136,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Added an event";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
                 TempData["success"] = "Event Added";

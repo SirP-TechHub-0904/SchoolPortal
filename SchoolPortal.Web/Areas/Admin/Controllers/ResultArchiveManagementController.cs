@@ -130,7 +130,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain Archive";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -151,7 +151,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Affective Domain Archive";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -173,7 +173,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domain Archive";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -254,7 +254,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Added Batch Result";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
             }
@@ -360,7 +360,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain Archive";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -388,7 +388,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domain Archive";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -434,7 +434,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Updated Affective Domain Archive";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
 
@@ -554,7 +554,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated Recognitive Domain";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
                 TempData["success"] = "Successful.";
@@ -612,7 +612,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated Psychomotor Domains";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
                 TempData["success"] = "Successful.";
@@ -666,7 +666,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated Affective Domains";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
                 TempData["success"] = "Successful.";
@@ -715,7 +715,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated Enrollment Remark";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
                 TempData["success"] = "Successful.";
@@ -936,7 +936,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
             tracker.ActionDate = DateTime.UtcNow.AddHours(1);
             tracker.Note = tracker.FullName + " " + "Remove Enrolled Archive Subject";
-            db.Trackers.Add(tracker);
+            //db.Trackers.Add(tracker);
             await db.SaveChangesAsync();
 
             return Content("success");
@@ -1036,7 +1036,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Updated Student is Offered";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
 
 
@@ -1065,7 +1065,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                     tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                     tracker.Note = tracker.FullName + " " + "Added Student Is Offered";
-                    db.Trackers.Add(tracker);
+                    //db.Trackers.Add(tracker);
                     await db.SaveChangesAsync();
                 }
                 catch (Exception c)
@@ -1442,7 +1442,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Updated Enrollment";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
                     }
                     foreach (var enrolled in enrolleds)
@@ -1664,7 +1664,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Published Result";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
 
             }
@@ -1682,7 +1682,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "UnPublished Result";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
             }
 
@@ -1770,7 +1770,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Deleted Enrolled Subject Archive";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 db.SaveChangesAsync();
                 TempData["remove"] = "removed Successfull";
             }
@@ -1868,7 +1868,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                         tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                         tracker.Note = tracker.FullName + " " + "Removed Enrolled Subject Archive";
-                        db.Trackers.Add(tracker);
+                        //db.Trackers.Add(tracker);
                         db.SaveChangesAsync();
                     }
                     else
@@ -2031,7 +2031,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
                 tracker.ActionDate = DateTime.UtcNow.AddHours(1);
                 tracker.Note = tracker.FullName + " " + "Reconcile Enrolled Subjects";
-                db.Trackers.Add(tracker);
+                //db.Trackers.Add(tracker);
                 await db.SaveChangesAsync();
             }
             ViewBag.out1 = output;

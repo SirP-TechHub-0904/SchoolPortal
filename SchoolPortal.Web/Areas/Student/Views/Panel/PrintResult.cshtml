@@ -134,30 +134,38 @@
                                             <tr>
                                                 <td style="padding-left:10px;width:30%;border-right:1px solid #dee2e6;">POSITION</td>
                                                 <td style="padding-left:10px;width:70%;">
-
-                                                    @if (res.Position == 1)
+                                                    @if (res.ShowAverageOverPositionInClass == true)
                                                     {
-                                                        @res.Position
-                                                        <spamp><sup>st</sup></spamp>
-                                                    }
-                                                    else if (res.Position == 2)
-                                                    {
-                                                        @res.Position
-                                                        <spamp><sup>nd</sup></spamp>
-                                                    }
-                                                    else if (res.Position == 3)
-                                                    {
-                                                        @res.Position
-                                                        <spamp><sup>rd</sup></spamp>
-                                                    }
+                                                    <span style="text-transform:uppercase">@res.AveragePositionGrade</span> <text> (@res.AveragePositionRemark) </text>
+           
+        }
                                                     else
                                                     {
-                                                        @res.Position
-                                                        <spamp><sup>th</sup></spamp>
+
+                                                        if (res.Position == 1)
+                                                        {
+                                                            @res.Position
+                                                            <spamp><sup>st</sup></spamp>
+                                                        }
+                                                        else if (res.Position == 2)
+                                                        {
+                                                            @res.Position
+                                                            <spamp><sup>nd</sup></spamp>
+                                                        }
+                                                        else if (res.Position == 3)
+                                                        {
+                                                            @res.Position
+                                                            <spamp><sup>rd</sup></spamp>
+                                                        }
+                                                        else
+                                                        {
+                                                            @res.Position
+                                                            <spamp><sup>th</sup></spamp>
+                                                        }
+
+
+                                                        <span style="text-transform:uppercase">OUT OF</span> @res.TotalStudent @GeneralService.StudentorPupil()<text>S IN CLASS</text>
                                                     }
-
-
-                                                    <span style="text-transform:uppercase">OUT OF</span> @res.TotalStudent @GeneralService.StudentorPupil()S IN CLASS
                                                 </td>
                                             </tr>
                                         </table>

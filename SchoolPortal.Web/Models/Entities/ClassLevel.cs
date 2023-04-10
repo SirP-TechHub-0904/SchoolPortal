@@ -64,6 +64,9 @@ namespace SchoolPortal.Web.Models.Entities
         [Display(Name = "Show Class")]
         public bool ShowClass { get; set; }
 
+        [Display(Name = "Show Average Over PositionInClass")]
+        public bool ShowAverageOverPositionInClass { get; set; }
+
         public virtual ICollection<Subject> Subjects { get; set; }
         public virtual ICollection<Enrollment> Enrollments { get; set; }
         public virtual ICollection<Attendance> Attendances { get; set; }

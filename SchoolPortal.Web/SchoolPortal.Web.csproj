@@ -1119,6 +1119,10 @@
     <Compile Include="Migrations\202207051600439_updategallery6.Designer.cs">
       <DependentUpon>202207051600439_updategallery6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304100927212_updateaverageonclassposition.cs" />
+    <Compile Include="Migrations\202304100927212_updateaverageonclassposition.Designer.cs">
+      <DependentUpon>202304100927212_updateaverageonclassposition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dtos\AdminPostDetalsDto.cs" />
@@ -2642,6 +2646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207051600439_updategallery6.resx">
       <DependentUpon>202207051600439_updategallery6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304100927212_updateaverageonclassposition.resx">
+      <DependentUpon>202304100927212_updateaverageonclassposition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

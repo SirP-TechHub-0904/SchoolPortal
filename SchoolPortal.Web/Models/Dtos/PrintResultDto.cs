@@ -61,6 +61,9 @@ namespace SchoolPortal.Web.Models.Dtos
         [AllowHtml]
         public string NewsletterContent { get; set; }
         public bool ShowNewsletterPage { get; set; }
+        public bool ShowAverageOverPositionInClass { get; set; }
+        public string AveragePositionGrade { get; set; }
+        public string AveragePositionRemark { get; set; }
 
     }
 }

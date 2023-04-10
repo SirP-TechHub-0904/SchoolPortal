@@ -894,6 +894,78 @@ namespace SchoolPortal.Web.Areas.Service
                     }
                 }
 
+                string newaverageGrade = "";
+                string newaverageRemark = "";
+                decimal? outcomeaverage = 0;
+                if (getuserenrollment.AverageScore != null)
+                {
+ 
+                    outcomeaverage = decimal.Truncate((decimal)getuserenrollment.AverageScore);
+                }
+                if (getuserenrollment.ClassLevel.ShowAverageOverPositionInClass == true)
+                {
+                    try
+                    {
+
+
+
+                        if (getuserenrollment.ClassLevel.ClassName.ToUpper().Contains("SSS"))
+                        {
+                            foreach (var item in db.GradingDetails.Where(x => x.Grading.Name == GradingOption.SSS.ToString()))
+                                //var item = db.GradingDetails.FirstOrDefault(x => x.Grading.Name == GradingOption.SSS.ToString());
+                            {
+                                if (outcomeaverage >= item.LowerLimit && outcomeaverage <= item.UpperLimit)
+                                {
+                                    newaverageGrade = item.Grade;
+                                    newaverageRemark = item.Remark;
+                                }
+                            }
+                        }
+                        else if (getuserenrollment.ClassLevel.ClassName.ToUpper().Contains("JSS"))
+                        {
+                            foreach (var item in db.GradingDetails.Where(x => x.Grading.Name == GradingOption.JSS.ToString()))
+                            {
+                                if (outcomeaverage >= item.LowerLimit && outcomeaverage <= item.UpperLimit)
+                                {
+                                    newaverageGrade = item.Grade;
+                                    newaverageRemark = item.Remark;
+                                }
+                            }
+
+                        }
+                        else if (getuserenrollment.ClassLevel.ClassName.ToUpper().Contains("PRI"))
+                        {
+                            foreach (var item in db.GradingDetails.Where(x => x.Grading.Name == GradingOption.PRI.ToString()))
+                            {
+                                if (outcomeaverage >= item.LowerLimit && outcomeaverage <= item.UpperLimit)
+                                {
+                                    newaverageGrade = item.Grade;
+                                    newaverageRemark = item.Remark;
+                                }
+                            }
+
+                        
+
+                    }
+                        else if (getuserenrollment.ClassLevel.ClassName.ToUpper().Contains("NUR"))
+                        {
+                            foreach (var item in db.GradingDetails.Where(x => x.Grading.Name == GradingOption.NUR.ToString()))
+                            {
+                                if (outcomeaverage >= item.LowerLimit && outcomeaverage <= item.UpperLimit)
+                                {
+                                    newaverageGrade = item.Grade;
+                                    newaverageRemark = item.Remark;
+                                }
+                            }
+
+                             
+                        }
+                         
+
+                    }
+                    catch (Exception c) { }
+
+                }
 
                 var output = new PrintResultDto
                 {
@@ -933,7 +1005,9 @@ namespace SchoolPortal.Web.Areas.Service
                     EnrollmentRemark = getuserenrollment.EnrollmentRemark1,
                     EnrollmentRemark2 = getuserenrollment.EnrollmentRemark2,
                     NewsLetter = newsletter,
-
+                    ShowAverageOverPositionInClass = getuserenrollment.ClassLevel.ShowAverageOverPositionInClass,
+                    AveragePositionGrade = newaverageGrade,
+                    AveragePositionRemark = newaverageRemark,
                     SchoolFees = schoolfee,
                     SchoolAccount = SchoolAcct,
                     showPosOnClassResult = getuserenrollment.ClassLevel.ShowPositionOnClassResult,

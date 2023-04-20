@@ -699,7 +699,9 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task<Defaulter> GetDefaulterByProfileId(int profileId)
         {
-            var def = await db.Defaulters.Include(d => d.StudentProfile).FirstOrDefaultAsync(x => x.ProfileId == profileId);
+
+            var deflist = await db.Defaulters.Include(d => d.StudentProfile).Where(x => x.ProfileId == profileId).ToListAsync();
+            var def =  deflist.FirstOrDefault(x => x.ProfileId == profileId);
             return def;
         }
 

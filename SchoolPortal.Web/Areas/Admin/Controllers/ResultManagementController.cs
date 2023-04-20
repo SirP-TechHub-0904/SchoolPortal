@@ -258,7 +258,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             }
             var batchIdInfo = "";
             var enrolledStudents = await _resultService.StudentsBySessIdAndByClassId(sessId, classId);
-            var batcenro = enrolledStudents.Where(x => x.AverageScore > 0);
+            var batcenro = enrolledStudents.Where(x => x.AverageScore > 0).ToList();
             System.Random randomInteger = new System.Random();
             int genNumber = randomInteger.Next(10000);
             foreach (var studentresult in batcenro)

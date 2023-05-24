@@ -14,7 +14,7 @@
 
     <div id="test" class="" style="margin-top: 0px; background-image: url();background-attachment:fixed;background-position:center;background-size:600px 600px;background-repeat:no-repeat; ">
 
-        <div style="padding-top: 7px; padding-bottom: 15px; width: 90%; margin-left: auto; margin-right: auto;">
+        <div style="padding-top: 7px; padding-bottom: 5px; width: 90%; margin-left: auto; margin-right: auto;">
 
 
             <div style="margin-top:0px;">
@@ -29,11 +29,11 @@
                 <div class="col-md-3 col-sm-3" id="over" style="">
                     @if (res.SchoolLogo != null)
                     {
-                        <img class="" src="data:image/jpg;base64,@(Convert.ToBase64String(res.SchoolLogo))" alt="" style="height:80px; width:60px;margin-left:auto;margin-right:auto;">
+                        <img class="" src="data:image/jpg;base64,@(Convert.ToBase64String(res.SchoolLogo))" alt="" style="height:40px; width:50px;margin-left:auto;margin-right:auto;">
                     }
                     else
                     {
-                        <img class="" src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.jpg" alt="" style="height:80px; width:60px;margin-left:auto;margin-right:auto;" />
+                        <img class="" src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.jpg" alt="" style="height:40px; width:50px;margin-left:auto;margin-right:auto;" />
 
                     }
                 </div>
@@ -71,7 +71,7 @@
                         </table>
                     </th>
                     <th>
-                        <table style="width:100%;text-align:left;padding-left:10px;text-transform:uppercase !important;font-size:11px;" align="center" class="table-bordered" border="1">
+                        <table style="width:100%;text-align:left;padding-left:10px;text-transform:uppercase !important;font-size:9px;" align="center" class="table-bordered" border="1">
                             <tr style="">
                                 <th style="padding-left:10px;width:50%;text-transform:uppercase;">FULL NAME</th>
                                 <th style="padding-left:10px;width:50%;">@res.Fullname</th>
@@ -232,7 +232,7 @@
             @*<h6 class="text-center" style="text-align:center"><span style="border-bottom:1px solid #000000;">Result Summary</span></h6>*@
             @*<table style="width:100%;font-size:0.8125rem !important;" class="table-bordered print-zoom" border="1">*@
             @*<table style="width:100%;font-size:0.8125rem !important;font-weight:300;" class="table-bordered print-zoom" border="1">*@
-            <table style="width:100%;font-size:1.12rem !important;font-weight:bold" class="table-bordered print-zoom" border="1">
+            <table style="width:100%;font-size:8px !important;font-weight:bold" class="table-bordered print-zoom" border="1">
                 <tr>
                     <th>
                         SUBJECT
@@ -348,13 +348,13 @@
                     </tr>
                 }
             </table>
-            <hr style="border:2px solid #000000" />
+            <hr style="border: 2px solid #000000; margin-top: 5px; margin-bottom: 5px;" />
             @*<p styel="font-weight:normal">Resumption date:<strong> 13/1/2019 on or before 5.00pm</strong>.School Fees:<strong> #32,500</strong>.Principal's Remark:<strong> Merry Christmas and a prosperous new year</strong>.</p>*@
 
-            <div style="float:right;margin-top:10px;text-align:right;padding-right:5px;">
+            <div style="float:right;margin-top:5px;text-align:right;padding-right:5px;">
                 @if (res.SchoolLogo != null)
                 {
-                    <img class="" src="data:image/jpg;base64,@(Convert.ToBase64String(res.SchoolStamp))" alt="" style="height:60px;width:100px;">
+                    <img class="" src="data:image/jpg;base64,@(Convert.ToBase64String(res.SchoolStamp))" alt="" style="height:40px;width:50px;">
                 }
                 else
                 {

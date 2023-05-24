@@ -2102,6 +2102,8 @@
     <Content Include="Areas\Admin\Views\UserManagers\EditStaff.cshtml" />
     <Content Include="Areas\Admin\Views\ResultManagement\MasterSubjects.cshtml" />
     <Content Include="Areas\Content\Views\Doc\EnrollFromAnotherTermInSession.cshtml" />
+    <Content Include="ExcelUpload\mandate8.xlsx" />
+    <Content Include="OnlineCourseUpload\Testing_862_effective-time-management.pdf" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
@@ -2212,8 +2214,6 @@
     <Folder Include="Areas\SuperUser\Views\DataMigration\" />
     <Folder Include="Areas\WebsiteManager\Models\" />
     <Folder Include="Areas\WebsiteUI\Data\" />
-    <Folder Include="ExcelUpload\" />
-    <Folder Include="OnlineCourseUpload\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>

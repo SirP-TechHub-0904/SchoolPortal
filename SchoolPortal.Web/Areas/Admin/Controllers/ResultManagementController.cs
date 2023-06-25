@@ -1155,11 +1155,14 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             var user = await _enrolService.Get(item.EnrollmentId);
             var name = await _studentService.Get(user.StudentProfileId);
             string fullname = name.Fullname;
-            ViewBag.exam = user.ClassLevel.ExamScore;
+            ViewBag.exam = user.ClassLevel.ExamScore; 
             ViewBag.acc = user.ClassLevel.AccessmentScore;
             ViewBag.StudentsName = fullname;
             ViewBag.sessionname = user.Session.SessionYear + "-" + user.Session.Term;
             ViewBag.c = user.ClassLevel.ClassName;
+
+            var subjectsetting = await db.Subjects.Include(x => x.ClassLevel).FirstOrDefaultAsync(x => x.Id == item.Subject.Id);
+            ViewBag.subsettingdata = subjectsetting;
             return View(item);
         }
         [HttpPost]
@@ -1203,12 +1206,13 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 {
                     models.TotalScore = 0;
                 };
-
+                var mainsett = await db.Settings.FirstOrDefaultAsync();
+                ViewBag.sxsetting = mainsett;
                 var subjectsetting = await db.Subjects.Include(x => x.ClassLevel).FirstOrDefaultAsync(x => x.Id == models.SubjectId);
                 var totalCA = models.Project + models.ClassExercise + models.TestScore + models.TestScore2 + models.Assessment;
                 //var totCA = setting.Project + setting.ClassExercise + setting.AccessmentScore + setting.TestScore2 + setting.Assessment;
                 var totalSubCA = subjectsetting.Project + subjectsetting.ClassExercise + subjectsetting.TestScore + subjectsetting.TestScore2 + subjectsetting.Assessment;
-                if (models.ExamScore > setting.ExamScore || totalCA > totalSubCA)
+                if (totalCA > totalSubCA)
                 {
                     var settings = db.Settings.FirstOrDefault();
                     TempData["error"] = "Assessment Score or Exam Score not in Range";

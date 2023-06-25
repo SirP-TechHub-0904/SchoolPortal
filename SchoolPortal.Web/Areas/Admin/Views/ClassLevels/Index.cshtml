@@ -75,10 +75,10 @@
                                                 }
 
                                                 <li class="text-color-success">@Html.ActionLink("Details", "Details", new { id = item.Id }, null)</li>
-
-                                                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Edittor"))
+                                                <li class="text-color-warning">@Html.ActionLink("Edit", "EditClass", new { id = item.Id }, null)</li>
+                                                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Edittor") || User.IsInRole("Admin"))
                                                 {
-                                                    <li class="text-color-warning">@Html.ActionLink("Edit", "EditClass", new { id = item.Id }, null)</li>
+
                                                 }
 
                                                 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Delettor"))
@@ -122,7 +122,7 @@
                                                 }
 
                                                 <li class="text-color-success">@Html.ActionLink("Details", "Details", new { id = item.Id }, null)</li>
-
+                                                <li class="text-color-warning">@Html.ActionLink("Edit", "EditClass", new { id = item.Id }, null)</li>
                                                 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Edittor"))
                                                 {
                                                     <li class="text-color-warning">@Html.ActionLink("Edit", "EditClass", new { id = item.Id }, null)</li>
@@ -154,13 +154,13 @@
 
 @section Style {
 
-    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 }
 
 @section Scripts {
     <!-- DataTables -->
-    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://www.exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="https://www.exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 }
 

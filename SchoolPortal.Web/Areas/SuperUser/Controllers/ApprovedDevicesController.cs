@@ -99,7 +99,7 @@ namespace SchoolPortal.Web.Areas.SuperUser.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,MacAddress,ImelNumber,IpAddress,Date,DeviceThatAddedThis")] ApprovedDevice approvedDevice)
         {
             if (ModelState.IsValid)
@@ -131,7 +131,7 @@ namespace SchoolPortal.Web.Areas.SuperUser.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,MacAddress,ImelNumber,IpAddress,Date,DeviceThatAddedThis")] ApprovedDevice approvedDevice)
         {
             if (ModelState.IsValid)
@@ -160,7 +160,7 @@ namespace SchoolPortal.Web.Areas.SuperUser.Controllers
 
         // POST: SuperUser/ApprovedDevices/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             ApprovedDevice approvedDevice = await db.ApprovedDevices.FindAsync(id);

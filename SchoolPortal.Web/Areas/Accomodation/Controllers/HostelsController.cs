@@ -62,7 +62,7 @@ namespace SchoolPortal.Web.Areas.Accomodation.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Hostel hostel)
         {
             if (ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace SchoolPortal.Web.Areas.Accomodation.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Hostel hostel)
         {
             if (ModelState.IsValid)
@@ -124,7 +124,7 @@ namespace SchoolPortal.Web.Areas.Accomodation.Controllers
 
         // POST: Accomodation/Hostels/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             await _accomodationService.DeleteHostel(id);

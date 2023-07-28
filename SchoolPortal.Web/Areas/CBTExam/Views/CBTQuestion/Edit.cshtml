@@ -61,7 +61,7 @@
 
             @using (Html.BeginForm("Edit", "CBTQuestion", FormMethod.Post, new { role = "form" }))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Id)

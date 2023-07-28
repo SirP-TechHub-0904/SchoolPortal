@@ -42,7 +42,7 @@ namespace SchoolPortal.Web.Areas.SuperDevice.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> AddComputer(ApprovedDevice device)
         {
             if (ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace SchoolPortal.Web.Areas.SuperDevice.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhone(ApprovedDevice device)
         {
             if (ModelState.IsValid)
@@ -100,7 +100,7 @@ namespace SchoolPortal.Web.Areas.SuperDevice.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> EditComputer(ApprovedDevice device)
         {
             if (ModelState.IsValid)
@@ -133,7 +133,7 @@ namespace SchoolPortal.Web.Areas.SuperDevice.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> EditPhone(ApprovedDevice device)
         {
             if (ModelState.IsValid)
@@ -164,7 +164,7 @@ namespace SchoolPortal.Web.Areas.SuperDevice.Controllers
 
         // POST: SuperDevice/DeviceManager/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             await _deviceService.Delete(id);

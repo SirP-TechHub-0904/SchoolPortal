@@ -73,7 +73,7 @@ namespace SchoolPortal.Web.Areas.Admission.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(StudentData studentData, HttpPostedFileBase upload, string refid)
         {
             if (ModelState.IsValid)
@@ -107,7 +107,7 @@ namespace SchoolPortal.Web.Areas.Admission.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(StudentData studentData, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -148,7 +148,7 @@ namespace SchoolPortal.Web.Areas.Admission.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateScore(StudentData studentData)
         {
             if (ModelState.IsValid)
@@ -178,7 +178,7 @@ namespace SchoolPortal.Web.Areas.Admission.Controllers
 
         // POST: Admission/StudentDatas/Delete/5
         [HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             StudentData studentData = await db.StudentDatas.FindAsync(id);

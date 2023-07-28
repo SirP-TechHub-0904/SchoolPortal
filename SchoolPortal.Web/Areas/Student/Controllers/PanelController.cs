@@ -407,7 +407,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
 
         //[HttpPost]
         //[AllowAnonymous]
-        ////[ValidateAntiForgeryToken]
+        //////[ValidateAntiForgeryToken]
         //public async Task<ActionResult> LoginAccess(LoginAccessDto model, string returnUrl)
         //{
         //    if (!ModelState.IsValid)
@@ -503,7 +503,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Post model, List<HttpPostedFileBase> upload)
         {
             if (ModelState.IsValid)
@@ -607,7 +607,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> EditMyPost(Post model, List<HttpPostedFileBase> upload)
         {
             if (ModelState.IsValid)
@@ -644,7 +644,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
 
         // POST: Content/Posts/Delete/5
         [HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             await _imageService.PostImageDelete(id);
@@ -671,7 +671,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
 
 
         [HttpPost, ActionName("DeleteComment")]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteCommentConfirmed(int id)
         {
 
@@ -680,7 +680,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateComment(Comment model, int id)
         {
             if (ModelState.IsValid)
@@ -2973,7 +2973,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> Upload(HttpPostedFileBase upload, int id)
         {
             try
@@ -3014,7 +3014,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePhoto(HttpPostedFileBase upload, int id)
         {
             var getstudent = await _studentProfileService.Get(id);
@@ -3062,7 +3062,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
 
         [HttpPost]
 
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> EditUser(StudentInfoDto model)
         {
             if (ModelState.IsValid)
@@ -3100,7 +3100,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
 
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateAmount(int percent, int id, int sessionId = 0)
         {
             var finance = await db.FinanceInitializers.Include(x => x.Income).FirstOrDefaultAsync(x => x.Id == id);
@@ -3114,7 +3114,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePay(int id, int sessionId = 0)
         {
             var finance = await db.FinanceInitializers.Include(x => x.Income).FirstOrDefaultAsync(x => x.Id == id);
@@ -3125,7 +3125,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
             return RedirectToAction("MakePayment", new { sessionId = finance.SessionId });
         }
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> AddToPay(int id, int sessionId = 0, bool payall = false, decimal bal = 0)
         {
             int sid = 0;
@@ -3306,7 +3306,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> AssignmentAnswer(AssignmentAnswer model, int assId)
         {
             var check = await db.AssignmentAnswers.FirstOrDefaultAsync(x => x.AssignmentId == model.Id);
@@ -3347,7 +3347,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> EditAssignmentAnswer(AssignmentAnswer model, int id)
         {
             if (ModelState.IsValid)
@@ -3464,7 +3464,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        ////[ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateProfile(StudentInfoDto model)
         {
             if (ModelState.IsValid)

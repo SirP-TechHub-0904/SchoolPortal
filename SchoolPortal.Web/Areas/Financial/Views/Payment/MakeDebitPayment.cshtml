@@ -32,7 +32,7 @@
 
             @using (Html.BeginForm())
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
                 @Html.HiddenFor(model => model.Id)
 
                 <div class="box-body">

@@ -123,7 +123,7 @@
                                         <li class="">
                                             @using (Html.BeginForm("AddToPay", "Panel", new { area = "Student" }, FormMethod.Post, new { id = "", enctype = "" }))
                                             {
-                                                @Html.AntiForgeryToken()
+                                                @*@Html.AntiForgeryToken()*@
                                                 <input type="hidden" name="sessionId" value="@ViewBag.sid" />
                                                 //ViewBag.eid
                                                 @*<input type="hidden" value="@ViewBag.stid" name="id" />*@
@@ -272,7 +272,7 @@
                                                 <td>
                                                     @using (Html.BeginForm("UpdateAmount", "Panel", new { area = "Student" }, FormMethod.Post, new { id = i.Income.Title.Replace(" ", "") + i.Id + "50%", enctype = "" }))
                                                     {
-                                                        @Html.AntiForgeryToken()
+                                                        @*@Html.AntiForgeryToken()*@
                                                         <input type="hidden" name="id" value="@i.Id" />
                                                         <input type="hidden" name="sessionId" value="@ViewBag.sid" />
 
@@ -282,7 +282,7 @@
 
                                                     @using (Html.BeginForm("UpdateAmount", "Panel", new { area = "Student" }, FormMethod.Post, new { id = i.Income.Title.Replace(" ", "") + i.Id + "75%", enctype = "" }))
                                                     {
-                                                        @Html.AntiForgeryToken()
+                                                        @*@Html.AntiForgeryToken()*@
                                                         <input type="hidden" name="id" value="@i.Id" />
                                                         <input type="hidden" name="sessionId" value="@ViewBag.sid" />
 
@@ -292,7 +292,7 @@
 
                                                     @using (Html.BeginForm("UpdateAmount", "Panel", new { area = "Student" }, FormMethod.Post, new { id = i.Income.Title.Replace(" ", "") + i.Id + "100%", enctype = "" }))
                                                     {
-                                                        @Html.AntiForgeryToken()
+                                                        @*@Html.AntiForgeryToken()*@
                                                         <input type="hidden" name="id" value="@i.Id" />
                                                         <input type="hidden" name="sessionId" value="@ViewBag.sid" />
 
@@ -339,7 +339,7 @@
                                                 <td>
                                                     @using (Html.BeginForm("RemovePay", "Panel", new { area = "Student" }, FormMethod.Post, new { id = i.Income.Title.Replace(" ", "") + i.Id + "100%", enctype = "" }))
                                                     {
-                                                        @Html.AntiForgeryToken()
+                                                        @*@Html.AntiForgeryToken()*@
                                                         <input type="hidden" name="id" value="@i.Id" />
                                                         <input type="hidden" name="sessionId" value="@ViewBag.sid" />
 

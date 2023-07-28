@@ -160,7 +160,7 @@
                                             {
                                                 using (Html.BeginForm("QuestionSetting", "Panel", FormMethod.Post, new { role = "form" }))
                                                 {
-                                                    @Html.AntiForgeryToken()
+                                                    @*@Html.AntiForgeryToken()*@
 
                                                     <input type="hidden" name="examId" value="@item.Id" />
                                                     <input type="hidden" name="settingId" value="@item.SettingModelId" />

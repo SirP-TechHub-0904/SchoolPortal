@@ -26,12 +26,12 @@
 
                 @using (Html.BeginForm("Create", "CBTClass", FormMethod.Post, new { role = "form" }))
                 {
-                    @Html.AntiForgeryToken()
+                    @*@Html.AntiForgeryToken()*@
 
                     <input type="hidden" name="xgink" value="@ViewBag.xgink" />
                     <input type="hidden" name="unixconverify" value="@ViewBag.unixconverify" />
                     <input type="hidden" name="role" value="@ViewBag.role" />
-                    @Html.AntiForgeryToken()
+                    @*@Html.AntiForgeryToken()*@
 
                     <div class="box-body">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

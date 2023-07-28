@@ -60,7 +60,7 @@
 
         @using (Html.BeginForm("Edit", "CBTOption", FormMethod.Post, new { role = "form" }))
         {
-            @Html.AntiForgeryToken()
+            @*@Html.AntiForgeryToken()*@
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.QuestionModelId)
             @Html.HiddenFor(model => model.SchoolLink)

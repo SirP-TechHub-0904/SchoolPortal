@@ -13,7 +13,7 @@
 
     @using (Html.BeginForm("UpdateData", "XYZ", null, FormMethod.Post, new { id = "", enctype = "multipart/form-data" }))
     {
-        @Html.AntiForgeryToken()
+        @*@Html.AntiForgeryToken()*@
 
 <div class="form-horizontal">
     <p>fill the form to receive your username and password via text and email within minutes.</p>

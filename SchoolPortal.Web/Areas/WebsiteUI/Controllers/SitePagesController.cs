@@ -87,7 +87,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(SitePage sitePage)
         {
             if (ModelState.IsValid)
@@ -140,7 +140,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(SitePage sitePage)
         {
             if (ModelState.IsValid)
@@ -184,7 +184,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
 
         // POST: WebsiteUI/SitePages/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SitePage sitePage = await db.SitePages.FindAsync(id);

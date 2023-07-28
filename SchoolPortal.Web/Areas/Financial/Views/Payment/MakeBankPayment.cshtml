@@ -70,7 +70,7 @@
 
             @using (Html.BeginForm("MakeBankPayment", "Payment", FormMethod.Post, new { @class = "", enctype = "multipart/form-data", area = "Financial" }))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
                 <input type="hidden" name="id" value="@ViewBag.InvoiceId" />
                 @Html.HiddenFor(model => model.Id)
 

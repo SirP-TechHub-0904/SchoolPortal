@@ -36,7 +36,7 @@
             </div>
             @using (Html.BeginForm("BatchReg", "UserManagers", FormMethod.Post, new { @class = "", role = "form", enctype = "multipart/form-data" }))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
 
 
                 <div class="box-body">

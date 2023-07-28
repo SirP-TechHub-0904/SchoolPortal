@@ -21,7 +21,7 @@
                     <span class="info-box-text text-white" style="font-weight:900;color:white !important;">@i.Title</span>
                     @using (Html.BeginForm("PaymentHistoryByName", "Payment", new { area = "Financial" }, FormMethod.Post, new { id = "", enctype = "multipart/form-data" }))
                     {
-                        @Html.AntiForgeryToken()
+                        @*@Html.AntiForgeryToken()*@
 
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

@@ -77,7 +77,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(SiteNewsPostList siteNewsPostList)
         {
             if (ModelState.IsValid)
@@ -109,7 +109,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(SiteNewsPostList siteNewsPostList)
         {
             if (ModelState.IsValid)
@@ -138,7 +138,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
 
         // POST: WebsiteUI/SiteNewsPostLists/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SiteNewsPostList siteNewsPostList = await db.SiteNewsPostList.FindAsync(id);

@@ -32,7 +32,7 @@
 
             @using (Html.BeginForm("Create", "CBTExamBoard", FormMethod.Post, new { role = "form" }))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
 
                 <input type="hidden" name="xgink" value="@ViewBag.xgink" />
                 <input type="hidden" name="unixconverify" value="@ViewBag.unixconverify" />

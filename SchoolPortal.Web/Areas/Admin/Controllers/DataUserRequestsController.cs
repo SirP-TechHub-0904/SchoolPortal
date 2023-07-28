@@ -195,7 +195,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,FullName,DateOfBirth,ParentName,StudentsPhoneNumber,ParentsPhoneNumber,ParentsOccupation,ClassName,FormTeacher")] DataUserRequest dataUserRequest)
         {
             if (ModelState.IsValid)
@@ -227,7 +227,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,FullName,DateOfBirth,ParentName,StudentsPhoneNumber,ParentsPhoneNumber,ParentsOccupation,ClassName,FormTeacher")] DataUserRequest dataUserRequest)
         {
             if (ModelState.IsValid)
@@ -256,7 +256,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         // POST: Admin/DataUserRequests/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             DataUserRequest dataUserRequest = await db.DataUserRequests.FindAsync(id);

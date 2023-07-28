@@ -67,7 +67,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Content,Show")] SiteNavHeader siteNavHeader)
         {
             if (ModelState.IsValid)
@@ -99,7 +99,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Content,Show")] SiteNavHeader siteNavHeader)
         {
             if (ModelState.IsValid)
@@ -128,7 +128,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
 
         // POST: WebsiteUI/SiteNavHeaders/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SiteNavHeader siteNavHeader = await db.SiteNavHeaders.FindAsync(id);

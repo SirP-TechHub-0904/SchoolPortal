@@ -44,7 +44,7 @@
                                 <input type="hidden" name="role" value="@ViewBag.role" />
                                 <input type="hidden" name="id" value="@i.Id" />
                                 <input type="hidden" name="qId" value="@ViewBag.qId" />
-                                @Html.AntiForgeryToken()
+                                @*@Html.AntiForgeryToken()*@
 
                                 <div class="close" aria-label="close">
                                     <input type="submit" value="&times;" disabled="disabled">
@@ -79,7 +79,7 @@
             </div>
             @using (Html.BeginForm("Create", "CBTOption", FormMethod.Post, new { role = "form" }))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
 
                 <input type="hidden" name="xgink" value="@ViewBag.xgink" />
                 <input type="hidden" name="unixconverify" value="@ViewBag.unixconverify" />

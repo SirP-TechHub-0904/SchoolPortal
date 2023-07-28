@@ -451,7 +451,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateNewPayment(Finance item, int PaymentAmountId, string teller, string Surname, string FirstName, string OtherName, string Email, string PhoneNumber, string Address, string State, int Classid)
         {
             if (ModelState.IsValid)
@@ -627,7 +627,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> CreatePayment(Finance item, int StudentId, int PaymentAmountId, string teller)
         {
             if (ModelState.IsValid)
@@ -725,7 +725,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> CreatePaymentSession(Finance item, int StudentId, int PaymentAmountId, int sessionId, string teller)
         {
             if (ModelState.IsValid)
@@ -1271,7 +1271,7 @@ namespace SchoolPortal.Web.Areas.Financial.Controllers
             return View(item);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> PaymentHistoryByName(string PaymentType)
         {
             var py = await db.Incomes.FirstOrDefaultAsync(x => x.Title == PaymentType);

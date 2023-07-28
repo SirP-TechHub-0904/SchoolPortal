@@ -2190,6 +2190,8 @@
     <Content Include="Areas\Account\Views\XYZ\Feedback.cshtml" />
     <Content Include="Areas\Account\Views\XYZ\Login.cshtml" />
     <Content Include="Areas\Account\Views\Shared\_login2022.cshtml" />
+    <None Include="Properties\PublishProfiles\wimbigservice-001-site7 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\wimbigservice-001-site7 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Aq_Image\Course\" />

@@ -47,7 +47,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Title,Show")] SitePageCategory sitePageCategory)
         {
             if (ModelState.IsValid)
@@ -79,7 +79,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Show")] SitePageCategory sitePageCategory)
         {
             if (ModelState.IsValid)
@@ -108,7 +108,7 @@ namespace SchoolPortal.Web.Areas.WebsiteUI.Controllers
 
         // POST: WebsiteUI/SitePageCategories/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SitePageCategory sitePageCategory = await db.SitePageCategories.FindAsync(id);

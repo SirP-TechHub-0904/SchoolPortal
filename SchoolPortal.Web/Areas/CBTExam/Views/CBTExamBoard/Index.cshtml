@@ -99,7 +99,7 @@
                                                         @using (Html.BeginForm("DeleteExam", "CBTExamBoard", FormMethod.Post, new { role = "form" }))
                                                         {
                                                             <input type="hidden" name="settingId" value="@item.Id" />
-                                                            @Html.AntiForgeryToken()
+                                                            @*@Html.AntiForgeryToken()*@
 
                                                             <button type="submit" class="btn btn-danger"><i class="fa fa-minus"></i> Delete</button>
                                                         }

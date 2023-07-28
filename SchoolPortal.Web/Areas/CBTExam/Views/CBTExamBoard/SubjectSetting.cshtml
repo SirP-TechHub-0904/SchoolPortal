@@ -43,7 +43,7 @@
                                 <input type="hidden" name="role" value="@ViewBag.role" />
                                 <input type="hidden" name="id" value="@i.Id" />
                                 <input type="hidden" name="settingId" value="@i.SettingModelId" />
-                                @Html.AntiForgeryToken()
+                                @*@Html.AntiForgeryToken()*@
 
                                 <div class="close" aria-label="close">
                                     <input type="submit" value="&times;">
@@ -70,7 +70,7 @@
             </div>
             @using (Html.BeginForm("SubjectSetting", "CBTExamBoard", FormMethod.Post, new { role = "form" }))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
 
                 <input type="hidden" name="xgink" value="@ViewBag.xgink" />
                 <input type="hidden" name="unixconverify" value="@ViewBag.unixconverify" />

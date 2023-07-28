@@ -47,7 +47,7 @@
             @*@using (Html.BeginForm("Result", "Panel", new { skip = ViewBag.skip, area = "Student" }, FormMethod.Post))*@
             @using (Html.BeginForm("Index2", "Application", new { area = "Admission" }, FormMethod.Post))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
 
                 <div class="box-body">
 

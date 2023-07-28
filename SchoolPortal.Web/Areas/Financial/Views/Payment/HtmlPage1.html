@@ -40,7 +40,7 @@
         <li class="">
             @using (Html.BeginForm("AddToPay", "Panel", new { area = "Student" }, FormMethod.Post, new { id = "", enctype = "" }))
             {
-            @Html.AntiForgeryToken()
+            @*@Html.AntiForgeryToken()*@
             <input type="hidden" name="sessionId" value="@ViewBag.sid" />
             //ViewBag.eid
             @*<input type="hidden" value="@ViewBag.stid" name="id" />*@

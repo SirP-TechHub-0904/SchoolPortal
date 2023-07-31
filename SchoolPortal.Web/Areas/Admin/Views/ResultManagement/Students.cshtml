@@ -22,6 +22,12 @@
                     {
                         if (ViewBag.enablePreviewResult == true)
                         {
+
+                            
+                            if (ViewBag.Disableresults == false)
+                            {
+                               
+                            
                             if (ViewBag.sett.PrintOutOption == SchoolPortal.Web.Models.Entities.PrintOutOption.PrintOutOne)
                             {
                                 @Html.ActionLink("Result Preview", "ResultPreview", new { sessId = ViewBag.sessionId, classId = ViewBag.ClassId }, new { @class = "btn btn-primary", target = "_blank" })
@@ -39,10 +45,10 @@
                                 else
                                 {
                                     @Html.ActionLink("Result Preview", "ResultPreview3", new { sessId = ViewBag.sessionId, classId = ViewBag.ClassId }, new { @class = "btn btn-primary", target = "_blank" })
+                                    }
+
                                 }
-
                             }
-
                         }
 
                         <input type="submit" value="Update Class Result" class="btn btn-success" />

@@ -705,11 +705,17 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
         //public async Task<ActionResult> Result(string skip)
         public async Task<ActionResult> Result()
         {
+            var sett = db.Settings.FirstOrDefault();
+            if(sett.DisableAllResultPrinting == true)
+            {
+                return RedirectToAction("/Verify");
+            }
+
             var session = await _sessionService.GetAllSession();
 
             ViewBag.sessionId = new SelectList(session, "Id", "FullSession");
             //ViewBag.skip = skip;
-            var sett = db.Settings.FirstOrDefault();
+            
             ViewBag.name = sett.SchoolName;
             if (User.IsInRole("Student"))
             {
@@ -717,6 +723,15 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
                 ViewBag.regnumber = user.StudentRegNumber;
             }
 
+            return View();
+        }
+            [AllowAnonymous]
+        //public async Task<ActionResult> Result(string skip)
+        public async Task<ActionResult> Verify()
+        {
+           var sett = db.Settings.FirstOrDefault();
+           
+            ViewBag.notep = sett.DisableAllResultPrintingNote;
             return View();
         }
 
@@ -1029,18 +1044,17 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
                         //if (sett.PinValidOption == PinValidOption.Termly)
                         //{
 
-                        //    //Check if it has been used by another user
-                        //    if (pinCode.StudentPin != userProfile.StudentRegNumber && pinCode.StudentPin != null)
-                        //    {
-                        //        ViewBag.Error = "The PIN has been used by another user.";
-                        //        ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
+                        //Check if it has been used by another user
+                        if (pinCode.StudentPin != userProfile.StudentRegNumber && pinCode.StudentPin != null)
+                        {
+                            ViewBag.Error = "The PIN has been used by another user.";
+                            ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
 
-                        //        return View(model);
-                        //    }
-                        //}
-                        ////Check If it has been used by you for another term
-                        //else
-                        if (pinCode.StudentPin == userProfile.StudentRegNumber && pinCode.EnrollmentId == enrollment.Id && pinCode.EnrollmentId != null && sett.PinValidOption == PinValidOption.Termly)
+                            return View(model);
+                        }
+                    
+                    //Check If it has been used by you for another term
+                    else if (pinCode.StudentPin == userProfile.StudentRegNumber && pinCode.EnrollmentId == enrollment.Id && pinCode.EnrollmentId != null && sett.PinValidOption == PinValidOption.Termly)
                         {
 
                             if (session != null)

@@ -134,6 +134,11 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         //batch print
         public async Task<ActionResult> BatchResult()
         {
+             var sett = db.Settings.FirstOrDefault();
+            if(sett.DisableAllResultPrinting == true)
+            {
+                return RedirectToAction("Verify", "Panel", new {area="Student"});
+            }
             var classlevel = await _classlevelService.ClassLevelList();
             ViewBag.ClassLevelId = new SelectList(classlevel.OrderBy(x => x.ClassLevelName), "Id", "ClassLevelName");
 
@@ -247,8 +252,12 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ViewBatch(int sessId, int classId)
         {
-
-            var sett = db.Settings.FirstOrDefault();
+             var sett = db.Settings.FirstOrDefault();
+            if(sett.DisableAllResultPrinting == true)
+            {
+                return RedirectToAction("Verify", "Panel", new {area="Student"});
+            }
+            
             var sessionlist = await _sessionService.GetAllSession();
             var publishcheck = await db.PublishResults.FirstOrDefaultAsync(x => x.ClassLevelId == classId);
             if (publishcheck == null)
@@ -326,7 +335,12 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         [AllowAnonymous]
         public async Task<ActionResult> Preview(string batchid)
-        {
+        { 
+            var sett = db.Settings.FirstOrDefault();
+            if(sett.DisableAllResultPrinting == true)
+            {
+                return RedirectToAction("Verify", "Panel", new {area="Student"});
+            }
             var items = await db.BatchResults.Where(x => x.BatchId == batchid).ToListAsync();
             return View(items);
         }
@@ -334,6 +348,11 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Preview2(string batchid)
         {
+             var sett = db.Settings.FirstOrDefault();
+            if(sett.DisableAllResultPrinting == true)
+            {
+                return RedirectToAction("Verify", "Panel", new {area="Student"});
+            }
             var items = await db.BatchResults.Where(x => x.BatchId == batchid).ToListAsync();
             return View(items);
         }
@@ -341,6 +360,11 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Preview3(string batchid)
         {
+             var sett = db.Settings.FirstOrDefault();
+            if(sett.DisableAllResultPrinting == true)
+            {
+                return RedirectToAction("Verify", "Panel", new {area="Student"});
+            }
             var items = await db.BatchResults.Where(x => x.BatchId == batchid).ToListAsync();
             return View(items);
         }
@@ -350,7 +374,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             var sett = db.Settings.FirstOrDefault();
             ViewBag.sett = sett;
             ViewBag.enablePreviewResult = sett.EnablePreviewResult;
-
+            ViewBag.Disableresults = sett.DisableAllResultPrinting;
             await _enrolService.UpdateEnrollmentStatus(classId);
             var enrolledStudents = await _resultService.StudentsBySessIdAndByClassId(sessId, classId);
             if (enrolledStudents.Count() <= 0)

@@ -551,6 +551,22 @@
                             <dd>
                                 @Html.DisplayFor(model => model.EnableFinance)
                             </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DisableAllResultPrinting)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DisableAllResultPrinting)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DisableAllResultPrintingNote)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.DisableAllResultPrintingNote)
+                            </dd>
                         </dl>
                     </div>
                     <p>

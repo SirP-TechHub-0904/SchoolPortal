@@ -1123,6 +1123,14 @@
     <Compile Include="Migrations\202304100927212_updateaverageonclassposition.Designer.cs">
       <DependentUpon>202304100927212_updateaverageonclassposition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202307311045468_initDisable-results.cs" />
+    <Compile Include="Migrations\202307311045468_initDisable-results.Designer.cs">
+      <DependentUpon>202307311045468_initDisable-results.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307311158294_initDisable-results-note.cs" />
+    <Compile Include="Migrations\202307311158294_initDisable-results-note.Designer.cs">
+      <DependentUpon>202307311158294_initDisable-results-note.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dtos\AdminPostDetalsDto.cs" />
@@ -2104,6 +2112,7 @@
     <Content Include="Areas\Content\Views\Doc\EnrollFromAnotherTermInSession.cshtml" />
     <Content Include="ExcelUpload\mandate8.xlsx" />
     <Content Include="OnlineCourseUpload\Testing_862_effective-time-management.pdf" />
+    <Content Include="Areas\Student\Views\Panel\Verify.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
@@ -2651,6 +2660,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304100927212_updateaverageonclassposition.resx">
       <DependentUpon>202304100927212_updateaverageonclassposition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307311045468_initDisable-results.resx">
+      <DependentUpon>202307311045468_initDisable-results.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307311158294_initDisable-results-note.resx">
+      <DependentUpon>202307311158294_initDisable-results-note.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

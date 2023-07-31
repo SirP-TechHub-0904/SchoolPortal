@@ -445,7 +445,7 @@
 
                     </div>
                 </div>
-               
+
                 <div class="form-group">
                     @Html.Label("Pin Usage Select Type", htmlAttributes: new { @class = "control-label" })
                     <div class="">
@@ -586,6 +586,24 @@
                     @Html.EditorFor(model => model.EnableAssessment)
                     @Html.ValidationMessageFor(model => model.EnableAssessment, "", new { @class = "text-danger" })
 
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DisableAllResultPrinting, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        <div class="">
+                            @Html.EditorFor(model => model.DisableAllResultPrinting)
+                            @Html.ValidationMessageFor(model => model.DisableAllResultPrinting, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DisableAllResultPrintingNote, htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        <div class="">
+                            @Html.TextAreaFor(model => model.DisableAllResultPrintingNote)
+                            @Html.ValidationMessageFor(model => model.DisableAllResultPrintingNote, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
 

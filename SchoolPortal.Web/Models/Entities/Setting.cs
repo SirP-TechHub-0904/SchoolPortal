@@ -237,5 +237,13 @@ namespace SchoolPortal.Web.Models.Entities
         [Display(Name = "FlutterWave Secret Key")]
         public string FlutterwaveSecretKey { get; set; }
         public decimal FlutterwaveChargePercentage { get; set; }
+
+
+
+         [Display(Name = "Disable All Result Printing")]
+        public bool DisableAllResultPrinting { get; set; }
+
+         [Display(Name = "Disable All Result PrintingNote")]
+        public string DisableAllResultPrintingNote { get; set; }
     }
 }

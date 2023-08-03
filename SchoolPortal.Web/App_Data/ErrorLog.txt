@@ -1,1 +1,250 @@
-﻿.
+﻿.********** 8/2/2023 9:44:36 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 9:45:30 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 9:47:08 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:02:51 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:04:40 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:06:48 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:10:17 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:11:56 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:12:52 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+********** 8/2/2023 10:17:16 PM **********
+Exception Type: System.Web.HttpException
+Exception: The controller for path '/bundles/jqueryval' was not found or does not implement IController.
+Source: DefaultPage
+Stack Trace: 
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.<>c__DisplayClass285_0.<ExecuteStepImpl>b__0()
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step)
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.StepInvoker.<>c__DisplayClass4_0.<Invoke>b__0()
+   at Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule.OnExecuteRequestStep(HttpContextBase context, Action step) in E:\A\_work\21\s\WEB\Src\Web\Web.Shared.Net\ApplicationInsightsHttpModule.cs:line 164
+   at System.Web.HttpApplication.<>c__DisplayClass284_0.<OnExecuteRequestStep>b__0(Action nextStepAction)
+   at System.Web.HttpApplication.StepInvoker.Invoke(Action executionStep)
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

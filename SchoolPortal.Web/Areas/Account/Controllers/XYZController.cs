@@ -375,7 +375,10 @@ namespace SchoolPortal.Web.Areas.Account.Controllers
             }
 
             var user1 = await UserManager.FindByNameAsync(model.Username);
-
+            if(user1 == null) { 
+                 TempData["error"] = "Invalid User. Try Again";
+                                    return RedirectToAction("Login", "XYZ", new { area = "Account" });
+                }
             if (await UserManager.IsInRoleAsync(user1.Id, "SuperAdmin"))
             {
                 if (await UserManager.CheckPasswordAsync(user1, model.Password))

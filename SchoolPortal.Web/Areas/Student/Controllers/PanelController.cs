@@ -1032,7 +1032,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
                     }
                     if (pinCode == null)
                     {
-                        ViewBag.Error = "The PIN does not exist. Please check the PIN Number and Serial Number and then try again.";
+                        ViewBag.Error = "Invalid PIN. Please check the PIN Number and Serial Number and then try again.";
                         ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
                         return View(model);
                     }
@@ -1067,7 +1067,7 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
                                 //}
                                 if (pinCode.EnrollmentId == enrollment.Id && sett.PinValidOption == PinValidOption.Termly && pinCode.Usage <= 0)
                                 {
-                                    ViewBag.Error = "The PIN is no longer active. You have used it in another term.";
+                                    ViewBag.Error = "Exceeded PIN Usage.";
                                     ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
                                     return View(model);
                                 }
@@ -1465,11 +1465,22 @@ namespace SchoolPortal.Web.Areas.Student.Controllers
                                 ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
                                 return View(model);
                             }
-
+                            else if (pinCode.EnrollmentId != enrollment.Id)
+                            {
+                                ViewBag.Error = "The PIN has been used by you for another term.";
+                                ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
+                                return View(model);
+                            }
                             if (pinCode.Usage > 0)
                             {
                                 pinCode.Usage = pinCode.Usage - 1;
                                 await _resultService.Update();
+                            }
+                            else
+                            {
+                                ViewBag.Error = "Exceeded PIN Usage.";
+                                ViewBag.sessionId = new SelectList(sessionlist, "Id", "FullSession", model.SessionId);
+                                return View(model);
                             }
 
                             //Update Printed Status

@@ -2163,8 +2163,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Account\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Account\Views\XYZ\_ExternalLoginsListPartial.cshtml" />
@@ -2225,7 +2223,6 @@
     <Folder Include="Areas\SuperUser\Views\DataMigration\" />
     <Folder Include="Areas\WebsiteManager\Models\" />
     <Folder Include="Areas\WebsiteUI\Data\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

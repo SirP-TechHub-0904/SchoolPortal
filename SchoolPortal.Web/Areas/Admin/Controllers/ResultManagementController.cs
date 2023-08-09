@@ -341,9 +341,17 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             {
                 return RedirectToAction("Verify", "Panel", new {area="Student"});
             }
+
+            var sessions = await db.Sessions.FirstOrDefaultAsync(x=>x.Status == SessionStatus.Current);
+            ViewBag.session = sessions;
+
             var items = await db.BatchResults.Where(x => x.BatchId == batchid).ToListAsync();
             return View(items);
         }
+
+
+      
+
 
         [AllowAnonymous]
         public async Task<ActionResult> Preview2(string batchid)

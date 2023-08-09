@@ -536,7 +536,7 @@
     <Compile Include="Areas\WebsiteUI\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\WebsiteUI\Controllers\SiteSlidersController.cs" />
     <Compile Include="Areas\WebsiteUI\WebsiteUIAreaRegistration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountAAController.cs" />
     <Compile Include="Controllers\CBTQuestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

@@ -32,18 +32,18 @@ namespace SchoolPortal.Web.Controllers
 
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountAAController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IUserManagerService _userService = new UserManagerService();
 
-        public AccountController()
+        public AccountAAController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationRoleManager roleManager, ApplicationSignInManager signInManager, UserManagerService userService)
+        public AccountAAController(ApplicationUserManager userManager, ApplicationRoleManager roleManager, ApplicationSignInManager signInManager, UserManagerService userService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

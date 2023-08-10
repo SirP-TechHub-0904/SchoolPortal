@@ -252,7 +252,7 @@ namespace SchoolPortal.Web.Areas.Service
                             }
                         }
 
-                        outloop: userposition = position;
+                    outloop: userposition = position;
                         useraveragescore = Math.Round(averageScore, 2);
 
                     }
@@ -468,7 +468,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 var enrol = db.Enrollments.FirstOrDefault(x => x.StudentProfileId == studentid && x.SessionId == seeid);
-                var finance = db.Finances.Where(x => x.IncomeId == id && x.EnrollmentId == enrol.Id).OrderByDescending(x=>x.Id).FirstOrDefault();
+                var finance = db.Finances.Where(x => x.IncomeId == id && x.EnrollmentId == enrol.Id).OrderByDescending(x => x.Id).FirstOrDefault();
                 var paymode = db.Incomes.FirstOrDefault(x => x.Id == id);
                 if (finance != null)
                 {
@@ -743,7 +743,7 @@ namespace SchoolPortal.Web.Areas.Service
                             }
                         }
 
-                        outloop: userposition = position;
+                    outloop: userposition = position;
                         useraveragescore = Math.Round(averageScore, 2);
 
                     }
@@ -899,7 +899,7 @@ namespace SchoolPortal.Web.Areas.Service
                 decimal? outcomeaverage = 0;
                 if (getuserenrollment.AverageScore != null)
                 {
- 
+
                     outcomeaverage = decimal.Truncate((decimal)getuserenrollment.AverageScore);
                 }
                 if (getuserenrollment.ClassLevel.ShowAverageOverPositionInClass == true)
@@ -912,7 +912,7 @@ namespace SchoolPortal.Web.Areas.Service
                         if (getuserenrollment.ClassLevel.ClassName.ToUpper().Contains("SSS"))
                         {
                             foreach (var item in db.GradingDetails.Where(x => x.Grading.Name == GradingOption.SSS.ToString()))
-                                //var item = db.GradingDetails.FirstOrDefault(x => x.Grading.Name == GradingOption.SSS.ToString());
+                            //var item = db.GradingDetails.FirstOrDefault(x => x.Grading.Name == GradingOption.SSS.ToString());
                             {
                                 if (outcomeaverage >= item.LowerLimit && outcomeaverage <= item.UpperLimit)
                                 {
@@ -944,9 +944,9 @@ namespace SchoolPortal.Web.Areas.Service
                                 }
                             }
 
-                        
 
-                    }
+
+                        }
                         else if (getuserenrollment.ClassLevel.ClassName.ToUpper().Contains("NUR"))
                         {
                             foreach (var item in db.GradingDetails.Where(x => x.Grading.Name == GradingOption.NUR.ToString()))
@@ -958,9 +958,9 @@ namespace SchoolPortal.Web.Areas.Service
                                 }
                             }
 
-                             
+
                         }
-                         
+
 
                     }
                     catch (Exception c) { }
@@ -1226,7 +1226,7 @@ namespace SchoolPortal.Web.Areas.Service
                             }
                         }
 
-                        outloop: userposition = position;
+                    outloop: userposition = position;
                         useraveragescore = Math.Round(averageScore, 2);
 
                     }
@@ -1387,7 +1387,7 @@ namespace SchoolPortal.Web.Areas.Service
                             }
                         }
 
-                        outloop: userposition = position;
+                    outloop: userposition = position;
                         useraveragescore = Math.Round(averageScore, 2);
 
                     }
@@ -1488,7 +1488,7 @@ namespace SchoolPortal.Web.Areas.Service
                             }
                         }
 
-                        outloop: userposition = position;
+                    outloop: userposition = position;
                         useraveragescore = Math.Round(cumaverageScore, 2);
 
                     }
@@ -1719,7 +1719,7 @@ namespace SchoolPortal.Web.Areas.Service
                             }
                         }
 
-                        outloop: userposition = position;
+                    outloop: userposition = position;
                         useraveragescore = Math.Round(averageScore, 2);
 
                     }
@@ -1959,7 +1959,7 @@ namespace SchoolPortal.Web.Areas.Service
                         }
                     }
 
-                    outloop: cumPosition = cummulativePosition;
+                outloop: cumPosition = cummulativePosition;
                     decimal cummulativeAverage = cumAvg.Value;
                     string dispaly = cummulativeAverage.ToString("0.00");
                     cumAverage = dispaly;
@@ -2081,6 +2081,10 @@ namespace SchoolPortal.Web.Areas.Service
                     decimal? Ave2 = 0.00m;
                     decimal? Ave3 = 0.00m;
 
+                    int t1 = 0;
+                    int t2 = 0;
+                    int t3 = 0;
+
                     if (firsttermsubject != null)
                     {
                         Ave1 = firsttermsubject.TotalScore;
@@ -2100,37 +2104,71 @@ namespace SchoolPortal.Web.Areas.Service
                     decimal? AverageTotalScore = 0;
                     if (firsttermsubject != null || secondtermsubject != null || thirdtermsubject != null)
                     {
-                        if (Ave1 > 0 && Ave2 > 0 && Ave3 > 0)
+                        if (Ave1 > 0)
                         {
-                            totalScore = Ave1 + Ave2 + Ave3;
-
-                            AverageTotalScore = totalScore / 3;
+                            t1 = 1;
                         }
-                        else if (Ave1 == 0 && Ave2 > 0 && Ave3 > 0)
+                        if (Ave2 > 0)
                         {
-                            totalScore = Ave2 + Ave3;
-
-                            AverageTotalScore = totalScore / 2;
+                            t2 = 1;
                         }
-                        else if (Ave1 == 0 && Ave2 == 0 && Ave3 > 0)
+                        if (Ave3 > 0)
                         {
-                            totalScore = Ave3;
-
-                            AverageTotalScore = totalScore / 1;
+                            t3 = 1;
                         }
-                        else if (Ave1 > 0 && Ave2 == 0 && Ave3 > 0)
-                        {
-                            totalScore = Ave1 + Ave3;
-
-                            AverageTotalScore = totalScore / 2;
-                        }
+                        totalScore = Ave1 + Ave2 + Ave3;
+                        int dvs = t1 + t2 + t3;
+                        AverageTotalScore = totalScore / dvs;
+                        //if (Ave1 > 0 && Ave2 > 0 && Ave3 > 0)
+                        //{
+                        //    totalScore = Ave1 + Ave2 + Ave3;
+                        //    AverageTotalScore = totalScore / 3;
+                        //}
+                        //else if (Ave1 == 0 && Ave2 > 0 && Ave3 > 0)
+                        //{
+                        //    totalScore = Ave2 + Ave3;
+                        //    AverageTotalScore = totalScore / 2;
+                        //}
+                        //else if (Ave1 == 0 && Ave2 == 0 && Ave3 > 0)
+                        //{
+                        //    totalScore = Ave3;
+                        //    AverageTotalScore = totalScore / 1;
+                        //}
+                        //else if (Ave1 == 0 && Ave2 == 0 && Ave3 == 0)
+                        //{
+                        //    totalScore = 0;
+                        //    AverageTotalScore = totalScore / 1;
+                        //}
+                        //else if (Ave1 > 0 && Ave2 == 0 && Ave3 > 0)
+                        //{
+                        //    totalScore = Ave3 + Ave1;
+                        //    AverageTotalScore = totalScore / 2;
+                        //}
+                        //else if (Ave1 == 0 && Ave2 > 0 && Ave3 == 0)
+                        //{
+                        //    totalScore = Ave2;
+                        //    AverageTotalScore = totalScore / 1;
+                        //}
+                        //else if (Ave1 > 0 && Ave2 > 0 && Ave3 == 0)
+                        //{
+                        //    totalScore = Ave1 + Ave2;
+                        //    AverageTotalScore = totalScore / 2;
+                        //}
+                        //else if (Ave1 == 0 && Ave2 == 0 && Ave3 == 0)
+                        //{
+                        //    totalScore = 0;
+                        //    AverageTotalScore = totalScore / 1;
+                        //}
+                        //else if (Ave1 > 0 && Ave2 == 0 && Ave3 == 0)
+                        //{
+                        //    totalScore = Ave1;
+                        //    AverageTotalScore = totalScore / 1;
+                        //}
 
                     }
-
-
                     AverageTotalScore = Math.Round(Convert.ToDecimal(AverageTotalScore), 2);
                     subc = AverageTotalScore.ToString();
-                   
+
                 }
                 catch (Exception e)
                 {
@@ -2644,16 +2682,37 @@ namespace SchoolPortal.Web.Areas.Service
                 {
 
                     var subjectlistRangeScore = db.EnrolledSubjects.Include(x => x.Subject).Include(z => z.Enrollments).Where(d => d.Enrollments.ClassLevelId == classId && d.SubjectId == subjectId && d.IsOffered == true && d.TotalScore > 0 && d.Enrollments.SessionId == sessionId).ToList();
-                    var lowerscore = subjectlistRangeScore.OrderBy(x => x.TotalScore).FirstOrDefault().TotalScore;
-                    var highscore = subjectlistRangeScore.OrderByDescending(x => x.TotalScore).FirstOrDefault().TotalScore;
-                    var output = new SubjectRangeInResultDto
-                    {
-                        HghestScoreInSubject = highscore,
-                        LowestScoreInSubject = lowerscore
 
-                    };
-                    var outputmain = output;
-                    return outputmain;
+                    if (subjectlistRangeScore.Count() > 0)
+                    {
+
+
+                        var lowerscore = subjectlistRangeScore.OrderBy(x => x.TotalScore).FirstOrDefault().TotalScore;
+                        var highscore = subjectlistRangeScore.OrderByDescending(x => x.TotalScore).FirstOrDefault().TotalScore;
+                        var output = new SubjectRangeInResultDto
+                        {
+                            HghestScoreInSubject = highscore,
+                            LowestScoreInSubject = lowerscore
+
+                        };
+                        var outputmain = output;
+                        return outputmain;
+                    }
+                    else
+                    {
+                        var output = new SubjectRangeInResultDto
+                        {
+                            HghestScoreInSubject = 0,
+                            LowestScoreInSubject = 0
+
+                        };
+                        var outputmain = output;
+                        return outputmain;
+                    }
+
+
+
+
                 }
                 catch (Exception c)
                 {

@@ -52,6 +52,7 @@
                             @Html.ActionLink("Update C.A/Exam", "ResultIndex", new { id = item.Id }, new { @class = "btn btn-mobile btn-primary" })
                             @*@Html.ActionLink("Assignment", "AssignmentList", new { classId = item.ClassLevelId, subId = item.Id, subjectname = item.SubjectName }, new { @class = "btn btn-primary" })*@
                             @Html.ActionLink("Assignment", "AssignmentList", new { classId = item.ClassLevelId, subId = item.Id }, new { @class = "btn btn-mobile btn-primary" })
+                            @Html.ActionLink("Lesson Note", "LessonNote", new { subId = item.Id }, new { @class = "btn btn-mobile btn-primary" })
 
                         </td>
                     </tr>

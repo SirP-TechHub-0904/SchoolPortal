@@ -57,6 +57,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.DateSubmitionEnds)
                             </th>
+                            <th>Last Update</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -104,12 +105,12 @@
                                         <ul class="dropdown-menu" style="border-left:1px dotted #337ab7;">
                                             @if (item.IsPublished == true)
                                             {
-                                                <li class="">@Html.ActionLink("Unpublish", "PublishOrUnpublish", new { id = item.Id, ClassId = item.ClassLevelId, subjectId = item.SubjectId }, null)</li>
+                                                <li class="">@Html.ActionLink("Unpublish", "PublishOrUnpublish", new { id = item.Id }, null)</li>
 
                                             }
                                             else
                                             {
-                                                <li class="">@Html.ActionLink("publish", "PublishOrUnpublish", new { id = item.Id, ClassId = item.ClassLevelId, subjectId = item.SubjectId }, null)</li>
+                                                <li class="">@Html.ActionLink("publish", "PublishOrUnpublish", new { id = item.Id }, null)</li>
 
                                             }
 

@@ -7,3 +7,10 @@
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/4/2023 10:12:34 AM ****device name**  ****pc name*** XYZ<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/4/2023 10:59:59 AM ****device name**  ****pc name*** XYZ<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/9/2023 12:52:46 PM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 10:38:47 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 10:39:42 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/ClassLevels/Details/1 *****date** 8/16/2023 10:44:44 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:07:53 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:15:18 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:26:50 AM ****device name**  ****pc name*** XYZ<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:30:57 AM ****device name**  ****pc name*** XYZ<br/>

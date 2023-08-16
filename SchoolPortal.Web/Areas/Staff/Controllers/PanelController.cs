@@ -494,7 +494,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                     }
                 }
 
-                outloop: ViewData["Position"] = position;
+            outloop: ViewData["Position"] = position;
                 ViewData["Avg"] = avg;
                 ViewBag.TotalStudents = totalStudents;
 
@@ -1750,6 +1750,128 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
             return View(model);
         }
 
+
+        
+        public async Task<ActionResult> LessonNoteEdit(string ReturnUrl, int id = 0)
+        {
+                                   var item = await db.LessonNotes.Include(x=>x.Session).Include(x=>x.Subject).Include(x=>x.Subject.ClassLevel).FirstOrDefaultAsync(x => x.Id == id);
+            if(item == null)
+            {
+                return HttpNotFound();
+            }
+            var userid = User.Identity.GetUserId();
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+             var subject = await db.Subjects.Include(x => x.ClassLevel).FirstOrDefaultAsync(x => x.Id == item.SubjectId);
+            
+            ViewBag.c = subject.ClassLevel.ClassName;
+            ViewBag.s = subject.SubjectName;
+            return View();
+        }
+
+
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> LessonNoteEdit(LessonNote model, string ReturnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                model.LastEdited = DateTime.UtcNow.AddHours(1);
+                 db.Entry(model).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                TempData["success"] = "Successful";
+                return Redirect(ReturnUrl);
+            }
+
+            return View(model);
+        }
+
+
+
+        public async Task<ActionResult> AddLesson(string ReturnUrl, int subId = 0)
+        {
+            var userid = User.Identity.GetUserId();
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+             var subject = await db.Subjects.Include(x => x.ClassLevel).FirstOrDefaultAsync(x => x.Id == subId);
+           
+            ViewBag.subid = subId;
+            ViewBag.c = subject.ClassLevel.ClassName;
+            ViewBag.s = subject.SubjectName;
+            return View();
+        }
+
+
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddLesson(LessonNote model, string ReturnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var userid = User.Identity.GetUserId();
+                var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+                model.SessionId = currentSession.Id;
+                model.DateCreated = DateTime.UtcNow.AddHours(1);
+                model.LastEdited = DateTime.UtcNow.AddHours(1);
+                model.SubjectId = model.SubjectId;
+                db.LessonNotes.Add(model);
+                await db.SaveChangesAsync();
+                TempData["success"] = "Successful";
+                return RedirectToAction("LessonNote", new {subId = model.SubjectId });
+            }
+
+            return View(model);
+        }
+
+        
+        public async Task<ActionResult> LessonNoteDetail(int? id, string ReturnUrl)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+                       var item = await db.LessonNotes.Include(x=>x.Session).Include(x=>x.Subject).Include(x=>x.Subject.ClassLevel).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ReturnUrl = ReturnUrl;
+            return View(item);
+        }
+
+                public async Task<ActionResult> PublishOrUnpublishNote(int id, string ReturnUrl)
+        {
+                       var check = await db.LessonNotes.Include(x=>x.Session).Include(x=>x.Subject).Include(x=>x.Subject.ClassLevel).FirstOrDefaultAsync(x => x.Id == id);
+            if (check.IsPublished == true)
+            {
+                check.IsPublished = false;
+            }
+            else
+            {
+                check.IsPublished = true;
+            }
+             db.Entry(check).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            TempData["success"] = "Successful";
+             
+            return RedirectToAction("LessonNote", new {subId = check.SubjectId });
+        }
+        public async Task<ActionResult> LessonNote(int? subId)
+        {
+            if (subId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var currentUser = User.Identity.GetUserId();
+            var note = await db.LessonNotes.Include(x => x.Subject).Include(x => x.StaffProfile).Include(x => x.Session).Where(x => x.SubjectId == subId).ToListAsync();
+            var subject = await db.Subjects.Include(x => x.ClassLevel).FirstOrDefaultAsync(x => x.Id == subId);
+            ViewBag.c = subject.ClassLevel.ClassName;
+            ViewBag.s = subject.SubjectName;
+            ViewBag.subId = subId;
+            return View(note);
+        }
         public async Task<ActionResult> AssignmentList(int? classId, int? subId)
         {
             if (subId == null || classId == null)
@@ -2336,7 +2458,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
             var uId = User.Identity.GetUserId();
             //var classlevel = await _classLevelService.ClassLevelList();
             var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
-            var item = db.ClassLevels.Include(x => x.User).Where(x=>x.ShowClass ==true);
+            var item = db.ClassLevels.Include(x => x.User).Where(x => x.ShowClass == true);
             var formTeacher = db.ClassLevels.Include(x => x.User).Where(x => x.UserId == uId);
             item = item.OrderBy(x => x.ClassName);
 
@@ -2970,7 +3092,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            
+
 
                             //set the content 
 
@@ -2996,7 +3118,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
 
                         try
                         {
-                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904,08136662653,07087894399&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
+                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
                             //  string urlString = "http://www.xyzsms.com/components/com_spc/smsapi.php?username=" + senderUserName + "&password=" + senderPassword + "&sender=" + senderId + "&recipient=" + recipient + "&message=" + message;
                             string response = "";
                             try
@@ -3082,7 +3204,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            
+
 
                             //set the content 
 
@@ -3108,7 +3230,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
 
                         try
                         {
-                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904,08136662653,07087894399&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
+                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
                             //  string urlString = "http://www.xyzsms.com/components/com_spc/smsapi.php?username=" + senderUserName + "&password=" + senderPassword + "&sender=" + senderId + "&recipient=" + recipient + "&message=" + message;
                             string response = "";
                             try
@@ -3195,7 +3317,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            
+
 
                             //set the content 
 
@@ -3221,7 +3343,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
 
                         try
                         {
-                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904,08136662653,07087894399&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
+                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
                             //  string urlString = "http://www.xyzsms.com/components/com_spc/smsapi.php?username=" + senderUserName + "&password=" + senderPassword + "&sender=" + senderId + "&recipient=" + recipient + "&message=" + message;
                             string response = "";
                             try
@@ -3312,7 +3434,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                             mail.To.Add("espErrorMail@exwhyzee.ng");
                             mail.To.Add("iskoolsportal@gmail.com");
                             mail.To.Add("onwukaemeka41@gmail.com");
-                            
+
 
                             //set the content 
 
@@ -3338,7 +3460,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
 
                         try
                         {
-                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904,08136662653,07087894399&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
+                            string urlString = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
                             //  string urlString = "http://www.xyzsms.com/components/com_spc/smsapi.php?username=" + senderUserName + "&password=" + senderPassword + "&sender=" + senderId + "&recipient=" + recipient + "&message=" + message;
                             string response = "";
                             try
@@ -3701,7 +3823,7 @@ namespace SchoolPortal.Web.Areas.Staff.Controllers
                     mass = sett.SchoolName + " - " + courseTitle + " " + "in" + " " + subject + " - " + sett.PortalLink + " - visit for more info";
                     var init = sett.SchoolInitials;
 
-                    string urlString1 = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904,08136662653,07087894399," + numberstosend + "&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
+                    string urlString1 = "http://xyzsms.com/api/ApiXyzSms/ComposeMessage?username=onwuka1&password=nation&recipients=08165680904," + numberstosend + "&senderId=ISKOOLS&smsmessage=" + mass + "&smssendoption=SendNow";
 
                     //  string urlString = "http://www.xyzsms.com/components/com_spc/smsapi.php?username=" + senderUserName + "&password=" + senderPassword + "&sender=" + senderId + "&recipient=" + recipient + "&message=" + message;
                     string response = "";

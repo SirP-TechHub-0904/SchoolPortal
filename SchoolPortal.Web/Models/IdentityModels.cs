@@ -185,6 +185,7 @@ namespace SchoolPortal.Web.Models
         public DbSet<SiteNewsPostList> SiteNewsPostList { get; set; }
         public DbSet<SiteHomeBodyAfterNew> SiteHomeBodyAfterNews { get; set; }
         public DbSet<SiteSinglePost> SiteSinglePosts { get; set; }
+        public DbSet<LessonNote> LessonNotes { get; set; }
 
         
 

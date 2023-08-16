@@ -1131,6 +1131,10 @@
     <Compile Include="Migrations\202307311158294_initDisable-results-note.Designer.cs">
       <DependentUpon>202307311158294_initDisable-results-note.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308161020410_lessonnote.cs" />
+    <Compile Include="Migrations\202308161020410_lessonnote.Designer.cs">
+      <DependentUpon>202308161020410_lessonnote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dtos\AdminPostDetalsDto.cs" />
@@ -1231,6 +1235,7 @@
     <Compile Include="Models\Entities\EnrolledHostelRoom.cs" />
     <Compile Include="Models\Entities\HostelRoom.cs" />
     <Compile Include="Models\Entities\Income.cs" />
+    <Compile Include="Models\Entities\LessonNote.cs" />
     <Compile Include="Models\Entities\LiveClassOnline.cs" />
     <Compile Include="Models\Entities\Notification.cs" />
     <Compile Include="Models\Entities\OnlineCourseUpload.cs" />
@@ -2113,6 +2118,12 @@
     <Content Include="ExcelUpload\mandate8.xlsx" />
     <Content Include="OnlineCourseUpload\Testing_862_effective-time-management.pdf" />
     <Content Include="Areas\Student\Views\Panel\Verify.cshtml" />
+    <Content Include="Areas\Staff\Views\Panel\LessonNote.cshtml" />
+    <Content Include="Areas\Staff\Views\Panel\AddLesson.cshtml" />
+    <Content Include="Areas\Staff\Views\Panel\LessonNoteDetail.cshtml" />
+    <Content Include="Areas\Staff\Views\Panel\LessonNoteEdit.cshtml" />
+    <Content Include="Areas\Content\Views\Doc\LessonNote.cshtml" />
+    <Content Include="Areas\Content\Views\Doc\LessonNoteDetail.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
@@ -2663,6 +2674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202307311158294_initDisable-results-note.resx">
       <DependentUpon>202307311158294_initDisable-results-note.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308161020410_lessonnote.resx">
+      <DependentUpon>202308161020410_lessonnote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

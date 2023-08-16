@@ -76,10 +76,31 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
 
             return View(output.OrderBy(x => x.ClassLevelName).ToList());
         }
+        public async Task<ActionResult> LessonNote()
+        {
 
+            var note = await db.LessonNotes.Include(x => x.Subject).Include(x => x.Subject.ClassLevel).Include(x => x.StaffProfile).Include(x => x.Session).Where(x => x.IsPublished == true).ToListAsync();
+
+            return View(note);
+        }
+
+        public async Task<ActionResult> LessonNoteDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var item = await db.LessonNotes.Include(x => x.Session).Include(x => x.Subject).Include(x => x.Subject.ClassLevel).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
+        }
         public ActionResult StudentsList()
         {
-            var item = db.ClassLevels.Include(x => x.User).Where(x=>x.ClassName.Contains("JSS")).ToList();
+            var item = db.ClassLevels.Include(x => x.User).Where(x => x.ClassName.Contains("JSS")).ToList();
             var output = item.Select(x => new ClassLevelListDto
             {
                 ClassLevelName = x.ClassName,
@@ -109,12 +130,12 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
             {
                 var session = db.Sessions.FirstOrDefault(x => x.Id == sessionId);
                 var enrolment = db.Enrollments.Where(x => x.SessionId == session.Id).ToList();
-                foreach(var x in enrolment)
+                foreach (var x in enrolment)
                 {
                     await _enrollmentService.EnrollStudentFromSession(x.ClassLevelId ?? 0, x.StudentProfileId, sessionId);
                 }
 
-                
+
 
             }
             catch (Exception e)
@@ -311,7 +332,7 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
         public async Task<ActionResult> EnrollFromAnotherTermInSession()
         {
             var session = await db.Sessions.FirstOrDefaultAsync(x => x.Status == Models.Entities.SessionStatus.Current);
-            var allterminsession = await db.Sessions.Where(x => x.SessionYear == session.SessionYear).Where(x=>x.Term != session.Term).ToListAsync();
+            var allterminsession = await db.Sessions.Where(x => x.SessionYear == session.SessionYear).Where(x => x.Term != session.Term).ToListAsync();
 
             var output = allterminsession.Select(x => new SchoolSessionDto
             {
@@ -334,11 +355,11 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
             {
                 await _enrollmentService.JustEnrolToClass(item.ClassLevelId, item.StudentProfileId, currentsession.Id);
             }
-                //int ClassLevelId = 0, int id = 0, int termid = 0)
-                return View();
+            //int ClassLevelId = 0, int id = 0, int termid = 0)
+            return View();
         }
 
-        
+
 
         public async Task<ActionResult> RemoveAllFromCurrentLatest()
         {

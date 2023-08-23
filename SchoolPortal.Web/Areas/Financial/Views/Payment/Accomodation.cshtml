@@ -145,8 +145,7 @@
                                                     <li class="text-color-warning">
                                                         @using (Html.BeginForm("Allocate", "Allotment", new { fid = item.Id, area = "Accomodation" }, FormMethod.Post, new { id = "" }))
                                                         {
-                                                            @*@*@Html.AntiForgeryToken()*@*@
-
+                                                            
                                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
@@ -178,7 +177,7 @@
                                         <div class="modal-body">
                                             @using (Html.BeginForm("ApproveCreditPay", "Payment", new { id = item.Id }, FormMethod.Post, new { id = "" }))
                                             {
-                                                @*@*@Html.AntiForgeryToken()*@*@
+
 
                                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -194,9 +193,8 @@
                                     </div>
                                     <!-- /.modal-content -->
                                 </div>
-                                <!-- /.modal-dialog -->
                             </div>
-                            <!-- /.modal -->
+                                
                         }
                     </tbody>
                 </table>
@@ -212,13 +210,13 @@
 
 @section Style {
 
-    <link rel="stylesheet" href="https://www.exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="http://v1.exwhyzee.ng/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 }
 
 @section Scripts {
     <!-- DataTables -->
-    <script src="https://www.exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="https://www.exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="http://v1.exwhyzee.ng/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://v1.exwhyzee.ng/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 }
 
@@ -237,6 +235,7 @@
         })
     </script>
 }
+
 
 
 

@@ -37,7 +37,7 @@ namespace SchoolPortal.Web.Models.Dtos
 
         public byte[] Image { get; set; }
 
-        public int ImageId { get; set; }
+        public Nullable<int> ImageId { get; set; }
 
 
         //Sms Settings
@@ -49,13 +49,13 @@ namespace SchoolPortal.Web.Models.Dtos
 
         //Academic and Result Settings
 
-        public decimal Passmark { get; set; }
+        public decimal? Passmark { get; set; }
 
         [Display(Name = "Promote All")]
         public bool PromoteAll { get; set; }
 
         [Display(Name = "Mark for Promotion on Trial")]
-        public decimal PromotionByTrial { get; set; }
+        public decimal? PromotionByTrial { get; set; }
 
         [Display(Name = "Show Position on Result")]
         public bool ShowPositionOnResult { get; set; }
@@ -89,10 +89,10 @@ namespace SchoolPortal.Web.Models.Dtos
         public bool SslEnabled { get; set; }
 
         [Display(Name = "Accessment Total Score")]
-        public decimal AccessmentScore { get; set; }
+        public decimal? AccessmentScore { get; set; }
 
         [Display(Name = "Exam Total Score")]
-        public decimal ExamScore { get; set; }
+        public decimal? ExamScore { get; set; }
 
         //admission screening settings
 
@@ -205,10 +205,10 @@ namespace SchoolPortal.Web.Models.Dtos
 
         ////Academic and Result Settings
 
-        //public decimal Passmark { get; set; }
+        //public decimal? Passmark { get; set; }
 
         //[Display(Name = "Mark for Promotion on Trial")]
-        //public decimal PromotionByTrial { get; set; }
+        //public decimal? PromotionByTrial { get; set; }
 
         //[UIHint("Enum")]
         //public GradingOption JssGradingOption { get; set; }
@@ -244,10 +244,10 @@ namespace SchoolPortal.Web.Models.Dtos
         //public bool SslEnabled { get; set; }
 
         //[Display(Name = "Accessment Total Score")]
-        //public decimal AccessmentScore { get; set; }
+        //public decimal? AccessmentScore { get; set; }
 
         //[Display(Name = "Exam Total Score")]
-        //public decimal ExamScore { get; set; }
+        //public decimal? ExamScore { get; set; }
 
         //[Display(Name = "Default Enrollment Remark")]
         //public string DefaultEnrollmentRemark { get; set; }

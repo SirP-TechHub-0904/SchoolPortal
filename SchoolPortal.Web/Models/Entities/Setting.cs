@@ -52,7 +52,7 @@ namespace SchoolPortal.Web.Models.Entities
         [Display(Name = "Contact Phone Number")]
         public string ContactPhoneNumber { get; set; }
 
-        public int ImageId { get; set; }
+        public Nullable<int> ImageId { get; set; }
 
 
         //Sms Settings
@@ -111,16 +111,16 @@ namespace SchoolPortal.Web.Models.Entities
 
 
         [Display(Name = "2nd Test Total Score")]
-        public decimal? TestScore2 { get; set; }
+        public decimal TestScore2 { get; set; }
 
         [Display(Name = "Project Total Score")]
-        public decimal? Project { get; set; }
+        public decimal Project { get; set; }
 
         [Display(Name = "Class Exercise Total Score")]
-        public decimal? ClassExercise { get; set; }
+        public decimal ClassExercise { get; set; }
 
         [Display(Name = "Assessment Total Score")]
-        public decimal? Assessment { get; set; }
+        public decimal Assessment { get; set; }
 
         //admission screening settings
 
@@ -233,10 +233,10 @@ namespace SchoolPortal.Web.Models.Entities
 
         [Display(Name = "Paystack Secret Key")]
         public string PaystackSecretKey { get; set; }
-        public decimal PaystackChargePercentage { get; set; }
+        public decimal? PaystackChargePercentage { get; set; }
         [Display(Name = "FlutterWave Secret Key")]
         public string FlutterwaveSecretKey { get; set; }
-        public decimal FlutterwaveChargePercentage { get; set; }
+        public decimal? FlutterwaveChargePercentage { get; set; }
 
 
 
@@ -245,5 +245,153 @@ namespace SchoolPortal.Web.Models.Entities
 
          [Display(Name = "Disable All Result PrintingNote")]
         public string DisableAllResultPrintingNote { get; set; }
+
+
+
+         [Display(Name = "Qoute")]
+        public string Qoute { get; set; }
+        [Display(Name = "Top Note")]
+        public string TopNote { get; set; }
+
+        [Display(Name = "Google Map")]
+        public string GoogleMap { get; set; }
+         [Display(Name = "Show Address One In Top")]
+        public bool ShowAddressOneInTop { get; set; }
+        [Display(Name = "Address One")]
+        public string AddressOne { get; set; }
+
+        [Display(Name = "Address Two")]
+        public string AddressTwo { get; set; }
+
+        [Display(Name = "Facebook Page")]
+        public string FacebookPage { get; set; }
+
+        [Display(Name = "Instagram Page")]
+        public string InstagramPage { get; set; }
+
+        [Display(Name = "Twitter Page")]
+        public string TwitterPage { get; set; }
+
+        [Display(Name = "Tiktok Page")]
+        public string TiktokPage { get; set; }
+
+        [Display(Name = "Youtube Channel")]
+        public string YoutubeChannel { get; set; }
+
+        [Display(Name = "Email One")]
+        public string EmailOne { get; set; }
+
+
+        [Display(Name = "Show Email One In Top")]
+        public bool ShowEmailOneInTop { get; set; }
+
+        [Display(Name = "Show Email One In Footer")]
+        public bool ShowEmailOneInFooter { get; set; }
+
+
+        [Display(Name = "Email Two")]
+        public string EmailTwo { get; set; }
+        [Display(Name = "Show Email Two In Top")]
+        public bool ShowEmailTwoInTop { get; set; }
+
+        [Display(Name = "Show Email Two In Footer")]
+        public bool ShowEmailTwoInFooter { get; set; }
+
+        [Display(Name = "Email Three")]
+        public string EmailThree { get; set; }
+        [Display(Name = "Show Email Three In Top")]
+        public bool ShowEmailThreeInTop { get; set; }
+
+        [Display(Name = "Show Email Three In Footer")]
+        public bool ShowEmailThreeInFooter { get; set; }
+
+        [Display(Name = "Phone One")]
+        public string PhoneOne { get; set; }
+
+        [Display(Name = "Show Phone One In Top")]
+        public bool ShowPhoneOneInTop { get; set; }
+
+        [Display(Name = "Show Phone One In Footer")]
+        public bool ShowPhoneOneInFooter { get; set; }
+
+        [Display(Name = "PhoneTwo")]
+        public string PhoneTwo { get; set; }
+        [Display(Name = "Show Phone Two In Top")]
+        public bool ShowPhoneTwoInTop { get; set; }
+
+        [Display(Name = "Show Phone Two In Footer")]
+        public bool ShowPhoneTwoInFooter { get; set; }
+
+        [Display(Name = "Phone Three")]
+        public string PhoneThree { get; set; }
+        [Display(Name = "Show Phone Three In Top")]
+        public bool ShowPhoneThreeInTop { get; set; }
+
+        [Display(Name = "Show Phone Three In Footer")]
+        public bool ShowPhoneThreeInFooter { get; set; }
+        [Display(Name = "Working Hour")]
+        public string WorkingHour { get; set; }
+
+
+        [Display(Name = "Add Faq To Home")]
+        public bool AddFaqToHome { get; set; }
+
+        [Display(Name = "Add Faq To Footer")]
+        public bool AddFaqToFooter { get; set; }
+
+        [Display(Name = "Add Testimony To Home")]
+        public bool AddTestimonyToHome { get; set; }
+
+        [Display(Name = "Add Testimony To Footer")]
+        public bool AddTestimonyToFooter { get; set; }
+
+        [Display(Name = "Add Partner To Home")]
+        public bool AddPartnerToHome { get; set; }
+
+
+        [Display(Name = "Disable Main Top Menu")]
+        public bool DisableMainTopMenu { get; set; }
+
+         
+
+          [Display(Name = "Show Contact Us Menu")]
+        public bool ShowContactUsMenu { get; set; }
+        
+          [Display(Name = "Show Contact Us Footer")]
+        public bool ShowContactUsFooter { get; set; }
+
+
+        [Display(Name = "Default Title Background")]
+        public string DefaultTitleBackgroundUrl { get; set; }
+        public string DefaultTitleBackgroundKey { get; set; }
+
+       
+
+        [Display(Name = "Add Blog To Home")]
+        public bool AddBlogToHome { get; set; }
+
+        [Display(Name = "Add Blog To Menu")]
+        public bool AddBlogToMenu { get; set; }
+
+        [Display(Name = "Add Blog To Footer")]
+        public bool AddBlogToFooter { get; set; }
+
+
+        [Display(Name = "Blog Display Title")]
+        public string BlogDisplayTitle { get; set; }
+
+        
+        [Display(Name = "Add Career To Menu")]
+        public bool AddCareerToMenu { get; set; }
+
+        [Display(Name = "Add Career To Footer")]
+        public bool AddCareerToFooter { get; set; }
+
+
+        [Display(Name = "Career Display Title")]
+        public string CareerDisplayTitle { get; set; }
+
+
+
     }
 }

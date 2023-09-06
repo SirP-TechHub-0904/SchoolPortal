@@ -189,7 +189,20 @@ namespace SchoolPortal.Web.Models
 
         
 
+        
+    public DbSet<SuperSetting> SuperSettings { get; set; } 
+    public DbSet<Slider> Sliders { get; set; }
+    public DbSet<WebPage> WebPages { get; set; }
+    public DbSet<FAQ> FAQs { get; set; }
+    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<BlogCategory> BlogCategories { get; set; }
+    public DbSet<PageSection> PageSections { get; set; }
+    public DbSet<PageSectionList> PageSectionLists { get; set; }
 
+    public DbSet<Testimony> Testimonies { get; set; }
+
+    public DbSet<PostModal> PostModal { get; set; }
+    public DbSet<DataConfig> DataConfigs { get; set; }
 
 
         public static ApplicationDbContext Create()

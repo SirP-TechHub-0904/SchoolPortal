@@ -1135,8 +1135,39 @@
     <Compile Include="Migrations\202308161020410_lessonnote.Designer.cs">
       <DependentUpon>202308161020410_lessonnote.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308282148486_ui-update.cs" />
+    <Compile Include="Migrations\202308282148486_ui-update.Designer.cs">
+      <DependentUpon>202308282148486_ui-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308290932245_ui-update-3.cs" />
+    <Compile Include="Migrations\202308290932245_ui-update-3.Designer.cs">
+      <DependentUpon>202308290932245_ui-update-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308290936186_ui-update-30.cs" />
+    <Compile Include="Migrations\202308290936186_ui-update-30.Designer.cs">
+      <DependentUpon>202308290936186_ui-update-30.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308291007080_ui-update-38.cs" />
+    <Compile Include="Migrations\202308291007080_ui-update-38.Designer.cs">
+      <DependentUpon>202308291007080_ui-update-38.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308291141415_ui-update-389.cs" />
+    <Compile Include="Migrations\202308291141415_ui-update-389.Designer.cs">
+      <DependentUpon>202308291141415_ui-update-389.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308291354132_usermanager-reconsile.cs" />
+    <Compile Include="Migrations\202308291354132_usermanager-reconsile.Designer.cs">
+      <DependentUpon>202308291354132_usermanager-reconsile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308300359500_configs.cs" />
+    <Compile Include="Migrations\202308300359500_configs.Designer.cs">
+      <DependentUpon>202308300359500_configs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\BlogCategory.cs" />
+    <Compile Include="Models\DataConfig.cs" />
     <Compile Include="Models\Dtos\AdminPostDetalsDto.cs" />
     <Compile Include="Models\Dtos\AdmissionPinDto.cs" />
     <Compile Include="Models\Dtos\Api\ApiAvailableResultsDto.cs" />
@@ -1297,9 +1328,14 @@
     <Compile Include="Models\Entities\Tracker.cs" />
     <Compile Include="Models\Entities\WebsiteColor.cs" />
     <Compile Include="Models\Entities\WebsiteSettings.cs" />
+    <Compile Include="Models\FAQ.cs" />
     <Compile Include="Models\HelperClass.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PageCategory.cs" />
+    <Compile Include="Models\PageSection.cs" />
+    <Compile Include="Models\PageSectionList.cs" />
+    <Compile Include="Models\PostModal.cs" />
     <Compile Include="Models\ResultArchive\AffectiveDomainArchive.cs" />
     <Compile Include="Models\ResultArchive\ArchiveResult.cs" />
     <Compile Include="Models\ResultArchive\EnrolledSubjectArchive.cs" />
@@ -1309,6 +1345,9 @@
     <Compile Include="Models\ResultArchive\RecognitiveDomainArchive.cs" />
     <Compile Include="Models\ResultArchive\SchoolFeesArchive.cs" />
     <Compile Include="Models\Schools.cs" />
+    <Compile Include="Models\Slider.cs" />
+    <Compile Include="Models\SuperSetting.cs" />
+    <Compile Include="Models\Testimony.cs" />
     <Compile Include="Models\UI\SiteSinglePost.cs" />
     <Compile Include="Models\UI\SiteHomeBodyAfterNew.cs" />
     <Compile Include="Models\UI\SiteNavHeader.cs" />
@@ -1327,6 +1366,7 @@
     <Compile Include="Models\UI\SitePage.cs" />
     <Compile Include="Models\UI\SiteSetting.cs" />
     <Compile Include="Models\UI\SiteSlider.cs" />
+    <Compile Include="Models\WebPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2677,6 +2717,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308161020410_lessonnote.resx">
       <DependentUpon>202308161020410_lessonnote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308282148486_ui-update.resx">
+      <DependentUpon>202308282148486_ui-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308290932245_ui-update-3.resx">
+      <DependentUpon>202308290932245_ui-update-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308290936186_ui-update-30.resx">
+      <DependentUpon>202308290936186_ui-update-30.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308291007080_ui-update-38.resx">
+      <DependentUpon>202308291007080_ui-update-38.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308291141415_ui-update-389.resx">
+      <DependentUpon>202308291141415_ui-update-389.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308291354132_usermanager-reconsile.resx">
+      <DependentUpon>202308291354132_usermanager-reconsile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308300359500_configs.resx">
+      <DependentUpon>202308300359500_configs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

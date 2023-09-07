@@ -14,3 +14,4 @@
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:15:18 AM ****device name**  ****pc name*** XYZ<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:26:50 AM ****device name**  ****pc name*** XYZ<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 8/16/2023 11:30:57 AM ****device name**  ****pc name*** XYZ<br/>
+**username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 9/7/2023 10:51:32 AM ****device name**  ****pc name*** XYZ<br/>

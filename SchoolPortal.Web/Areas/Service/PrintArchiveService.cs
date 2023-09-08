@@ -1345,7 +1345,9 @@ namespace SchoolPortal.Web.Areas.Service
                             {
                                 if (p.CummulativeAverageScore != null)
                                 {
+                                    if(p.CummulativeAverageScore != null) { 
                                     avg = p.CummulativeAverageScore.Value;
+                                    }
                                     goto outloop;
                                 }
 
@@ -1819,8 +1821,9 @@ namespace SchoolPortal.Web.Areas.Service
                         cummulativePosition = cummulativePosition + 1;
                         if (p.Id == id)
                         {
-
+                            if(p.CummulativeAverageScore != null) { 
                             cumAvg = p.CummulativeAverageScore.Value;
+                            }
                             goto outloop;
                         }
                     }

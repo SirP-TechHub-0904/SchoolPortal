@@ -2074,11 +2074,23 @@ namespace SchoolPortal.Web.Areas.Service
                     var firstEnrollment = db.Enrollments.FirstOrDefault(f => f.StudentProfileId == StudentId && f.SessionId == firstTerm.Id);
                     var secondEnrollment = db.Enrollments.FirstOrDefault(f => f.StudentProfileId == StudentId && f.SessionId == secondTerm.Id);
                     var thirdEnrollment = db.Enrollments.FirstOrDefault(f => f.StudentProfileId == StudentId && f.SessionId == thirdTerm.Id);
+                    EnrolledSubject firsttermsubject = null;
+                    EnrolledSubject secondtermsubject = null;
+                    EnrolledSubject thirdtermsubject = null;
+                    if (firstEnrollment!= null)
+                    {
 
-                    //Get enrolledsubject for each term
-                    var firsttermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == firstEnrollment.Id && x.IsOffered == true);
-                    var secondtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == secondEnrollment.Id && x.IsOffered == true);
-                    var thirdtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == thirdEnrollment.Id && x.IsOffered == true);
+                                       //Get enrolledsubject for each term
+                      firsttermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == firstEnrollment.Id && x.IsOffered == true);
+                    }
+                    if (secondtermsubject != null)
+                    {
+                          secondtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == secondEnrollment.Id && x.IsOffered == true);
+                    }
+                    if (thirdtermsubject != null)
+                    {
+                         thirdtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == thirdEnrollment.Id && x.IsOffered == true);
+                    }
 
                     decimal? Ave1 = 0.00m;
                     decimal? Ave2 = 0.00m;
@@ -2481,9 +2493,24 @@ namespace SchoolPortal.Web.Areas.Service
                 var secondEnrollment = db.Enrollments.FirstOrDefault(f => f.StudentProfileId == StudentId && f.SessionId == secondTerm.Id);
                 var thirdEnrollment = db.Enrollments.FirstOrDefault(f => f.StudentProfileId == StudentId && f.SessionId == thirdTerm.Id);
 
-                var firsttermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == firstEnrollment.Id && x.IsOffered == true);
-                var secondtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == secondEnrollment.Id && x.IsOffered == true);
-                var thirdtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == thirdEnrollment.Id && x.IsOffered == true);
+                EnrolledSubject firsttermsubject = null;
+                EnrolledSubject secondtermsubject = null;
+                EnrolledSubject thirdtermsubject = null;
+                if (firstEnrollment != null)
+                {
+
+                    //Get enrolledsubject for each term
+                    firsttermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == firstEnrollment.Id && x.IsOffered == true);
+                }
+                if (secondtermsubject != null)
+                {
+                    secondtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == secondEnrollment.Id && x.IsOffered == true);
+                }
+                if (thirdtermsubject != null)
+                {
+                    thirdtermsubject = db.EnrolledSubjects.FirstOrDefault(x => x.SubjectId == id && x.EnrollmentId == thirdEnrollment.Id && x.IsOffered == true);
+                }
+
                 decimal? Ave1 = 0;
                 decimal? Ave2 = 0;
                 decimal? Ave3 = 0;

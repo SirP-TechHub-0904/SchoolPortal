@@ -411,8 +411,8 @@ namespace SchoolPortal.Web.Areas.Account.Controllers
                 //}
 
             }
-
-
+            var getuser= await UserManager.FindByNameAsync(model.Username);
+            var checkp = await UserManager.CheckPasswordAsync(getuser, model.Password);
             var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
             var user = await UserManager.FindByNameAsync(model.Username);
 

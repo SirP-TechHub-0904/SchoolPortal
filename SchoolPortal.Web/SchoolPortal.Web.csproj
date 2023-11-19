@@ -2164,6 +2164,11 @@
     <Content Include="Areas\Staff\Views\Panel\LessonNoteEdit.cshtml" />
     <Content Include="Areas\Content\Views\Doc\LessonNote.cshtml" />
     <Content Include="Areas\Content\Views\Doc\LessonNoteDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManagers\Graduates.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManagers\DropOut.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManagers\NonActiveStaff.cshtml" />
+    <Content Include="Areas\Content\Views\Doc\Success.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManagers\MoveToGraduate.cshtml" />
     <None Include="Properties\PublishProfiles\DCH AHIAEKE.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />

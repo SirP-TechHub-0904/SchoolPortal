@@ -177,7 +177,8 @@ namespace SchoolPortal.Web.Areas.Data.Services
             {
                 FullSession = x.SessionYear + " - " + x.Term + " Term",
                 Id = x.Id,
-                SessionStatus = x.Status
+                SessionStatus = x.Status,
+                Year = x.SessionYear
             });
             return await output.ToListAsync();
         }

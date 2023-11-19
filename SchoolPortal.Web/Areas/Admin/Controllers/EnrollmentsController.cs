@@ -60,10 +60,10 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         public async Task<ActionResult> ResultAnalysis()
         {
             var sess = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
-            var total = await db.Enrollments.Where(x => x.SessionId == sess.Id).ToListAsync();
+            var total = await db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.SessionId == sess.Id).ToListAsync();
             ViewBag.total = total.Count();
             //
-            var Resulttotal = await db.Enrollments.Where(x => x.SessionId == sess.Id && x.AverageScore != null).ToListAsync();
+            var Resulttotal = await db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.SessionId == sess.Id && x.AverageScore != null).ToListAsync();
             ViewBag.Resulttotal = Resulttotal.Count();
 
             var name = await db.Settings.FirstOrDefaultAsync();
@@ -82,7 +82,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            var items = await db.Enrollments.Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Include(x => x.Session).OrderBy(x => x.Session.SessionYear).ThenBy(x => x.Id).ToListAsync();
+            var items = await db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Include(x => x.Session).OrderBy(x => x.Session.SessionYear).ThenBy(x => x.Id).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).ToListAsync();
             //if (!String.IsNullOrEmpty(searchString))
             //{
             //    if (CountString(searchString) > 1)
@@ -189,7 +189,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
         public async Task<ActionResult> AllEnrollment(string UserId)
         {
-            var enroll = await db.Enrollments.Include(x => x.StudentProfile.user).Include(x => x.StudentProfile).Include(x => x.ClassLevel).Include(x => x.Session).Where(x => x.StudentProfile.user.Id == UserId).ToListAsync();
+            var enroll = await db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).Include(x => x.StudentProfile).Include(x => x.ClassLevel).Include(x => x.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.StudentProfile.user.Id == UserId).ToListAsync();
             return View(enroll);
         }
         public async Task<ActionResult> DelAllUnEnrolleds()
@@ -202,7 +202,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 var currentSession = session.FirstOrDefault(x => x.Status == SessionStatus.Current);
 
                 var allStudents = db.StudentProfiles.AsNoTracking().Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active);
-                var enrolledStudents = db.Enrollments.AsNoTracking().Include(c => c.Session).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId).ToList();
+                var enrolledStudents = db.Enrollments.AsNoTracking().Include(x=>x.User).Include(x => x.StudentProfile.user).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId).ToList();
                 var yetToEnroll = allStudents.Where(x => !enrolledStudents.Contains(x.Id));
                 var studentsto = from s in yetToEnroll
                                  select s;
@@ -218,7 +218,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                         var studentp = db.StudentProfiles.Include(x => x.user).FirstOrDefault(x => x.user.Id == user.Id);
 
-                        var enro = db.Enrollments.Include(x => x.StudentProfile).Where(x => x.StudentProfileId == studentp.Id).ToList();
+                        var enro = db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.StudentProfileId == studentp.Id).ToList();
                         var enro1 = db.Enrollments.Include(x => x.StudentProfile).FirstOrDefault(x => x.StudentProfileId == studentp.Id);
                         try
                         {
@@ -362,7 +362,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                     //Add Tracking
                     var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                     Tracker tracker = new Tracker();
                     tracker.UserId = userId2;
                     tracker.UserName = user2.UserName;
@@ -616,7 +616,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             //Add Tracking
             var userId2 = User.Identity.GetUserId();
-            var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+            var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
             Tracker tracker = new Tracker();
             tracker.UserId = userId2;
             tracker.UserName = user2.UserName;
@@ -696,7 +696,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;

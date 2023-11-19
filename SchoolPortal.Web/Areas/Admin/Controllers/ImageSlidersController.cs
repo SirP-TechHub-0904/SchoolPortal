@@ -119,7 +119,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;

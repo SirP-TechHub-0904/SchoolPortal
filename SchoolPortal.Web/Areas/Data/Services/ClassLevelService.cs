@@ -306,9 +306,9 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
             var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
 
-            var enrolledStudentsId = db.Enrollments.Include(c => c.Session).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId);
-            var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => enrolledStudentsId.Contains(x.Id)).Select(x => x.Id);
-            var enrolledStudents = db.Enrollments.Include(e => e.StudentProfile).Include(x => x.Session).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
+            var enrolledStudentsId = db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId);
+            var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active).Where(x => enrolledStudentsId.Contains(x.Id)).Select(x => x.Id);
+            var enrolledStudents = db.Enrollments.Include(e => e.StudentProfile).Include(e => e.StudentProfile.user).Include(x => x.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
 
             var output = enrolledStudents.Select(x => new ClassStudentsDto
             {
@@ -331,9 +331,9 @@ namespace SchoolPortal.Web.Areas.Data.Services
             int t = 0;
             var currentSession = db.Sessions.FirstOrDefault(x => x.Id == sessionid);
 
-            var enrolledStudentsId = db.Enrollments.Include(c => c.Session).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId);
-            var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => enrolledStudentsId.Contains(x.Id)).Select(x => x.Id);
-            var enrolledStudents = db.Enrollments.Include(e => e.StudentProfile).Include(x => x.Session).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
+            var enrolledStudentsId = db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId);
+            var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active).Where(x => enrolledStudentsId.Contains(x.Id)).Select(x => x.Id);
+            var enrolledStudents = db.Enrollments.Include(x=>x.User).Include(e => e.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
 
             foreach (var i in enrolledStudents.ToList())
             {
@@ -421,9 +421,9 @@ namespace SchoolPortal.Web.Areas.Data.Services
         {
             var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
 
-            var enrolledStudentsId = db.Enrollments.Include(c => c.Session).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId);
-            var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => enrolledStudentsId.Contains(x.Id)).Select(x => x.Id);
-            var enrolledStudents = db.Enrollments.Include(e => e.StudentProfile).Include(x => x.Session).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
+            var enrolledStudentsId = db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId);
+            var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active).Where(x => enrolledStudentsId.Contains(x.Id)).Select(x => x.Id);
+            var enrolledStudents = db.Enrollments.Include(x=>x.User).Include(e => e.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
             return await enrolledStudents.CountAsync();
         }
 

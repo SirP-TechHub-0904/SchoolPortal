@@ -116,7 +116,8 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             }
 
             IQueryable<StudentProfile> user = from s in db.StudentProfiles
-                                               .Include(p => p.user)
+                                              .Include(x=>x.user)
+                                               .Include(p => p.user).Where(x => x.user.Status == EntityStatus.Active)
                                                .OrderBy(x => x.user.UserName)
                                               select s;
             var classname = db.ClassLevels.FirstOrDefault(x => x.Id == classId);
@@ -168,7 +169,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                     //Add Tracking
                     var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                     Tracker tracker = new Tracker();
                     tracker.UserId = userId2;
                     tracker.UserName = user2.UserName;
@@ -189,7 +190,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                     //Add Tracking
                     var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                     Tracker tracker = new Tracker();
                     tracker.UserId = userId2;
                     tracker.UserName = user2.UserName;
@@ -210,7 +211,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                     //Add Tracking
                     var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                     Tracker tracker = new Tracker();
                     tracker.UserId = userId2;
                     tracker.UserName = user2.UserName;
@@ -760,7 +761,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;
@@ -810,7 +811,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;
@@ -1031,7 +1032,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             //Add Tracking
             var userId2 = User.Identity.GetUserId();
-            var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+            var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
             Tracker tracker = new Tracker();
             tracker.UserId = userId2;
             tracker.UserName = user2.UserName;
@@ -1130,7 +1131,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;
@@ -1159,7 +1160,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                     //Add Tracking
                     var userId2 = User.Identity.GetUserId();
-                    var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                    var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                     Tracker tracker = new Tracker();
                     tracker.UserId = userId2;
                     tracker.UserName = user2.UserName;
@@ -1536,7 +1537,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                         //Add Tracking
                         var userId2 = User.Identity.GetUserId();
-                        var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                        var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                         Tracker tracker = new Tracker();
                         tracker.UserId = userId2;
                         tracker.UserName = user2.UserName;
@@ -1824,7 +1825,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;
@@ -1842,7 +1843,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;
@@ -1930,7 +1931,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;
@@ -2010,7 +2011,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
 
             var t = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
-            var listenrolledd = await db.Enrollments.AsNoTracking().Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToListAsync();
+            var listenrolledd = await db.Enrollments.AsNoTracking().Include(x=>x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToListAsync();
 
 
             foreach (var iss in listenrolledd)
@@ -2032,7 +2033,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                             //Add Tracking
                             var userId2 = User.Identity.GetUserId();
-                            var user2 = await UserManager.Users.Where(x => x.Id == userId2).FirstOrDefaultAsync();
+                            var user2 = await UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefaultAsync();
                             Tracker tracker = new Tracker();
                             tracker.UserId = userId2;
                             tracker.UserName = user2.UserName;
@@ -2059,7 +2060,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
 
             var t = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
-            var listenrolledd = await db.Enrollments.AsNoTracking().Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToListAsync();
+            var listenrolledd = await db.Enrollments.AsNoTracking().Include(x=>x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == id && x.SessionId == t.Id).ToListAsync();
 
 
             foreach (var iss in listenrolledd)
@@ -2081,7 +2082,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                             //Add Tracking
                             var userId2 = User.Identity.GetUserId();
-                            var user2 = await UserManager.Users.Where(x => x.Id == userId2).FirstOrDefaultAsync();
+                            var user2 = await UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefaultAsync();
                             Tracker tracker = new Tracker();
                             tracker.UserId = userId2;
                             tracker.UserName = user2.UserName;
@@ -2107,7 +2108,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                         //Add Tracking
                         var userId2 = User.Identity.GetUserId();
-                        var user2 = await UserManager.Users.Where(x => x.Id == userId2).FirstOrDefaultAsync();
+                        var user2 = await UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefaultAsync();
                         Tracker tracker = new Tracker();
                         tracker.UserId = userId2;
                         tracker.UserName = user2.UserName;
@@ -2278,7 +2279,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId2 = User.Identity.GetUserId();
-                var user2 = UserManager.Users.Where(x => x.Id == userId2).FirstOrDefault();
+                var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId2;
                 tracker.UserName = user2.UserName;

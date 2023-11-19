@@ -101,6 +101,9 @@
             @*<li><a href="@Url.Action("New", "UserManagers", new { area="Admin"})"><i class="fa fa-user"></i> Add New @GeneralService.StudentorPupil()</a></li>*@
 
             <li><a href="@Url.Action("Students", "UserManagers", new { area="Admin"})"><i class="fa fa-users"></i>All @GeneralService.StudentorPupil()</a></li>
+            <li><a href="@Url.Action("Graduates", "UserManagers", new { area="Admin"})"><i class="fa fa-circle-o"></i> Graduates</a></li>
+            <li><a href="@Url.Action("DropOut", "UserManagers", new { area="Admin"})"><i class="fa fa-circle-o"></i> Drop Out</a></li>
+
         </ul>
     </li>
     <li class="treeview">
@@ -113,7 +116,8 @@
         <ul class="treeview-menu">
             <li><a href="@Url.Action("NewStaff", "UserManagers", new { area="Admin"})"><i class="fa fa-user"></i>  Add New Staff</a></li>
 
-            <li><a href="@Url.Action("Staff", "UserManagers", new { area="Admin"})"><i class="fa fa-users"></i> All Staff</a></li>
+            <li><a href="@Url.Action("Staff", "UserManagers", new { area="Admin"})"><i class="fa fa-users"></i> Active Staff</a></li>
+            <li><a href="@Url.Action("NonActiveStaff", "UserManagers", new { area="Admin"})"><i class="fa fa-users"></i> Non Active Staff</a></li>
 
         </ul>
     </li>
@@ -130,7 +134,7 @@
         <ul class="treeview-menu">
             <li><a href="@Url.Action("Index", "UserManagers", new { area="Admin"})"><i class="fa fa-circle-o"></i> Users</a></li>
             <li><a href="@Url.Action("Roles", "UserManagers", new { area="Admin"})"><i class="fa fa-circle-o"></i> Roles</a></li>
-        </ul>
+           </ul>
     </li>
     <li class="treeview">
         <a href="#">

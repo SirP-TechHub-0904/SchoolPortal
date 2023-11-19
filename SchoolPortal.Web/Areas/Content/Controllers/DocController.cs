@@ -145,7 +145,37 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
             }
             return RedirectToAction("OtherTerm");
         }
+        public async Task<ActionResult> Dropout(int id = 0)
+        {
 
+            try
+            {
+                var item = await _enrollmentService.ChangeToDropoutStudent(id);
+
+                return RedirectToAction("Success", new { result = item });
+
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Success", new { result = "Unable to Update" });
+
+            }
+
+        }
+        public ActionResult Success(string result)
+        {
+            if (result == "successfully")
+            {
+                TempData["success"] = "Updated successfully";
+            }
+            else
+            {
+                TempData["error"] = "Unable to Update";
+            }
+
+            return View();
+        }
         [HttpPost]
         public ActionResult IndexBySession(int sessionId)
         {

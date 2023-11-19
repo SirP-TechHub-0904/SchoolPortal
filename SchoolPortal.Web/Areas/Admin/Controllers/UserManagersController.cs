@@ -130,7 +130,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             }
             else
             {
-                ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin" && x.Name !="Developer").ToList();
+                ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin" && x.Name != "Developer").ToList();
             }
             if (searchString != null)
             {
@@ -143,6 +143,97 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             ViewBag.CurrentFilter = searchString;
             var items = await _userService.AllUsers(searchString, currentFilter, page);
+            ViewBag.countall = items.Count();
+            int pageSize = 50;
+            int pageNumber = (page ?? 1);
+            return View(items.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public async Task<ActionResult> MoveToGraduate()
+        {
+            var classlevel = await _classlevelService.ClassLevelList();
+            ViewBag.ClassLevelId = new SelectList(classlevel.OrderBy(x => x.ClassLevelName), "Id", "ClassLevelName");
+
+            var session = await _sessionService.GetAllSession();
+            var css = await db.Sessions.FirstOrDefaultAsync(x=>x.Status == SessionStatus.Current);
+            ViewBag.sessionId = new SelectList(session.Where(x=>x.Year != css.SessionYear).OrderBy(x => x.FullSession), "Id", "FullSession");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> MoveToGraduate(int sessId, int classId)
+        {
+           var classdata = await db.ClassLevels.FirstOrDefaultAsync(x=>x.Id == classId);
+            if(classdata != null)
+            {
+                var enrol = await db.Enrollments.Include(x=>x.StudentProfile.user).Where(x=>x.ClassLevelId == classdata.Id && x.SessionId == sessId).Where(x=>x.StudentProfile.user.Status != EntityStatus.Graduate).ToListAsync();
+                foreach(var item in enrol)
+                {
+                    var iuser = await UserManager.FindByIdAsync(item.StudentProfile.UserId);
+                    iuser.Status = EntityStatus.Graduate;
+                    await UserManager.UpdateAsync(iuser);
+                }
+            }
+
+
+            return RedirectToAction("Graduates");
+        }
+
+        public async Task<ActionResult> Graduates(string searchString, string currentFilter, int? page)
+        {
+
+            var user1 = User.Identity.GetUserId();
+
+            if (await UserManager.IsInRoleAsync(user1, "SuperAdmin"))
+            {
+                ViewBag.Roles = RoleManager.Roles.ToList();
+            }
+            else
+            {
+                ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin" && x.Name != "Developer").ToList();
+            }
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var items = await _userService.GraduatedUsers(searchString, currentFilter, page);
+            ViewBag.countall = items.Count();
+            int pageSize = 50;
+            int pageNumber = (page ?? 1);
+            return View(items.ToPagedList(pageNumber, pageSize));
+
+        }
+        public async Task<ActionResult> DropOut(string searchString, string currentFilter, int? page)
+        {
+
+            var user1 = User.Identity.GetUserId();
+
+            if (await UserManager.IsInRoleAsync(user1, "SuperAdmin"))
+            {
+                ViewBag.Roles = RoleManager.Roles.ToList();
+            }
+            else
+            {
+                ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin" && x.Name != "Developer").ToList();
+            }
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var items = await _userService.DropoutUsers(searchString, currentFilter, page);
             ViewBag.countall = items.Count();
             int pageSize = 50;
             int pageNumber = (page ?? 1);
@@ -267,6 +358,28 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             ViewBag.CurrentFilter = searchString;
             var items = await _userService.ListStaff(searchString, currentFilter, page);
+            ViewBag.countallS = items.Count();
+            int pageSize = 50;
+            int pageNumber = (page ?? 1);
+            return View(items.ToPagedList(pageNumber, pageSize));
+
+        }
+        public async Task<ActionResult> NonActiveStaff(string searchString, string currentFilter, int? page)
+        {
+            ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin").ToList();
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var items = await _userService.ListNonActiveStaff(searchString, currentFilter, page);
             ViewBag.countallS = items.Count();
             int pageSize = 50;
             int pageNumber = (page ?? 1);
@@ -1308,7 +1421,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         }
 
 
-   
+
 
 
         public async Task<ActionResult> BatchReg()

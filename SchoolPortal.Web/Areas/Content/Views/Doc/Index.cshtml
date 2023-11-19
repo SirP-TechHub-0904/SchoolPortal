@@ -105,6 +105,10 @@
                                                             @Html.ActionLink("Move " + GeneralService.StudentorPupil(), "MoveEnrol", "Doc", new { id = students.Id, Ocid = item.Id }, new { @class = "noprint" })
 
                                                         </li>
+                                                        <li>
+                                                            @Html.ActionLink("Is Dropout", "Dropout", "Doc", new { id = students.StudentProfileId }, new { @class = "noprint", target="_blank" })
+
+                                                        </li>
                                                         @if (User.IsInRole("SuperAdmin"))
                                                         {
 

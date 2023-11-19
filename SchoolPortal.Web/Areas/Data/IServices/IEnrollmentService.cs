@@ -38,8 +38,9 @@ namespace SchoolPortal.Web.Areas.Data.IServices
 
         Task<Enrollment> classLevelFromEnrollmentbyProfileId(int id);
         Task<Enrollment> classLevelFromEnrollmentbyEnrolId(int id);
+        Task<string> ChangeToDropoutStudent(int id = 0);
 
-        
+
         Task<List<EnrolledSubjectDto>> StudentsListBySubIdBySessionId(int subId, int sessionId);
 
         Task<List<EnrolledSubject>> StudentsListBySubIdBySessionIdPreview(int subId, int sessionId);

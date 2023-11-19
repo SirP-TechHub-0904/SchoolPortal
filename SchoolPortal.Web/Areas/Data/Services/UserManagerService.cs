@@ -391,7 +391,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task<List<StudentProfile>> ListStudent(string searchString, string currentFilter, int? page)
         {
-            var list = db.StudentProfiles.Include(x => x.user);
+            var list = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active);
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (CountString(searchString) > 1)
@@ -416,7 +416,31 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task<List<StaffProfile>> ListStaff(string searchString, string currentFilter, int? page)
         {
-            var list = db.StaffProfiles.Include(x => x.user);
+            var list = db.StaffProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (CountString(searchString) > 1)
+                {
+                    string[] searchStringCollection = searchString.Split(' ');
+
+                    foreach (var item in searchStringCollection)
+                    {
+                        list = list.Where(s => s.user.Surname.ToUpper().Contains(item.ToUpper()) || s.user.FirstName.ToUpper().Contains(item.ToUpper())
+                                                               || s.user.OtherName.ToUpper().Contains(item.ToUpper()) || s.StaffRegistrationId.ToUpper().Contains(item.ToUpper()) || s.user.UserName.ToUpper().Contains(item.ToUpper()));
+                    }
+                }
+                else
+                {
+                    list = list.Where(s => s.user.Surname.ToUpper().Contains(searchString.ToUpper()) || s.user.FirstName.ToUpper().Contains(searchString.ToUpper())
+                                                               || s.user.OtherName.ToUpper().Contains(searchString.ToUpper()) || s.StaffRegistrationId.ToUpper().Contains(searchString.ToUpper()) || s.user.UserName.ToUpper().Contains(searchString.ToUpper()));
+                }
+
+            }
+            return await list.ToListAsync();
+        }
+        public async Task<List<StaffProfile>> ListNonActiveStaff(string searchString, string currentFilter, int? page)
+        {
+            var list = db.StaffProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.NotActive);
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (CountString(searchString) > 1)
@@ -443,16 +467,18 @@ namespace SchoolPortal.Web.Areas.Data.Services
         {
 
             //var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.UserName != "Education Sec").OrderBy(x => x.UserName);
-            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin").OrderBy(x => x.UserName);
+            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.Status == EntityStatus.Active).OrderBy(x => x.UserName);
             return await users.ToListAsync();
         }
+
+
 
 
         public async Task<List<ApplicationUser>> AllUsers(string searchString, string currentFilter, int? page)
         {
 
             //var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.UserName != "Education Sec");
-            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin");
+            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.Status == EntityStatus.Active);
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (CountString(searchString) > 1)
@@ -723,6 +749,58 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 return user;
             }
             return null;
+        }
+
+        public async Task<List<ApplicationUser>> GraduatedUsers(string searchString, string currentFilter, int? page)
+        {
+            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.Status == EntityStatus.Graduate);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (CountString(searchString) > 1)
+                {
+                    string[] searchStringCollection = searchString.Split(' ');
+
+                    foreach (var item in searchStringCollection)
+                    {
+                        users = users.Where(s => s.Surname.ToUpper().Contains(item.ToUpper()) || s.FirstName.ToUpper().Contains(item.ToUpper())
+                                                               || s.OtherName.ToUpper().Contains(item.ToUpper()) || s.UserName.ToUpper().Contains(item.ToUpper()));
+                    }
+                }
+                else
+                {
+                    users = users.Where(s => s.Surname.ToUpper().Contains(searchString.ToUpper()) || s.FirstName.ToUpper().Contains(searchString.ToUpper())
+                                                               || s.OtherName.ToUpper().Contains(searchString.ToUpper()) || s.UserName.ToUpper().Contains(searchString.ToUpper()));
+                }
+
+            }
+
+            return await users.OrderBy(x => x.Surname).ToListAsync();
+        }
+
+        public async Task<List<ApplicationUser>> DropoutUsers(string searchString, string currentFilter, int? page)
+        {
+            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.Status == EntityStatus.Dropout);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (CountString(searchString) > 1)
+                {
+                    string[] searchStringCollection = searchString.Split(' ');
+
+                    foreach (var item in searchStringCollection)
+                    {
+                        users = users.Where(s => s.Surname.ToUpper().Contains(item.ToUpper()) || s.FirstName.ToUpper().Contains(item.ToUpper())
+                                                               || s.OtherName.ToUpper().Contains(item.ToUpper()) || s.UserName.ToUpper().Contains(item.ToUpper()));
+                    }
+                }
+                else
+                {
+                    users = users.Where(s => s.Surname.ToUpper().Contains(searchString.ToUpper()) || s.FirstName.ToUpper().Contains(searchString.ToUpper())
+                                                               || s.OtherName.ToUpper().Contains(searchString.ToUpper()) || s.UserName.ToUpper().Contains(searchString.ToUpper()));
+                }
+
+            }
+
+            return await users.OrderBy(x => x.Surname).ToListAsync();
         }
     }
 }

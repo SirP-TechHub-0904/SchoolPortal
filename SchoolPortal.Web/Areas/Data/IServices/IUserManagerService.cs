@@ -26,7 +26,10 @@ namespace SchoolPortal.Web.Areas.Data.IServices
 
         Task<List<StudentProfile>> ListStudent(string searchString, string currentFilter, int? page);
         Task<List<StaffProfile>> ListStaff(string searchString, string currentFilter, int? page);
+        Task<List<StaffProfile>> ListNonActiveStaff(string searchString, string currentFilter, int? page);
         Task<List<ApplicationUser>> AllUsers(string searchString, string currentFilter, int? page);
+        Task<List<ApplicationUser>> GraduatedUsers(string searchString, string currentFilter, int? page);
+        Task<List<ApplicationUser>> DropoutUsers(string searchString, string currentFilter, int? page);
         Task<List<ApplicationUser>> Users();
 
         Task<bool> IsUsersinRole(string userid, string role);

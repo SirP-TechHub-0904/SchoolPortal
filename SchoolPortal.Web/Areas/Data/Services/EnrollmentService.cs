@@ -94,8 +94,8 @@ namespace SchoolPortal.Web.Areas.Data.Services
             var setting = await db.Settings.FirstOrDefaultAsync();
             //var enrolment = await db.Enrollments.Include(x => x.ClassLevel).Where(c => c.ClassLevelId == classId).ToListAsync();
 
-            IQueryable<Enrollment> enrolment = from s in db.Enrollments
-                                          .Include(x => x.ClassLevel).Where(c => c.ClassLevelId == classId && c.SessionId == currentSession.Id)
+            IQueryable<Enrollment> enrolment = from s in db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile.user)
+                                          .Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(c => c.ClassLevelId == classId && c.SessionId == currentSession.Id)
                                                select s;
 
             foreach (var student in enrolment)
@@ -197,7 +197,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 var sess = db.Sessions;
                 var allStudents = db.StudentProfiles.Include(x => x.user);
                 var currentSession = session.FirstOrDefault(x => x.Status == SessionStatus.Current);
-                var enrolledStudents = db.Enrollments.Include(x => x.StudentProfile).Include(p => p.ClassLevel).Include(c => c.Session).Where(x => x.Session.Id == currentSession.Id);
+                var enrolledStudents = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(p => p.ClassLevel).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.Id == currentSession.Id);
 
 
                 var students = enrolledStudents.Select(x => new EnrolledStudentsDto
@@ -261,8 +261,8 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
                 var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active);
                 var allStudentsd = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active && x.user.UserName.ToUpper() == "OKOROVAL").ToList();
-                var enrolledStudents = db.Enrollments.Include(c => c.Session).Where(x => x.Session.Id == currentSession.Id).Select(u => u.StudentProfileId).ToList();
-                var enrolledStudentskk = db.Enrollments.Include(c => c.Session).Where(x => x.Session.SessionYear == currentSession.SessionYear && x.StudentProfile.user.UserName.ToUpper() == "OKOROVAL").Select(u => u.StudentProfileId).ToList();
+                var enrolledStudents = db.Enrollments.Include(x => x.User).Include(c => c.Session).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.Id == currentSession.Id).Select(u => u.StudentProfileId).ToList();
+                var enrolledStudentskk = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile.user).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.SessionYear == currentSession.SessionYear && x.StudentProfile.user.UserName.ToUpper() == "OKOROVAL").Select(u => u.StudentProfileId).ToList();
                 var yetToEnroll = allStudents.Where(x => !enrolledStudents.Contains(x.Id));
                 var df = yetToEnroll.Where(x => x.user.UserName.ToUpper() == "OKOROVAL").ToList();
                 var studentsto = from s in yetToEnroll
@@ -321,7 +321,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
                 var currentSession = await session.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
 
                 var allStudents = db.StudentProfiles.Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active);
-                var enrolledStudents = db.Enrollments.Include(c => c.Session).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId).ToList();
+                var enrolledStudents = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile.user).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.SessionYear == currentSession.SessionYear).Select(u => u.StudentProfileId).ToList();
                 var yetToEnroll = allStudents.Where(x => !enrolledStudents.Contains(x.Id));
                 var studentsto = from s in yetToEnroll
                                  select s;
@@ -354,7 +354,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
             string outcome = "empty";
             int count1 = 0;
             int count2 = 0;
-            var enrolment = await db.Enrollments.Include(x => x.StudentProfile).Include(x => x.Session).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == oldclassid && x.SessionId == oldsessionid).ToListAsync();
+            var enrolment = await db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.Session).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == oldclassid && x.SessionId == oldsessionid).ToListAsync();
             var passmark = await db.ClassLevels.FirstOrDefaultAsync(x => x.Id == oldclassid);
             var passedEnroled = enrolment.Where(x => x.CummulativeAverageScore >= passmark.Passmark);
             var failedEnroled = enrolment.Where(x => x.CummulativeAverageScore < passmark.Passmark);
@@ -990,6 +990,24 @@ namespace SchoolPortal.Web.Areas.Data.Services
             return false;
         }
 
+        public async Task<string> ChangeToDropoutStudent(int id = 0)
+        {
+            //fetch old data
+            var result = "";
+            //Get current session
+            var profile = await db.StudentProfiles.FirstOrDefaultAsync(x => x.Id == id);
+            if (profile != null)
+            {
+                var user = await UserManager.FindByIdAsync(profile.UserId);
+                user.Status = EntityStatus.Dropout;
+                await UserManager.UpdateAsync(user);
+                return "successfully";
+            }
+            return "error";
+
+        }
+
+
         public async Task<string> MoveStudent(int Ocid = 0, int ClassLevelId = 0, int id = 0)
         {
             //fetch old data
@@ -1194,18 +1212,19 @@ namespace SchoolPortal.Web.Areas.Data.Services
                             {
 
                             }
-                      
+
                         }
-                        catch (Exception c) {
-                           
+                        catch (Exception c)
+                        {
+
                         }
                         var cid = await db.Enrollments.FirstOrDefaultAsync(x => x.ClassLevelId == ClassLevelId && x.SessionId == term.Id && x.Id == enrollment.Id);
                         await _resultService.UpdateResult(cid.Id);
                         //await _resultService.UpdateResult(enrollment.Id);
                     }
-                   
+
                 }
-             
+
                 result = "true";
 
             }
@@ -1268,7 +1287,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
             foreach (var term in sessionsToEnroll.ToList())
             {
-                var enrolledClassStudent = await db.Enrollments.Include(x => x.ClassLevel).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.EnrolledSubjects).Where(x => x.ClassLevelId == Ocid && x.SessionId == term.Id).ToListAsync();
+                var enrolledClassStudent = await db.Enrollments.Include(x => x.User).Include(x => x.ClassLevel).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.EnrolledSubjects).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == Ocid && x.SessionId == term.Id).ToListAsync();
                 foreach (var enrolled in enrolledClassStudent)
                 {
                     bool checkenro1 = CheckNewEnrollment2(enrolled.Id, term.Id, ClassLevelId);
@@ -1470,12 +1489,12 @@ namespace SchoolPortal.Web.Areas.Data.Services
             return nameswitheerror;
 
         }
-        public async Task EnrollStudentFromSession(int ClassLevelId = 0, int id = 0, int sid= 0)
+        public async Task EnrollStudentFromSession(int ClassLevelId = 0, int id = 0, int sid = 0)
         {
 
             //Get current session
             var currentSession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
-            var enrolment = db.Enrollments.Where(x => x.SessionId == currentSession.Id).Select(x=>x.StudentProfileId).ToList();
+            var enrolment = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.SessionId == currentSession.Id).Select(x => x.StudentProfileId).ToList();
             if (!enrolment.Contains(id))
             {
 
@@ -1711,68 +1730,68 @@ namespace SchoolPortal.Web.Areas.Data.Services
             var pgGradingOption = GradingOption.PG;
             var setting = db.Settings.FirstOrDefault();
             bool checkenro1 = CheckNewEnrollment(id, termid);
-                if (checkenro1 == false)
+            if (checkenro1 == false)
+            {
+                Enrollment enrollment = db.Enrollments.Create();
+
+                //other data for enrollment table
+                enrollment.StudentProfileId = id;
+                enrollment.SessionId = termid;
+                enrollment.ClassLevelId = ClassLevelId;
+                enrollment.EnrollmentRemark = setting.DefaultEnrollmentRemark;
+                db.Enrollments.Add(enrollment);
+                await db.SaveChangesAsync();
+
+                //Get all subjects for the class level selected
+                var subjects = db.Subjects.Where(s => s.ClassLevelId == enrollment.ClassLevelId);
+                var currentlevel = db.ClassLevels.FirstOrDefault(x => x.Id == ClassLevelId).ClassName;
+
+                //Add Subjects to the student
+                foreach (var item in subjects.ToList())
                 {
-                    Enrollment enrollment = db.Enrollments.Create();
+                    EnrolledSubject enrolledSubject = db.EnrolledSubjects.Create();
+                    enrolledSubject.SubjectId = item.Id;
+                    enrolledSubject.EnrollmentId = enrollment.Id;
+                    enrolledSubject.TotalScore = 0;
+                    enrolledSubject.ExamScore = 0;
+                    enrolledSubject.TestScore = 0;
+                    enrolledSubject.TestScore2 = 0;
+                    enrolledSubject.Project = 0;
+                    enrolledSubject.ClassExercise = 0;
+                    enrolledSubject.Assessment = 0;
+                    enrolledSubject.TotalCA = 0;
 
-                    //other data for enrollment table
-                    enrollment.StudentProfileId = id;
-                    enrollment.SessionId = termid;
-                    enrollment.ClassLevelId = ClassLevelId;
-                    enrollment.EnrollmentRemark = setting.DefaultEnrollmentRemark;
-                    db.Enrollments.Add(enrollment);
-                    await db.SaveChangesAsync();
+                    enrolledSubject.IsOffered = false;
 
-                    //Get all subjects for the class level selected
-                    var subjects = db.Subjects.Where(s => s.ClassLevelId == enrollment.ClassLevelId);
-                    var currentlevel = db.ClassLevels.FirstOrDefault(x => x.Id == ClassLevelId).ClassName;
-
-                    //Add Subjects to the student
-                    foreach (var item in subjects.ToList())
+                    if (currentlevel.Contains("SSS"))
                     {
-                        EnrolledSubject enrolledSubject = db.EnrolledSubjects.Create();
-                        enrolledSubject.SubjectId = item.Id;
-                        enrolledSubject.EnrollmentId = enrollment.Id;
-                        enrolledSubject.TotalScore = 0;
-                        enrolledSubject.ExamScore = 0;
-                        enrolledSubject.TestScore = 0;
-                        enrolledSubject.TestScore2 = 0;
-                        enrolledSubject.Project = 0;
-                        enrolledSubject.ClassExercise = 0;
-                        enrolledSubject.Assessment = 0;
-                        enrolledSubject.TotalCA = 0;
-
-                        enrolledSubject.IsOffered = false;
-
-                        if (currentlevel.Contains("SSS"))
-                        {
-                            enrolledSubject.GradingOption = sssGradingOption;
-                        }
-                        else if (currentlevel.Contains("JSS"))
-                        {
-                            enrolledSubject.GradingOption = jssGradingOption;
-                        }
-                        else if (currentlevel.Contains("PRE"))
-                        {
-                            enrolledSubject.GradingOption = preGradingOption;
-                        }
-                        else if (currentlevel.Contains("PRI"))
-                        {
-                            enrolledSubject.GradingOption = priGradingOption;
-                        }
-                        else if (currentlevel.Contains("NUR"))
-                        {
-                            enrolledSubject.GradingOption = nurGradingOption;
-                        }
-                        else if (currentlevel.Contains("PG"))
-                        {
-                            enrolledSubject.GradingOption = pgGradingOption;
-                        }
-                        db.EnrolledSubjects.Add(enrolledSubject);
-                        await db.SaveChangesAsync();
+                        enrolledSubject.GradingOption = sssGradingOption;
                     }
+                    else if (currentlevel.Contains("JSS"))
+                    {
+                        enrolledSubject.GradingOption = jssGradingOption;
+                    }
+                    else if (currentlevel.Contains("PRE"))
+                    {
+                        enrolledSubject.GradingOption = preGradingOption;
+                    }
+                    else if (currentlevel.Contains("PRI"))
+                    {
+                        enrolledSubject.GradingOption = priGradingOption;
+                    }
+                    else if (currentlevel.Contains("NUR"))
+                    {
+                        enrolledSubject.GradingOption = nurGradingOption;
+                    }
+                    else if (currentlevel.Contains("PG"))
+                    {
+                        enrolledSubject.GradingOption = pgGradingOption;
+                    }
+                    db.EnrolledSubjects.Add(enrolledSubject);
+                    await db.SaveChangesAsync();
                 }
-          
+            }
+
 
         }
 
@@ -2109,7 +2128,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
         public async Task<int> TotalEnrolledStudentByTerm()
         {
             var currentsession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
-            var count = await db.Enrollments.Where(x => x.SessionId == currentsession.Id).CountAsync();
+            var count = await db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.SessionId == currentsession.Id).CountAsync();
             return count;
         }
 
@@ -2167,7 +2186,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
             }
 
             //Get all students in that class
-            var enrolledStudents = db.Enrollments.Include(s => s.EnrolledSubjects).Include(u => u.StudentProfile).Where(s => s.ClassLevelId == classId.ClassLevelId && s.SessionId == sessionId);
+            var enrolledStudents = db.Enrollments.Include(x => x.User).Include(s => s.EnrolledSubjects).Include(x => x.StudentProfile.user).Include(u => u.StudentProfile).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == classId.ClassLevelId && s.SessionId == sessionId);
 
             //Check if there is any student in that class
             if (enrolledStudents.Count() == 0)
@@ -2216,7 +2235,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
             }
 
             //Get all students in that class
-            var enrolledStudents = db.Enrollments.Include(s => s.EnrolledSubjects).Include(u => u.StudentProfile).Where(s => s.ClassLevelId == classId.ClassLevelId && s.SessionId == sessionId);
+            var enrolledStudents = db.Enrollments.Include(x => x.User).Include(s => s.EnrolledSubjects).Include(u => u.StudentProfile).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == classId.ClassLevelId && s.SessionId == sessionId);
 
             //Check if there is any student in that class
             if (enrolledStudents.Count() == 0)

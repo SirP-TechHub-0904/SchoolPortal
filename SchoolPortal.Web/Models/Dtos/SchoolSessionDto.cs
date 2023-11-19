@@ -10,6 +10,7 @@ namespace SchoolPortal.Web.Models.Dtos
     {
         public int Id { get; set; }
         public string FullSession { get; set; }
+        public string Year { get; set; }
         public SessionStatus SessionStatus { get; set; }
     }
 }

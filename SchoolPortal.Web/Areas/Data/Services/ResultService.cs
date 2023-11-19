@@ -74,7 +74,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
         public async Task<List<Enrollment>> Position(int sessionId, int? classLevelId)
         {
-            var positions = await db.Enrollments.Include(x => x.StudentProfile).Where(s => s.SessionId == sessionId && s.ClassLevelId == classLevelId).OrderByDescending(x => x.AverageScore).ToListAsync();
+            var positions = await db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.SessionId == sessionId && s.ClassLevelId == classLevelId).OrderByDescending(x => x.AverageScore).ToListAsync();
             return positions;
         }
 
@@ -125,12 +125,12 @@ namespace SchoolPortal.Web.Areas.Data.Services
             //var thirdTerm = db.Sessions.FirstOrDefault(x => x.SessionYear == year && x.Term == "Third");
 
 
-            var EnrollmentbyclassSession = db.Enrollments.Include(v => v.Session).Include(x => x.ClassLevel).Where(f => f.ClassLevelId == classId && f.Session.SessionYear == year).ToList();
+            var EnrollmentbyclassSession = db.Enrollments.Include(x=>x.User).Include(v => v.Session).Include(x => x.ClassLevel).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(f => f.ClassLevelId == classId && f.Session.SessionYear == year).ToList();
 
             foreach (var eachenrolled in EnrollmentbyclassSession)
             {
 
-                var mainenrol = db.Enrollments.Include(v => v.Session).Include(x => x.ClassLevel).Where(f => f.StudentProfileId == eachenrolled.StudentProfileId && f.Session.SessionYear == year).ToList();
+                var mainenrol = db.Enrollments.Include(x=>x.User).Include(v => v.Session).Include(x => x.ClassLevel).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(f => f.StudentProfileId == eachenrolled.StudentProfileId && f.Session.SessionYear == year).ToList();
 
                 var firsttermtotalscore = mainenrol.FirstOrDefault(x => x.StudentProfileId == eachenrolled.StudentProfileId && x.Session.Term.ToLower() == "first");
                 var secondtermtotalscore = mainenrol.FirstOrDefault(x => x.StudentProfileId == eachenrolled.StudentProfileId && x.Session.Term.ToLower() == "second");
@@ -398,8 +398,8 @@ namespace SchoolPortal.Web.Areas.Data.Services
             var sterm = db.Sessions.FirstOrDefault(x => x.Term.ToLower() == "second" && x.SessionYear == session.SessionYear);
             var tterm = db.Sessions.FirstOrDefault(x => x.Term.ToLower() == "third" && x.SessionYear == session.SessionYear);
 
-            var enrolledStudents = db.Enrollments.Include(x => x.Session).OrderBy(x => x.StudentProfile.user.Surname).Include(x => x.EnrolledSubjects).Include(x => x.StudentProfile);
-            var checkenrolledStudents = db.Enrollments.Include(x => x.Session).OrderBy(x => x.StudentProfile.user.Surname).Include(x => x.EnrolledSubjects).Include(x => x.StudentProfile).Where(x => x.SessionId == sessId && x.ClassLevelId == classId).ToList();
+            var enrolledStudents = db.Enrollments.Include(x=>x.User).Include(x => x.Session).Include(x => x.StudentProfile.user).OrderBy(x => x.StudentProfile.user.Surname).Include(x => x.EnrolledSubjects).Include(x => x.StudentProfile).Where(x => x.StudentProfile.user.Status == EntityStatus.Active);
+            var checkenrolledStudents = db.Enrollments.Include(x=>x.User).Include(x => x.Session).Include(x => x.StudentProfile.user).OrderBy(x => x.StudentProfile.user.Surname).Include(x => x.EnrolledSubjects).Include(x => x.StudentProfile).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.SessionId == sessId && x.ClassLevelId == classId).ToList();
             var noresult = checkenrolledStudents.Where(x => x.AverageScore == null).ToList();
             var withresult = checkenrolledStudents.Where(x => x.AverageScore != null).ToList();
             if (noresult.Count() > withresult.Count())
@@ -442,8 +442,9 @@ namespace SchoolPortal.Web.Areas.Data.Services
             //var enrolledStudents = db.Enrollments.Include(x=>x.Session).OrderBy(x=>x.StudentProfile.user.Surname).Include(x=>x.EnrolledSubjects).Include(x => x.StudentProfile).Where(s => s.ClassLevelId == classId && s.SessionId == sessId && s.EnrolledSubjects.Count() > 0);
 
             IQueryable<Enrollment> enrolledStudents = from s in db.Enrollments
+                                                      .Include(x=>x.User)
                                            .Include(x => x.Session).OrderBy(x => x.StudentProfile.user.Surname)
-                                           .Include(x => x.EnrolledSubjects).Include(x => x.StudentProfile)
+                                           .Include(x => x.EnrolledSubjects).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active)
                                            .Where(s => s.ClassLevelId == classId && s.SessionId == sessId && s.EnrolledSubjects.Count() > 0)
                                                       select s;
 
@@ -474,7 +475,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
             if (session != null)
             {
                 var currentSession = session.FirstOrDefault(x => x.Status == SessionStatus.Current);
-                var enrolledStudents = db.Enrollments.OrderBy(x => x.StudentProfile.user.Surname).Include(x => x.Session).Include(x => x.StudentProfile).Where(s => s.ClassLevelId == classId && s.SessionId == currentSession.Id);
+                var enrolledStudents = db.Enrollments.Include(x=>x.User).Include(x => x.StudentProfile.user).OrderBy(x => x.StudentProfile.user.Surname).Include(x => x.Session).Include(x => x.StudentProfile).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == classId && s.SessionId == currentSession.Id);
 
                 var output = enrolledStudents.OrderByDescending(x => x.AverageScore).ThenBy(x => x.StudentProfile.StudentRegNumber).Select(x => new EnrolledStudentsByClassDto
                 {

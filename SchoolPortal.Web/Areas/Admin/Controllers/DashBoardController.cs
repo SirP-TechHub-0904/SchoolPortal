@@ -129,7 +129,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
                 //Add Tracking
                 var userId = User.Identity.GetUserId();
-                var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                var user = UserManager.Users.Where(x => x.Id == userId && x.Status == EntityStatus.Active).FirstOrDefault();
                 Tracker tracker = new Tracker();
                 tracker.UserId = userId;
                 tracker.UserName = user.UserName;
@@ -229,14 +229,15 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             //Get Enrolled Students Count
 
             IQueryable<Enrollment> enrolledStudents = from s in db.Enrollments
-                                                     .Include(x => x.StudentProfile).Include(p => p.ClassLevel).Include(c => c.Session).Where(x => x.Session.Id == currentSession.Id)
+                                                     .Include(x => x.StudentProfile)
+                                                     .Include(x=>x.StudentProfile.user).Include(p => p.ClassLevel).Include(c => c.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.Session.Id == currentSession.Id)
                                                       select s;
 
 
             ViewBag.EnrolledStudents = enrolledStudents.Count();
 
             //Get Staff Count
-            var staff = db.StaffProfiles.Count();
+            var staff = db.StaffProfiles.Include(x=>x.user).Where(x => x.user.Status == EntityStatus.Active).Count();
             ViewBag.Staff = staff;
 
             //card count

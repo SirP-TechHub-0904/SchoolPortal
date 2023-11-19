@@ -18,3 +18,33 @@
 **username**Admin *****path** http://localhost:61390/Admin/DashBoard *****date** 9/8/2023 8:29:30 AM ****device name**  ****pc name*** XYZ<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 07/10/2023 05:41:23 ****device name**  ****pc name*** JSS<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 07/10/2023 05:42:51 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 17/11/2023 11:29:48 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 17/11/2023 11:30:31 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 18/11/2023 11:34:43 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 18/11/2023 15:41:12 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 08:53:51 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 09:03:33 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 09:05:15 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 09:08:57 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 09:12:06 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 09:15:19 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 09:25:00 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 11:31:07 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Content/Doc/MoveEnrol/10925?Ocid=1 *****date** 19/11/2023 11:32:38 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 11:49:48 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:00:13 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Staff/Panel/EnterScore|||| *****date** 19/11/2023 12:04:06 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/ClassLevels/Details/1 *****date** 19/11/2023 12:04:19 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:07:27 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Staff/Panel/EnterScore||Basic Science & Technology||Basic Science & Technology *****date** 19/11/2023 12:08:51 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:14:21 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:22:51 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:22:57 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:23:28 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:23:31 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:23:47 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:28:31 ****device name**  ****pc name*** JSS<br/>
+**username**AJIKE *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 12:30:09 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 13:51:15 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 14:00:53 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 19/11/2023 14:05:28 ****device name**  ****pc name*** JSS<br/>

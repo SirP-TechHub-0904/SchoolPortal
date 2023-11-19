@@ -357,7 +357,13 @@ namespace SchoolPortal.Web.Models.Entities
         [Description("Archived")]
         Archived = 4,
         [Description("Suspended")]
-        Suspeneded = 5
+        Suspeneded = 5,
+
+        [Description("Graduate")]
+        Graduate = 7,
+        [Description("Dropout")]
+        Dropout = 9
+
 
     }
 

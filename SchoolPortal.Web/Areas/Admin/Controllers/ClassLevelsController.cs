@@ -202,7 +202,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
 
             IQueryable<StudentProfile> allStudents = from s in db.StudentProfiles
-                                       .Include(x => x.user)
+                                       .Include(x => x.user).Where(x => x.user.Status == EntityStatus.Active)
                                                      select s;
             var graduate = await allStudents.Where(x => x.Graduate == true).CountAsync();
             var activeStudent = await allStudents.Where(x => x.Graduate == false).CountAsync();
@@ -250,7 +250,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             var userId = User.Identity.GetUserId();
             if (userId != null)
             {
-                var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                var user = UserManager.Users.Where(x => x.Id == userId && x.Status == EntityStatus.Active).FirstOrDefault();
                 if (user != null)
                 {
                     Tracker tracker = new Tracker();
@@ -583,7 +583,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     var userId = User.Identity.GetUserId();
                     if (userId != null)
                     {
-                        var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                        var user = UserManager.Users.Where(x => x.Id == userId && x.Status == EntityStatus.Active).FirstOrDefault();
                         Tracker tracker = new Tracker();
                         tracker.UserId = userId;
                         tracker.UserName = user.UserName;
@@ -646,7 +646,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 var userId = User.Identity.GetUserId();
                 if (userId != null)
                 {
-                    var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                    var user = UserManager.Users.Where(x => x.Id == userId && x.Status == EntityStatus.Active).FirstOrDefault();
                     Tracker tracker = new Tracker();
                     tracker.UserId = userId;
                     tracker.UserName = user.UserName;
@@ -735,7 +735,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         var userId = User.Identity.GetUserId();
                         if (userId != null)
                         {
-                            var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                            var user = UserManager.Users.Where(x => x.Id == userId && x.Status == EntityStatus.Active).FirstOrDefault();
                             Tracker tracker = new Tracker();
                             tracker.UserId = userId;
                             tracker.UserName = user.UserName;
@@ -913,7 +913,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             }
             var currentSession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
-            var enrollment = db.Enrollments.Where(e => e.ClassLevelId == id && e.SessionId == currentSession.Id);
+            var enrollment = db.Enrollments.Include(x=>x.User).Include(x=>x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(e => e.ClassLevelId == id && e.SessionId == currentSession.Id);
 
             if (ModelState.IsValid)
             {
@@ -1155,7 +1155,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             attendance.UserId = User.Identity.GetUserId();
             await _attendanceService.Create(attendance);
             ////
-            var enrolledStudents = db.Enrollments.Include(x => x.User).Include(e => e.StudentProfile).Include(x => x.Session).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
+            var enrolledStudents = db.Enrollments.Include(x => x.User).Include(e => e.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.Session).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(s => s.ClassLevelId == id && s.Session.Status == SessionStatus.Current);
 
             foreach (var it in enrolledStudents)
             {

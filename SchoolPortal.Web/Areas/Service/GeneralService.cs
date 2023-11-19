@@ -62,7 +62,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session = db.Sessions.FirstOrDefault(x => x.Id == sid).Id;
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
 
             }
             return students;
@@ -74,7 +74,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current).Id;
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x=>x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
 
             }
             return students;
@@ -87,7 +87,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session =sId;
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
 
             }
             return students;
@@ -100,7 +100,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session = sId;
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
 
             }
             return students.Count();
@@ -115,7 +115,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
 
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == sessionId).OrderBy(x => x.User.Surname).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == sessionId).OrderBy(x => x.User.Surname).ToList();
 
             }
             return students;
@@ -128,7 +128,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current).Id;
-                students = db.Enrollments.Where(x => x.ClassLevelId == cId && x.SessionId == session && x.AverageScore != null).Count();
+                students = db.Enrollments.Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session && x.AverageScore != null).Count();
 
             }
             return students;
@@ -268,7 +268,7 @@ namespace SchoolPortal.Web.Areas.Service
             List<Enrollment> students = new List<Enrollment>();
             using (var db = new ApplicationDbContext())
             {
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId).OrderBy(x => x.Id).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId).OrderBy(x => x.Id).ToList();
 
             }
             return students;
@@ -280,7 +280,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current).Id;
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.Id).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.Id).ToList();
 
             }
             return students;
@@ -1500,7 +1500,7 @@ namespace SchoolPortal.Web.Areas.Service
             string output = "";
             using (var db = new ApplicationDbContext())
             {
-                var enr = db.Enrollments.Where(x => x.StudentProfileId == id).ToList();
+                var enr = db.Enrollments.Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.StudentProfileId == id).ToList();
                 foreach (var i in enr)
                 {
                     var abc = "";

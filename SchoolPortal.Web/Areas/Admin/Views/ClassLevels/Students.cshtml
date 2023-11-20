@@ -25,8 +25,13 @@
             <div class="box-header">
                 <span style="color:#337ab7;font-size:30px;"><i class="fa fa-fw fa-users" style="color:#337ab7;"></i> @GeneralService.StudentorPupil()<span>s</span> in @ViewBag.ClassName</span>   <span style="font-size:15px;">Total @GeneralService.StudentorPupil()<span>s</span> [@ViewBag.count]  </span>
 
-                @Html.ActionLink("New " + GeneralService.StudentorPupil(), "New", new { classId = ViewBag.classid }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Promote " + GeneralService.StudentorPupil(), "StudentPromotion", new { classId = ViewBag.classid }, new { @class = "btn btn-primary" })
+                <div style="float:right;">
+
+                    @Html.ActionLink("New " + GeneralService.StudentorPupil(), "New", new { classId = ViewBag.classid }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Promote " + GeneralService.StudentorPupil(), "StudentPromotion", new { classId = ViewBag.classid }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Back To Class List", "Index", null, new { @class = "btn btn-primary" })
+
+                </div>
             </div>
             <div class="box-body">
                 @if (TempData["success"] != null)
@@ -248,7 +253,7 @@
     <script src="http://v1.exwhyzee.ng/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="http://v1.exwhyzee.ng/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    
+
     @*<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>*@
     <script src="http://v1.exwhyzee.ng/Content/angular/json2.js"></script>
     <script type="text/javascript">

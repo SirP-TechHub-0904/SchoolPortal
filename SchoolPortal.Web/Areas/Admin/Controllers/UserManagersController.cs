@@ -164,6 +164,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> MoveToGraduate(int sessId, int classId)
         {
+            int count = 0;
            var classdata = await db.ClassLevels.FirstOrDefaultAsync(x=>x.Id == classId);
             if(classdata != null)
             {
@@ -173,10 +174,11 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                     var iuser = await UserManager.FindByIdAsync(item.StudentProfile.UserId);
                     iuser.Status = EntityStatus.Graduate;
                     await UserManager.UpdateAsync(iuser);
+                    count++;
                 }
             }
 
-
+            TempData["success"] = count +" Added to Graduate";
             return RedirectToAction("Graduates");
         }
 

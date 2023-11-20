@@ -87,7 +87,7 @@ namespace SchoolPortal.Web.Areas.Service
             using (var db = new ApplicationDbContext())
             {
                 int session =sId;
-                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.ClassLevelId == cId && x.SessionId == session).OrderBy(x => x.User.Surname).ToList();
 
             }
             return students;

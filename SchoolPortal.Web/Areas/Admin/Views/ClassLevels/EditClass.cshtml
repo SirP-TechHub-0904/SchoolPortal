@@ -202,8 +202,7 @@
 
             }
 
-            @if (User.IsInRole("SuperAdmin"))
-            {
+           
                 <div class="form-group">
                     @Html.LabelFor(model => model.ShowClass, htmlAttributes: new { @class = "control-label" })
 
@@ -211,12 +210,7 @@
                     @Html.ValidationMessageFor(model => model.ShowClass, "", new { @class = "text-danger" })
 
                 </div>
-            }
-            else
-            {
-                @Html.HiddenFor(model => model.ShowClass)
-
-            }
+             
 
         </div>
                 <div class="box-footer">

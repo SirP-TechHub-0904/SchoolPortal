@@ -64,7 +64,7 @@ namespace SchoolPortal.Web.Areas.Content.Controllers
         // GET: Content/Doc
         public ActionResult Index()
         {
-            var item = db.ClassLevels.Include(x => x.User).ToList();
+            var item = db.ClassLevels.Include(x => x.User).Where(x=>x.ShowClass == true).ToList();
             var output = item.Select(x => new ClassLevelListDto
             {
                 ClassLevelName = x.ClassName,

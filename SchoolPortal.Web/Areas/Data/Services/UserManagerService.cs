@@ -478,7 +478,7 @@ namespace SchoolPortal.Web.Areas.Data.Services
         {
 
             //var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.UserName != "Education Sec");
-            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin" && x.Status == EntityStatus.Active);
+            var users = UserManager.Users.Where(x => x.UserName != "SuperAdmin");
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (CountString(searchString) > 1)

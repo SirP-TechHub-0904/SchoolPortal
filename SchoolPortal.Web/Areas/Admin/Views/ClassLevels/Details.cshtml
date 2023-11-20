@@ -281,6 +281,8 @@
                         {
 
                             <a href="" class="btn btn-primary.disabled" disabled="disabled">@GeneralService.StudentorPupil()<span>s</span></a>
+                            @Html.ActionLink("Promote " + GeneralService.StudentorPupil(), "StudentPromotion", new { classId = ViewBag.Class.Id }, new { @class = "btn btn-success" })
+
                         }
                         else
                         {
@@ -300,7 +302,7 @@
                             @*@Html.ActionLink("Remove Subject With Different ID", "NotClassSubjectEnrolled", new { id = ViewBag.Class.Id }, new { @class = "btn btn-danger" })*@
                             @*@Html.ActionLink("Del", "DelSubjectsInClass", new { id = ViewBag.Class.Id }, new { @class = "btn btn-danger" })
 
-                                @Html.ActionLink("Del all users in class", "DeleteAllUser", "AdminUser", new { id = ViewBag.Class.Id, area = "SuperUser" }, new { @class = "btn btn-danger" })*@
+            @Html.ActionLink("Del all users in class", "DeleteAllUser", "AdminUser", new { id = ViewBag.Class.Id, area = "SuperUser" }, new { @class = "btn btn-danger" })*@
                             <a href="@Url.Action("MoveClassEnrol","Doc", new {area="Content", id = ViewBag.Class.Id })" class="btn btn-danger">Move @GeneralService.StudentorPupil()</a>
                         }
                     </div>

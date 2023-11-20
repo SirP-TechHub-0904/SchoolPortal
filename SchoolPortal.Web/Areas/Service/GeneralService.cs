@@ -1077,7 +1077,20 @@ namespace SchoolPortal.Web.Areas.Service
             };
             return i;
         }
+        public static string EnrolmentStatus(int classId, int sessionid, int studentid)
+        {
+            string i = "false";
+            using (var db = new ApplicationDbContext())
+            {
+                var abc = db.Enrollments.Include(x=>x.ClassLevel).FirstOrDefault(x=>x.SessionId == sessionid && x.StudentProfileId == studentid);
 
+                if (abc != null)
+                {
+                    i = "Enrolled to " + abc.ClassLevel.ClassName;
+                }
+            };
+            return i;
+        }
         public static string HeadteacherOrPrincipal()
         {
             string i = "Principal";

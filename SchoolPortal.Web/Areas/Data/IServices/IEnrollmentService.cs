@@ -32,7 +32,7 @@ namespace SchoolPortal.Web.Areas.Data.IServices
         Task<string> MoveClassStudent(int Ocid = 0, int ClassLevelId = 0);
         Task<string> RemoveStudent(int id = 0);
         Task<string> RemoveStudentFromSelectedTerm(int id = 0, int sessionId = 0);
-
+        Task<OutComeDto> EnrollStudentMain(int ClassLevelId = 0, int id = 0);
         Task<int> TotalEnrolledStudentByTerm();
         Task<int> TotalUnEnrolledStudentByTerm();
 

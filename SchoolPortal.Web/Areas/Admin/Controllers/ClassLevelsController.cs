@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 using SchoolPortal.Web.Models.Dtos;
 using Microsoft.AspNet.Identity.Owin;
 using DocumentFormat.OpenXml.EMMA;
+using SchoolPortal.Web.Areas.Service;
 
 namespace SchoolPortal.Web.Areas.Admin.Controllers
 {
@@ -103,6 +104,126 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             var items = await _classLevelService.AllClassLevelList();
             return View(items);
         }
+
+
+        public async Task<ActionResult> StudentPromotion(int classId = 0, int sessId = 0, int newclassId = 0)
+        {
+            var uId = User.Identity.GetUserId();
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+            var ClassData = await db.ClassLevels.Include(x => x.User).Where(x => x.ShowClass == true).FirstOrDefaultAsync(x => x.Id == classId);
+            var item = db.ClassLevels.Include(x => x.User).Where(x => x.ShowClass == true).Where(x => x.Id != classId);
+            var formTeacher = db.ClassLevels.Include(x => x.User).Where(x => x.UserId == uId);
+            item = item.OrderBy(x => x.ClassName);
+            if (ClassData == null)
+            {
+                TempData["error"] = "Unable to Load Class";
+                return RedirectToAction("Index");
+            }
+            ViewBag.classd = ClassData.ClassName;
+            ViewBag.classdId = ClassData.Id;
+
+
+
+            if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+                item = item.OrderBy(x => x.ClassName);
+            }
+            else if (formTeacher != null)
+            {
+                item = item.OrderBy(x => x.ClassName).Where(x => x.UserId == uId || x.Subjects.Select(w => w.UserId).Contains(uId)).OrderBy(x => x.ClassName);
+            }
+            else
+            {
+                item = item.Include(x => x.Subjects).Where(x => x.UserId == uId || x.Subjects.Select(w => w.UserId).Contains(uId)).OrderBy(x => x.ClassName);
+            }
+            var classlevel = item.Select(x => new ClassLevelListDto
+            {
+                ClassLevelName = x.ClassName,
+                Id = x.Id,
+                userId = x.UserId,
+                FormTeacher = x.User.Surname + " " + x.User.FirstName + " " + x.User.OtherName
+            });
+            ViewBag.ClassLevelId = new SelectList(classlevel, "Id", "ClassLevelName");
+
+            var session = await _sessionService.GetAllSession();
+            ViewBag.sessionId = new SelectList(session.Where(x => x.Year != currentSession.SessionYear).OrderByDescending(x => x.FullSession), "Id", "FullSession");
+            var XXClassData = await db.ClassLevels.Include(x => x.User).Where(x => x.ShowClass == true).FirstOrDefaultAsync(x => x.Id == newclassId);
+            if (XXClassData != null)
+            {
+                ViewBag.classdNN = XXClassData.ClassName;
+            }
+            List<Enrollment> students = new List<Enrollment>();
+            if (newclassId > 0)
+            {
+                students = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile).Include(x => x.StudentProfile.user).Include(x => x.ClassLevel).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(x => x.ClassLevelId == newclassId && x.SessionId == sessId).OrderBy(x => x.User.Surname).ToList();
+
+            }
+
+            var output = students.Select(x => new ClassStudentsDto
+            {
+
+                EnrollmentId = x.Id,
+                FullName = x.StudentProfile.user.Surname + " " + x.StudentProfile.user.FirstName + " " + x.StudentProfile.user.OtherName,
+                ClassId = x.ClassLevelId,
+                Regnumber = x.StudentProfile.StudentRegNumber,
+                ProfileId = x.StudentProfileId,
+                UserName = x.StudentProfile.user.UserName,
+                UserId = x.StudentProfile.UserId,
+                Status = GeneralService.EnrolmentStatus(newclassId, currentSession.Id, x.StudentProfileId)
+
+            });
+
+
+            return View(output);
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> StudentPromotionUpdate(List<int> selectedStudents, int classId = 0)
+        {
+            var uId = User.Identity.GetUserId();
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Status == SessionStatus.Current);
+            var ClassData = await db.ClassLevels.Include(x => x.User).Where(x => x.ShowClass == true).FirstOrDefaultAsync(x => x.Id == classId);
+            var item = db.ClassLevels.Include(x => x.User).Where(x => x.ShowClass == true).Where(x => x.Id != classId);
+            var formTeacher = db.ClassLevels.Include(x => x.User).Where(x => x.UserId == uId);
+            item = item.OrderBy(x => x.ClassName);
+            if (ClassData == null)
+            {
+                TempData["error"] = "Unable to Load Class";
+                return RedirectToAction("Index");
+            }
+            //else
+            //{
+            //    TempData["error"] = "Unable to Load Class";
+            //    return RedirectToAction("Students", new { id = classId });
+            //}
+
+            //////
+            //////
+            //////EnrollStudent
+            ///
+            int countxx = 0;
+            foreach (var stn in selectedStudents.ToList())
+            {
+                var prostn = await db.StudentProfiles.FirstOrDefaultAsync(x => x.Id == stn);
+                if (prostn != null)
+                {
+                    try
+                    {
+                        await _enrollmentService.EnrollStudent(classId, prostn.Id);
+                        countxx++;
+                    }
+                    catch (Exception d)
+                    {
+
+                    }
+                }
+            }
+            TempData["success"] = "Successfully Promoted " + countxx;
+            return RedirectToAction("Students", new { id = classId });
+
+        }
+
 
         #region Mobile Specification
 
@@ -214,7 +335,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 ProfileId = x.Id,
                 StudentRegNumber = x.StudentRegNumber,
                 FullName = x.user.Surname + " " + x.user.FirstName + " " + x.user.OtherName,
-                
+
                 ClassName = ClassEnrolled(x.Id)
 
             });
@@ -436,7 +557,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 return View(subject);
             }
 
-            
+
 
         }
 
@@ -913,7 +1034,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
 
             }
             var currentSession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
-            var enrollment = db.Enrollments.Include(x=>x.User).Include(x=>x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(e => e.ClassLevelId == id && e.SessionId == currentSession.Id);
+            var enrollment = db.Enrollments.Include(x => x.User).Include(x => x.StudentProfile.user).Where(x => x.StudentProfile.user.Status == EntityStatus.Active).Where(e => e.ClassLevelId == id && e.SessionId == currentSession.Id);
 
             if (ModelState.IsValid)
             {

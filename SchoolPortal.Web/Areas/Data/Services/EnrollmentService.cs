@@ -1718,6 +1718,123 @@ namespace SchoolPortal.Web.Areas.Data.Services
 
 
         }
+        public async Task<OutComeDto> EnrollStudentMain(int ClassLevelId = 0, int id = 0)
+        {
+            OutComeDto result = new OutComeDto();
+            //Get current session
+            var currentSession = await db.Sessions.FirstOrDefaultAsync(x => x.Status == SessionStatus.Current);
+            //Sessions to enroll for
+            var sessionsToEnroll = db.Sessions.Where(x => x.SessionYear == currentSession.SessionYear);
+            var sssGradingOption = GradingOption.SSS;
+            var jssGradingOption = GradingOption.JSS;
+            var priGradingOption = GradingOption.PRI;
+            var nurGradingOption = GradingOption.NUR;
+            var preGradingOption = GradingOption.PRE;
+            var pgGradingOption = GradingOption.PG;
+            var setting = db.Settings.FirstOrDefault();
+            //for all terms in the session
+            //select session 
+            if (currentSession.Term.ToLower().Contains("first"))
+            {
+                sessionsToEnroll = sessionsToEnroll.OrderBy(x => x.Id);
+            }
+            else if (currentSession.Term.ToLower().Contains("second"))
+            {
+                sessionsToEnroll = sessionsToEnroll.Where(x => x.Term.ToLower() != "first");
+            }
+            else if (currentSession.Term.ToLower().Contains("third"))
+            {
+                sessionsToEnroll = sessionsToEnroll.Where(x => x.Term.ToLower() == "third");
+            }
+
+            foreach (var term in sessionsToEnroll.ToList())
+            {
+                bool checkenro1 = CheckNewEnrollment(id, term.Id);
+                if (checkenro1 == false)
+                {
+                    Enrollment enrollment = db.Enrollments.Create();
+
+                    //other data for enrollment table
+                    enrollment.StudentProfileId = id;
+                    enrollment.SessionId = term.Id;
+                    enrollment.ClassLevelId = ClassLevelId;
+                    enrollment.EnrollmentRemark = setting.DefaultEnrollmentRemark;
+                    db.Enrollments.Add(enrollment);
+                    await db.SaveChangesAsync();
+
+                    //Get all subjects for the class level selected
+                    var subjects = db.Subjects.Where(s => s.ClassLevelId == enrollment.ClassLevelId);
+                    var currentlevel = db.ClassLevels.FirstOrDefault(x => x.Id == ClassLevelId).ClassName;
+
+                    //Add Subjects to the student
+                    foreach (var item in subjects.ToList())
+                    {
+                        EnrolledSubject enrolledSubject = db.EnrolledSubjects.Create();
+                        enrolledSubject.SubjectId = item.Id;
+                        enrolledSubject.EnrollmentId = enrollment.Id;
+                        enrolledSubject.TotalScore = 0;
+                        enrolledSubject.ExamScore = 0;
+                        enrolledSubject.TestScore = 0;
+                        enrolledSubject.TestScore2 = 0;
+                        enrolledSubject.Project = 0;
+                        enrolledSubject.ClassExercise = 0;
+                        enrolledSubject.Assessment = 0;
+                        enrolledSubject.TotalCA = 0;
+
+                        enrolledSubject.IsOffered = false;
+
+                        if (currentlevel.Contains("SSS"))
+                        {
+                            enrolledSubject.GradingOption = sssGradingOption;
+                        }
+                        else if (currentlevel.Contains("JSS"))
+                        {
+                            enrolledSubject.GradingOption = jssGradingOption;
+                        }
+                        else if (currentlevel.Contains("PRE"))
+                        {
+                            enrolledSubject.GradingOption = preGradingOption;
+                        }
+                        else if (currentlevel.Contains("PRI"))
+                        {
+                            enrolledSubject.GradingOption = priGradingOption;
+                        }
+                        else if (currentlevel.Contains("NUR"))
+                        {
+                            enrolledSubject.GradingOption = nurGradingOption;
+                        }
+                        else if (currentlevel.Contains("PG"))
+                        {
+                            enrolledSubject.GradingOption = pgGradingOption;
+                        }
+                        db.EnrolledSubjects.Add(enrolledSubject);
+                        await db.SaveChangesAsync();
+                    }
+                
+                     result.Success =false;
+                    result.Result = "Already in another class";
+                    }
+
+            }
+
+            //Add Tracking
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            if (userId != null)
+            {
+                var user = UserManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+                Tracker tracker = new Tracker();
+                tracker.UserId = userId;
+                tracker.UserName = user.UserName;
+                tracker.FullName = user.Surname + " " + user.FirstName + " " + user.OtherName;
+                tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                tracker.Note = tracker.FullName + " " + "Enrolled a student";
+                //db.Trackers.Add(tracker);
+                await db.SaveChangesAsync();
+            }
+
+            return result;
+        }
+
 
 
         public async Task JustEnrolToClass(int? ClassLevelId = 0, int id = 0, int termid = 0)

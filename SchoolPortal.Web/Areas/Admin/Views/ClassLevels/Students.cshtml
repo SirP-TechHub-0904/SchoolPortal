@@ -26,6 +26,7 @@
                 <span style="color:#337ab7;font-size:30px;"><i class="fa fa-fw fa-users" style="color:#337ab7;"></i> @GeneralService.StudentorPupil()<span>s</span> in @ViewBag.ClassName</span>   <span style="font-size:15px;">Total @GeneralService.StudentorPupil()<span>s</span> [@ViewBag.count]  </span>
 
                 @Html.ActionLink("New " + GeneralService.StudentorPupil(), "New", new { classId = ViewBag.classid }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Promote " + GeneralService.StudentorPupil(), "StudentPromotion", new { classId = ViewBag.classid }, new { @class = "btn btn-primary" })
             </div>
             <div class="box-body">
                 @if (TempData["success"] != null)

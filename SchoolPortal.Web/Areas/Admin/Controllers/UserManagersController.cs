@@ -130,7 +130,7 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
             }
             else
             {
-                ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin" && x.Name != "Developer").ToList();
+                ViewBag.Roles = RoleManager.Roles.Where(x => x.Name != "SuperAdmin" && x.Name != "Developer" && x.Name != "SuperAdmin2").ToList();
             }
             if (searchString != null)
             {

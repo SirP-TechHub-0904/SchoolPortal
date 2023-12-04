@@ -75,3 +75,5 @@
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 20/11/2023 17:31:57 ****device name**  ****pc name*** JSS<br/>
 **username**AJIKE *****path** http://localhost:61390/Admin/ClassLevels/Details/4 *****date** 20/11/2023 17:33:32 ****device name**  ****pc name*** JSS<br/>
 **username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 20/11/2023 17:33:34 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/DashBoard *****date** 30/11/2023 12:13:33 ****device name**  ****pc name*** JSS<br/>
+**username**SuperAdmin *****path** http://localhost:61390/Admin/ClassLevels/Details/24 *****date** 30/11/2023 12:17:47 ****device name**  ****pc name*** JSS<br/>

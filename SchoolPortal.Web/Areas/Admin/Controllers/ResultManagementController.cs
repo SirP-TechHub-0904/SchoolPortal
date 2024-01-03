@@ -1536,15 +1536,15 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                         db.SaveChanges();
 
                         //Add Tracking
-                        var userId2 = User.Identity.GetUserId();
-                        var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
-                        Tracker tracker = new Tracker();
-                        tracker.UserId = userId2;
-                        tracker.UserName = user2.UserName;
-                        tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
-                        tracker.ActionDate = DateTime.UtcNow.AddHours(1);
-                        tracker.Note = tracker.FullName + " " + "Updated Enrollment";
-                        //db.Trackers.Add(tracker);
+                        //var userId2 = User.Identity.GetUserId();
+                        //var user2 = UserManager.Users.Where(x => x.Id == userId2 && x.Status == EntityStatus.Active).FirstOrDefault();
+                        //Tracker tracker = new Tracker();
+                        //tracker.UserId = userId2;
+                        //tracker.UserName = user2.UserName;
+                        //tracker.FullName = user2.Surname + " " + user2.FirstName + " " + user2.OtherName;
+                        //tracker.ActionDate = DateTime.UtcNow.AddHours(1);
+                        //tracker.Note = tracker.FullName + " " + "Updated Enrollment";
+                        ////db.Trackers.Add(tracker);
                         await db.SaveChangesAsync();
 
                     }

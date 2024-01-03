@@ -598,6 +598,34 @@ namespace SchoolPortal.Web.Areas.Service
                     //    remark = "Pass";
                     //}
 
+                    //check promoted or not
+                    var remarkbysubjectMath = subjectlist.FirstOrDefault(x => x.Subject.SubjectName.Substring(0, 6).ToUpper() == "MATHEM");
+                    var remarkbysubjectEng = subjectlist.FirstOrDefault(x => x.Subject.SubjectName.Substring(0, 7).ToUpper() == "ENGLISH");
+                    // user class
+                    var remarkbyuserclass = db.ClassLevels.FirstOrDefault(x => x.Id == getuserenrollment.ClassLevelId);
+                    if (setting.PromotionByMathsAndEng == true)
+                    {
+                        if (remarkbysubjectMath != null && remarkbysubjectEng != null)
+                        {
+                            if (remarkbysubjectEng.TotalScore >= remarkbyuserclass.Passmark && remarkbysubjectMath.TotalScore >= remarkbyuserclass.Passmark)
+                            {
+                                grade = "P";
+                                remark = "PASS";
+                            }
+                            //else if(sum >= remarkbyuserclass.Passmark)
+                            //{
+                            //    grade = "P";
+                            //    remark = "PASS";
+                            //}
+                             
+                            else
+                            {
+                                grade = "F";
+                                remark = "FAIL";
+                            }
+                        }
+                    }
+                    else { 
                     if (cutoff > sum)
                     {
                         grade = "F";
@@ -677,7 +705,7 @@ namespace SchoolPortal.Web.Areas.Service
 
                     }
 
-
+                    }
 
                     string mainAverage = averageScore.ToString("0.00");
                     var positionsh = db.Enrollments.Include(x => x.StudentProfile).Include(x => x.EnrolledSubjects).Where(x => x.SessionId == getuserenrollment.SessionId && x.ClassLevelId == getuserenrollment.ClassLevelId).OrderByDescending(x => x.AverageScore).ThenBy(x => x.StudentProfile.StudentRegNumber);

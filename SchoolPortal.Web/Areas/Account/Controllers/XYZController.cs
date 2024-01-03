@@ -381,13 +381,14 @@ namespace SchoolPortal.Web.Areas.Account.Controllers
                 }
             if (await UserManager.IsInRoleAsync(user1.Id, "SuperAdmin"))
             {
-                if(user1.UserName == "SuperAdmin") { 
-                if (await UserManager.CheckPasswordAsync(user1, model.Password))
+                if (user1.UserName == "SuperAdmin")
                 {
+                    if (await UserManager.CheckPasswordAsync(user1, model.Password))
+                    {
 
-                    return RedirectToAction("Access", "XYZ", new { id = user1.Id, area = "Account" });
+                        return RedirectToAction("Access", "XYZ", new { id = user1.Id, area = "Account" });
 
-                }
+                    }
 
                 }
                 //string macAdd = MacAddress2();

@@ -607,7 +607,7 @@ namespace SchoolPortal.Web.Areas.Service
                     {
                         if (remarkbysubjectMath != null && remarkbysubjectEng != null)
                         {
-                            if (remarkbysubjectEng.TotalScore >= remarkbyuserclass.Passmark && remarkbysubjectMath.TotalScore >= remarkbyuserclass.Passmark)
+                            if (remarkbysubjectEng.TotalScore >= remarkbyuserclass.Passmark && remarkbysubjectMath.TotalScore >= remarkbyuserclass.Passmark && sum >= remarkbyuserclass.Passmark)
                             {
                                 grade = "P";
                                 remark = "PASS";

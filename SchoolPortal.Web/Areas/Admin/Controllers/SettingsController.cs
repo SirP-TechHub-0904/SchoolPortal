@@ -154,7 +154,14 @@ namespace SchoolPortal.Web.Areas.Admin.Controllers
                 decimal number = 100;
                 if (check == number)
                 {
-                    await _settingService.Create(setting);
+                    try
+                    {
+                        await _settingService.Create(setting);
+
+                    }catch(Exception c)
+                    {
+
+                    }
                     var Imageid = await _imageService.Create(upload);
                     setting.ImageId = Imageid;
                     await _settingService.Edit(setting);

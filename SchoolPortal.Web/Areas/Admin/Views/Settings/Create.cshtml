@@ -345,7 +345,21 @@
 
             </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.IskoollLink, htmlAttributes: new { @class = "control-label" })
 
+                @Html.EditorFor(model => model.IskoollLink)
+                @Html.ValidationMessageFor(model => model.IskoollLink, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CBTLink, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.CBTLink)
+                @Html.ValidationMessageFor(model => model.CBTLink, "", new { @class = "text-danger" })
+
+            </div>
 
         </div>
 

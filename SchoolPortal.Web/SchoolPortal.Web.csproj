@@ -2256,6 +2256,8 @@
     <Content Include="Areas\Account\Views\Shared\_login2022.cshtml" />
     <None Include="Properties\PublishProfiles\wimbigservice-001-site7 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\wimbigservice-001-site7 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\xyzqolatv1-001-site4 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\xyzqolatv1-001-site4 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Aq_Image\Course\" />
